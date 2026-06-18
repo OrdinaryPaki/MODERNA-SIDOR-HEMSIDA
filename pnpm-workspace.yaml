@@ -1,3 +1,15 @@
+# Supply chain-skydd: installera aldrig paketversioner yngre än 7 dagar (10080 min).
+# Skadliga versioner upptäcks och tas i regel bort inom timmar/dagar,
+# så fördröjningen filtrerar bort kapade releaser (t.ex. Shai-Hulud-vågorna).
+minimumReleaseAge: 10080
+
+# Lifecycle-skript (preinstall/postinstall) från beroenden blockeras som standard i pnpm 10+.
+# Endast dessa paket får köra sina build-skript:
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
+
+# Tvinga patchade versioner av sårbara transitive beroenden:
+# - postcss <8.5.10: XSS via oescapad </style> (GHSA-qx2v-qp2m-jg93)
+overrides:
+  "postcss@<8.5.10": ">=8.5.10"
