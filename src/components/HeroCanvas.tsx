@@ -2,102 +2,143 @@
 
 import { useEffect, useRef } from "react";
 
-const VERT = `
-attribute vec2 a_pos;
+const VERT = `#version 300 es
+precision highp float;
+
+in vec2 a_position;
+in vec2 a_texCoord;
+
+out vec2 v_uv;
+
 void main() {
-  gl_Position = vec4(a_pos, 0.0, 1.0);
+  v_uv = a_texCoord;
+  gl_Position = vec4(a_position, 0.0, 1.0);
 }`;
 
-// Rörligt Framer-liknande silk-lager ovanpå statiska hero-bilden.
-// Canvasen är normal blend men shadern har alpha, så bildlagret under lever kvar.
-const FRAG = `
+// Same wave-gradient shader controls as the live Framer Nori hero.
+const FRAG = `#version 300 es
 precision highp float;
-uniform vec2 u_res;
-uniform float u_time;
 
-float hash(vec2 p) {
-  return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+in vec2 v_uv;
+out vec4 fragColor;
+
+uniform vec2 u_resolution;
+uniform float u_time;
+uniform float u_blendAmount;
+uniform vec4 u_colors[4];
+uniform int u_colors_length;
+uniform float u_maskSoftness;
+uniform float u_seed;
+uniform float u_waveAmplitude;
+uniform float u_waveAngle;
+uniform float u_waveFreqX;
+uniform float u_waveFreqY;
+uniform float u_waveSpeed;
+
+#define S(a,b,t) smoothstep(a,b,t)
+
+mat2 Rot(float a) {
+  float s = sin(a), c = cos(a);
+  return mat2(c, -s, s, c);
 }
 
-float noise(vec2 p) {
+vec2 hash(vec2 p) {
+  float s = u_seed;
+  vec2 k1 = vec2(2127.1 + s * 13.37, 81.17 + s * 7.31);
+  vec2 k2 = vec2(1269.5 + s * 11.13, 283.37 + s * 5.79);
+  p = vec2(dot(p, k1), dot(p, k2));
+  return fract(sin(p) * (43758.5453 + s * 1.618));
+}
+
+float noise(in vec2 p) {
   vec2 i = floor(p);
   vec2 f = fract(p);
   vec2 u = f * f * (3.0 - 2.0 * f);
-  return mix(
-    mix(hash(i), hash(i + vec2(1.0, 0.0)), u.x),
-    mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x),
+  float n = mix(
+    mix(dot(-1.0 + 2.0 * hash(i), f),
+        dot(-1.0 + 2.0 * hash(i + vec2(1.0, 0.0)), f - vec2(1.0, 0.0)), u.x),
+    mix(dot(-1.0 + 2.0 * hash(i + vec2(0.0, 1.0)), f - vec2(0.0, 1.0)),
+        dot(-1.0 + 2.0 * hash(i + vec2(1.0, 1.0)), f - vec2(1.0, 1.0)), u.x),
     u.y
   );
+  return 0.5 + 0.5 * n;
 }
 
-float fbm(vec2 p) {
-  float v = 0.0;
-  float a = 0.5;
-  for (int i = 0; i < 5; i++) {
-    v += a * noise(p);
-    p = p * 2.05 + vec2(13.7, 7.3);
-    a *= 0.5;
-  }
-  return v;
+vec3 getColor(int idx) {
+  if (u_colors_length < 1) return vec3(0.0);
+  int safeIdx = clamp(idx, 0, u_colors_length - 1);
+  return u_colors[safeIdx].rgb;
+}
+
+float seedF(float base) {
+  return base * (1.0 + 0.5 * sin(u_seed * 3.17 + base));
+}
+
+vec2 warpUV(vec2 uv) {
+  float t = u_time * u_waveSpeed;
+
+  float angleOffset = sin(u_seed * 2.73) * 30.0;
+  mat2 dirRot = Rot(radians(u_waveAngle + angleOffset));
+  vec2 ruv = dirRot * uv;
+
+  float fxMod = seedF(u_waveFreqX);
+  float fyMod = seedF(u_waveFreqY);
+
+  float phaseX = fract(sin(u_seed * 7.19) * 437.58) * 6.2832;
+  float phaseY = fract(cos(u_seed * 3.41) * 291.37) * 6.2832;
+
+  float harmonic = sin(u_seed * 1.23) * 0.5;
+  float a = fyMod * ruv.y - sin(ruv.x * fxMod + ruv.y - t + phaseX);
+  a += harmonic * sin(ruv.x * fxMod * 2.0 + ruv.y * 0.5 + t * 0.7 + phaseY);
+
+  a = smoothstep(
+    cos(a) * u_maskSoftness,
+    sin(a) * u_maskSoftness + 3.0,
+    cos(a - fyMod * ruv.y) - sin(a - fxMod * ruv.x)
+  );
+
+  a *= u_waveAmplitude;
+
+  uv = cos(a) * uv + sin(a) * vec2(-uv.y, uv.x);
+  return uv;
 }
 
 void main() {
-  vec2 uv = gl_FragCoord.xy / u_res;
-  vec2 p = uv * vec2(u_res.x / u_res.y, 1.0);
-  float portrait = smoothstep(0.9, 0.48, u_res.x / u_res.y);
-  float settledMotionScale = smoothstep(1.25, 3.1, u_time);
-  float foldTravel = u_time * settledMotionScale;
-  float u_silkSweep = (
-    sin(foldTravel * 0.58) * 0.34 +
-    sin(foldTravel * 0.24 + 1.7) * 0.17
-  ) * mix(0.8, 1.1, portrait);
-  float t = u_time * mix(0.075, 0.24, settledMotionScale);
+  vec2 fragCoord = v_uv * u_resolution;
+  vec2 uv = fragCoord / u_resolution.xy;
+  float ratio = u_resolution.x / u_resolution.y;
+  float t = u_time * u_waveSpeed;
 
-  vec2 u_warp = vec2(
-    fbm(p * 0.72 + vec2(-t * 0.9, t * 0.22)),
-    fbm(p * 0.88 + vec2(t * 0.34, -t * 0.68) + 4.0)
-  );
-  vec2 u_flow = p + (u_warp - 0.5) * mix(0.5, 0.74, settledMotionScale);
-  u_flow += vec2(-foldTravel * 0.055, foldTravel * 0.022) * settledMotionScale;
-  float field = fbm(u_flow * 1.18 + vec2(t * 0.5, -t * 0.26));
+  vec2 tuv = uv - 0.5;
 
-  float diagonal = uv.x - uv.y * mix(0.84, 1.05, portrait);
-  diagonal += (u_warp.x - 0.5) * 0.22;
-  float foldOffset = mix(0.22, 0.07, portrait);
-  float foldA = smoothstep(
-    mix(0.28, 0.2, portrait),
-    0.0,
-    abs(diagonal - foldOffset + u_silkSweep + field * 0.2)
-  );
-  float foldB = smoothstep(
-    mix(0.4, 0.25, portrait),
-    0.0,
-    abs((uv.x * 1.08 + uv.y * 0.32) - (0.98 - u_silkSweep * 0.72 + cos(u_time * 0.26) * 0.07) + field * 0.19)
-  );
-  float foldC = smoothstep(
-    mix(0.34, 0.22, portrait),
-    0.0,
-    abs((uv.x * 0.68 - uv.y * 0.98) - (-0.12 + u_silkSweep * 0.62 + sin(u_time * 0.24 + 1.8) * 0.08) - field * 0.16)
-  );
-  float u_silk = clamp(foldA * 0.74 + foldB * 0.62 + foldC * 0.44, 0.0, 1.0);
-  float u_ridge = smoothstep(0.22, 0.0, abs(diagonal - foldOffset + field * 0.14));
-  float shadow = smoothstep(0.22, 0.9, diagonal + field * 0.12 - portrait * 0.1);
-  float topShade = smoothstep(0.86, 0.22, uv.y + field * 0.08);
+  vec2 seedShift = vec2(sin(u_seed * 4.37), cos(u_seed * 5.91)) * 100.0;
+  float degree = noise(vec2(t * 0.1, tuv.x * tuv.y) + seedShift);
+  tuv.y *= 1.0 / ratio;
+  tuv *= Rot(radians((degree - 0.5) * 720.0 + 180.0));
+  tuv.y *= ratio;
 
-  vec3 deep = vec3(0.045, 0.190, 0.310);
-  vec3 mid  = vec3(0.105, 0.390, 0.610);
-  vec3 lite = vec3(0.360, 0.640, 0.880);
+  vec2 uv2 = (fragCoord * 2.0 - u_resolution.xy) / (u_resolution.x + u_resolution.y) * 2.0;
+  float preRotAngle = fract(sin(u_seed * 5.63) * 173.29) * 6.2832;
+  uv2 *= Rot(preRotAngle);
+  vec2 warped = warpUV(uv2) * 0.5 + 0.5;
 
-  vec3 col = mix(mid, lite, smoothstep(0.18, 0.9, field));
-  col = mix(col, deep, max(shadow * 0.58, u_silk * 0.62));
-  col = mix(col, lite, (foldA + u_ridge) * 0.2);
-  col *= mix(0.78, 1.05, topShade);
+  vec2 blendUV = mix(tuv, warped - 0.5, u_blendAmount);
 
-  float baseAlpha = 0.08 + settledMotionScale * 0.04;
-  float foldAlpha = u_silk * mix(0.46, 0.38, portrait);
-  float alpha = baseAlpha + foldAlpha + shadow * mix(0.12, 0.1, portrait);
+  float layerRot1 = -5.0 + sin(u_seed * 1.83) * 20.0;
+  float layerRot2 = 10.0 + cos(u_seed * 2.47) * 20.0;
 
-  gl_FragColor = vec4(col, alpha);
+  vec3 c0 = getColor(0);
+  vec3 c1 = getColor(1);
+  vec3 c2 = getColor(2);
+  vec3 c3 = getColor(3);
+
+  vec3 layer1 = mix(c0, c2, S(-0.3, 0.3, (blendUV * Rot(radians(layerRot1))).x));
+  vec3 layer2 = mix(c3, c1, S(-0.3, 0.3, (blendUV * Rot(radians(layerRot2))).x));
+  vec3 col = mix(layer1, layer2, S(0.3, -0.3, blendUV.y));
+
+  col = mix(col, col * col + 0.5 * sqrt(col), 0.3);
+
+  fragColor = vec4(col, 1.0);
 }`;
 
 export default function HeroCanvas() {
@@ -111,57 +152,116 @@ export default function HeroCanvas() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    const gl = canvas.getContext("webgl", {
+    const gl = canvas.getContext("webgl2", {
       alpha: true,
       antialias: false,
+      powerPreference: "default",
       premultipliedAlpha: false,
     });
-    if (!gl) return; // CSS-gradient bakom canvasen blir fallback
+    if (!gl) return;
 
     const compile = (type: number, src: string) => {
-      const shader = gl.createShader(type)!;
+      const shader = gl.createShader(type);
+      if (!shader) return null;
       gl.shaderSource(shader, src);
       gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        console.warn(gl.getShaderInfoLog(shader));
+        gl.deleteShader(shader);
+        return null;
+      }
       return shader;
     };
 
-    const program = gl.createProgram()!;
-    gl.attachShader(program, compile(gl.VERTEX_SHADER, VERT));
-    gl.attachShader(program, compile(gl.FRAGMENT_SHADER, FRAG));
+    const vertexShader = compile(gl.VERTEX_SHADER, VERT);
+    const fragmentShader = compile(gl.FRAGMENT_SHADER, FRAG);
+    const program = gl.createProgram();
+    if (!vertexShader || !fragmentShader || !program) return;
+
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
     gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      console.warn(gl.getProgramInfoLog(program));
+      gl.deleteProgram(program);
+      return;
+    }
     gl.useProgram(program);
 
-    const buf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    const vao = gl.createVertexArray();
+    gl.bindVertexArray(vao);
+
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     gl.bufferData(
       gl.ARRAY_BUFFER,
-      new Float32Array([-1, -1, 3, -1, -1, 3]),
+      new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
       gl.STATIC_DRAW
     );
-    const loc = gl.getAttribLocation(program, "a_pos");
-    gl.enableVertexAttribArray(loc);
-    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const positionLoc = gl.getAttribLocation(program, "a_position");
+    gl.enableVertexAttribArray(positionLoc);
+    gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
 
-    const uRes = gl.getUniformLocation(program, "u_res");
+    const texCoordBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer);
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array([0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1]),
+      gl.STATIC_DRAW
+    );
+    const texCoordLoc = gl.getAttribLocation(program, "a_texCoord");
+    gl.enableVertexAttribArray(texCoordLoc);
+    gl.vertexAttribPointer(texCoordLoc, 2, gl.FLOAT, false, 0, 0);
+
+    const uResolution = gl.getUniformLocation(program, "u_resolution");
     const uTime = gl.getUniformLocation(program, "u_time");
+    const uBlendAmount = gl.getUniformLocation(program, "u_blendAmount");
+    const uColors = gl.getUniformLocation(program, "u_colors[0]");
+    const uColorsLength = gl.getUniformLocation(program, "u_colors_length");
+    const uMaskSoftness = gl.getUniformLocation(program, "u_maskSoftness");
+    const uSeed = gl.getUniformLocation(program, "u_seed");
+    const uWaveAmplitude = gl.getUniformLocation(program, "u_waveAmplitude");
+    const uWaveAngle = gl.getUniformLocation(program, "u_waveAngle");
+    const uWaveFreqX = gl.getUniformLocation(program, "u_waveFreqX");
+    const uWaveFreqY = gl.getUniformLocation(program, "u_waveFreqY");
+    const uWaveSpeed = gl.getUniformLocation(program, "u_waveSpeed");
+
+    gl.uniform1f(uBlendAmount, 0.5);
+    gl.uniform4fv(
+      uColors,
+      new Float32Array([
+        27 / 255, 103 / 255, 157 / 255, 1.0,
+        31 / 255, 117 / 255, 178 / 255, 1.0,
+        33 / 255, 125 / 255, 192 / 255, 1.0,
+        18 / 255, 68 / 255, 105 / 255, 1.0,
+      ])
+    );
+    gl.uniform1i(uColorsLength, 4);
+    gl.uniform1f(uMaskSoftness, 1.5);
+    gl.uniform1f(uSeed, 26.0);
+    gl.uniform1f(uWaveAmplitude, 1.6);
+    gl.uniform1f(uWaveAngle, 105.0);
+    gl.uniform1f(uWaveFreqX, 0.9);
+    gl.uniform1f(uWaveFreqY, 6.0);
+    gl.uniform1f(uWaveSpeed, 1.8);
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio, 2);
-      canvas.width = canvas.clientWidth * dpr;
-      canvas.height = canvas.clientHeight * dpr;
+      const dpr = Math.max(window.devicePixelRatio, 1);
+      canvas.width = canvas.offsetWidth * dpr;
+      canvas.height = canvas.offsetHeight * dpr;
       gl.viewport(0, 0, canvas.width, canvas.height);
     };
     resize();
     window.addEventListener("resize", resize);
 
     let raf = 0;
-    const start = performance.now();
+    const start = performance.now() * 0.001;
     const render = () => {
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
-      gl.uniform2f(uRes, canvas.width, canvas.height);
-      gl.uniform1f(uTime, (performance.now() - start) / 1000);
-      gl.drawArrays(gl.TRIANGLES, 0, 3);
+      gl.uniform2f(uResolution, canvas.width, canvas.height);
+      gl.uniform1f(uTime, performance.now() * 0.001 - start);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
       if (!reduceMotion) raf = requestAnimationFrame(render);
     };
     render();
@@ -169,6 +269,10 @@ export default function HeroCanvas() {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
+      gl.deleteBuffer(positionBuffer);
+      gl.deleteBuffer(texCoordBuffer);
+      gl.deleteVertexArray(vao);
+      gl.deleteProgram(program);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
   }, []);

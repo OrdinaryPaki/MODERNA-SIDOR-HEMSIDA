@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 const FAQS = [
   {
     q: "How long does a typical project take?",
@@ -26,6 +30,8 @@ const FAQS = [
 ];
 
 export default function Faq() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
     <section className="bg-background px-5 pb-[60px] pt-[60px] sm:px-8 sm:pb-[55px] sm:pt-[121px]">
       <div className="grid gap-[66px] lg:grid-cols-2 lg:gap-6">
@@ -49,24 +55,46 @@ export default function Faq() {
         </div>
 
         <div className="flex flex-col gap-3 lg:gap-4">
-          {FAQS.map((faq) => (
-            <div
-              key={faq.q}
-              className="rounded-lg bg-white py-4 pl-[18px] pr-3 shadow-[0_0_0_1px_rgba(6,18,24,0.03)] sm:py-5"
-            >
-              <div className="flex items-center justify-between gap-4">
-                <p className="text-[14.5px] font-medium leading-[1.24] tracking-[-0.03em] sm:text-xl sm:leading-[1.3]">
-                  {faq.q}
-                </p>
-                <span
-                  aria-hidden
-                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#f0f5f9] text-[20px] font-light leading-none text-[#1f75b2] sm:h-7 sm:w-7 sm:text-[22px]"
+          {FAQS.map((faq, index) => {
+            const isOpen = openIndex === index;
+            const answerId = `faq-answer-${index}`;
+            const buttonId = `faq-button-${index}`;
+
+            return (
+              <div
+                key={faq.q}
+                className="rounded-lg bg-white py-4 pl-[18px] pr-3 shadow-[0_0_0_1px_rgba(6,18,24,0.03)] sm:py-5"
+              >
+                <button
+                  id={buttonId}
+                  type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={answerId}
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="flex w-full items-center justify-between gap-4 text-left text-[#061218]"
                 >
-                  +
-                </span>
+                  <span className="text-[14.5px] font-medium leading-[1.24] tracking-[-0.03em] sm:text-xl sm:leading-[1.3]">
+                    {faq.q}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#f0f5f9] text-[20px] font-light leading-none text-[#1f75b2] transition-colors sm:h-7 sm:w-7 sm:text-[22px]"
+                  >
+                    {isOpen ? "-" : "+"}
+                  </span>
+                </button>
+                <div
+                  id={answerId}
+                  role="region"
+                  aria-labelledby={buttonId}
+                  hidden={!isOpen}
+                  className="mt-3 max-w-[620px] text-[14px] leading-[1.4] tracking-[-0.03em] text-[#061218]/70 sm:mt-4 sm:text-[17px] sm:leading-[1.38]"
+                >
+                  {faq.a}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

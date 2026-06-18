@@ -69,6 +69,20 @@ const checks = [
       files.footer.includes('className="h-px bg-[#f0f5f9]/12"'),
   },
   {
+    name: "footer uses Nori full-width outer wrapper",
+    pass:
+      files.footer.includes('className="mx-auto w-full max-w-[1856px]"') &&
+      !files.footer.includes('className="mx-auto max-w-[1376px]"'),
+  },
+  {
+    name: "footer bottom details match Nori reference items",
+    pass:
+      !files.footer.includes("Framer template created by Lazar Filipovic") &&
+      files.footer.includes("Privacy policy") &&
+      files.footer.includes("Terms of Service") &&
+      files.footer.includes("© 2026 Nori. All rights reserved."),
+  },
+  {
     name: "client results headline uses wide-desktop Framer-like fit clamp",
     pass:
       files.testimonials.includes("sm:text-[clamp(5rem,14.2vw,11.75rem)]") &&

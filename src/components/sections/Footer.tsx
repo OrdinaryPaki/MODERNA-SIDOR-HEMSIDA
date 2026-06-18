@@ -36,7 +36,7 @@ export default function Footer({
         compactEnd ? "pb-3" : "pb-6"
       }`}
     >
-      <div className="mx-auto max-w-[1376px]">
+      <div className="mx-auto w-full max-w-[1856px]">
         <div className="h-px bg-[#f0f5f9]/12" />
 
         <div
@@ -117,7 +117,7 @@ export default function Footer({
             <p className="mt-14 text-[72px] font-medium leading-[0.9] tracking-[-0.05em] text-[#f0f5f9] sm:mt-0 sm:hidden">
               Nori Studio
             </p>
-            <p className="mt-14 hidden whitespace-nowrap text-[clamp(11rem,18.6vw,16.75rem)] font-medium leading-[0.9] tracking-[-0.06em] text-[#f0f5f9] sm:block">
+            <p className="mt-14 hidden whitespace-nowrap text-[clamp(11rem,18.6vw,22rem)] font-medium leading-[0.9] tracking-[-0.06em] text-[#f0f5f9] sm:block">
               Nori Studio
             </p>
           </>
@@ -134,7 +134,6 @@ export default function Footer({
               : "mt-10"
           }`}
         >
-          <span>Framer template created by Lazar Filipovic</span>
           <a href="/privacy-policy" className="transition-opacity hover:opacity-70">
             Privacy policy
           </a>
