@@ -2,41 +2,20 @@
 
 import { useEffect, useRef } from "react";
 import { animate } from "animejs";
-import Image from "next/image";
 
-const STATS = [
-  { value: 146, suffix: "+", label: "Completed projects" },
-  { value: 3.1, suffix: "x", decimals: 1, label: "Average ROI increase" },
-  { value: 95, suffix: "%", label: "Client satisfaction rate" },
-  { value: 23, suffix: "hr", label: "Average response time" },
+const STATS: Array<{
+  value: number;
+  suffix: string;
+  label: string;
+  decimals?: number;
+}> = [
+  { value: 2024, suffix: "", label: "Grundat" },
+  { value: 5, suffix: "+", label: "System och plattformar" },
+  { value: 100, suffix: "%", label: "Kodad lösning" },
+  { value: 1, suffix: "", label: "Ansvarig partner" },
 ];
 
-const CLIENTS = [
-  {
-    src: "/reference/awDtj7rqkXF0BCm12jsm7BzLczg.svg",
-    alt: "Velo Studio",
-    width: 194,
-    height: 37,
-  },
-  {
-    src: "/reference/zUJMCCKSzjR4tLQ8amSnfss8UUA.svg",
-    alt: "Urban Bites",
-    width: 256,
-    height: 42,
-  },
-  {
-    src: "/reference/faK3uVL6HKHj0lUYRZh2fWmn3o.svg",
-    alt: "Baseline Sports",
-    width: 256,
-    height: 42,
-  },
-  {
-    src: "/reference/NwlOGrknUmkPlpa4MVL7oF0w48Q.svg",
-    alt: "Northcap Supply",
-    width: 279,
-    height: 42,
-  },
-];
+const PRINCIPLES = ["Lyssna", "Forma", "Bygga", "Förvalta"];
 
 export default function Stats() {
   const rootRef = useRef<HTMLElement>(null);
@@ -98,18 +77,18 @@ export default function Stats() {
       className="bg-[#061218] px-5 pb-6 pt-[60px] text-[#f0f5f9] sm:px-8 sm:pb-[96px] sm:pt-20"
     >
       <p className="w-fit font-mono text-base font-medium leading-[1.3] tracking-[-0.02em] text-[#f0f5f9] sm:text-[20px]">
-        {"//05 Why choose us"}
+        {"//05 Arbetssätt"}
       </p>
 
       <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
         <h2 className="max-w-[353px] text-[40px] font-medium uppercase leading-[1.1] tracking-[-0.05em] sm:max-w-3xl sm:text-[clamp(2.5rem,6.875vw,5.5rem)] sm:leading-[1.1] sm:tracking-[-0.04em]">
-          Details make
+          Nära
           <br />
-          the difference
+          arbetet
         </h2>
         <p className="max-w-[353px] text-base leading-[1.3] tracking-[-0.04em] text-[#f0f5f9]/60 sm:max-w-[290px] sm:text-xl sm:leading-[1.3]">
-          We&apos;re not just designers. We&apos;re your partners who help you
-          grow and get real results you can see.
+          Bra system känns självklara för dem som använder dem. Det kräver att
+          vi förstår arbetet innan vi skriver koden.
         </p>
       </div>
 
@@ -136,18 +115,14 @@ export default function Stats() {
       </div>
 
       <div className="mt-12 grid gap-4 sm:mt-14 sm:grid-cols-4">
-        {CLIENTS.map((client) => (
+        {PRINCIPLES.map((principle) => (
           <div
-            key={client.src}
+            key={principle}
             className="flex h-[132px] items-center justify-center rounded-[4px] border border-[#f0f5f91f] bg-[#061218] px-8"
           >
-            <Image
-              src={client.src}
-              alt={client.alt}
-              width={client.width}
-              height={client.height}
-              className="h-auto max-h-[52px] w-[170px] object-contain"
-            />
+            <p className="text-[28px] font-medium leading-none tracking-[-0.05em]">
+              {principle}
+            </p>
           </div>
         ))}
       </div>

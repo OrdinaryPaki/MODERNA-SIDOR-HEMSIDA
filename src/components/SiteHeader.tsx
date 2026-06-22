@@ -5,11 +5,10 @@ import Link from "next/link";
 import LogoWordmark from "@/components/LogoWordmark";
 
 const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/our-work", label: "Our work" },
-  { href: "/about-us", label: "About us" },
-  { href: "/contact", label: "Contact" },
-  { href: "/blog", label: "Blog" },
+  { href: "/", label: "Hem" },
+  { href: "/our-work", label: "System" },
+  { href: "/about-us", label: "Om oss" },
+  { href: "/contact", label: "Kontakt" },
 ];
 
 export default function SiteHeader({

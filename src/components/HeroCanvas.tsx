@@ -15,7 +15,7 @@ void main() {
   gl_Position = vec4(a_position, 0.0, 1.0);
 }`;
 
-// Same wave-gradient shader controls as the live Framer Nori hero.
+// Wave-gradient shader controls based on the selected external design reference.
 const FRAG = `#version 300 es
 precision highp float;
 
@@ -246,7 +246,7 @@ export default function HeroCanvas() {
     gl.uniform1f(uWaveSpeed, 1.8);
 
     const resize = () => {
-      const dpr = Math.max(window.devicePixelRatio, 1);
+      const dpr = Math.min(Math.max(window.devicePixelRatio, 1), 2);
       canvas.width = canvas.offsetWidth * dpr;
       canvas.height = canvas.offsetHeight * dpr;
       gl.viewport(0, 0, canvas.width, canvas.height);
@@ -273,7 +273,6 @@ export default function HeroCanvas() {
       gl.deleteBuffer(texCoordBuffer);
       gl.deleteVertexArray(vao);
       gl.deleteProgram(program);
-      gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
   }, []);
 

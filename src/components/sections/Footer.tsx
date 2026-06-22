@@ -1,20 +1,20 @@
+import FooterWordmark from "@/components/FooterWordmark";
+
 const LINK_GROUPS = [
   {
     title: "Pages",
     links: [
-      { label: "Home", href: "/#home-top" },
-      { label: "About us", href: "/about-us#about-top" },
-      { label: "Work", href: "/our-work#work-top" },
-      { label: "Blog", href: "/blog#blog-top" },
+      { label: "Hem", href: "/#home-top" },
+      { label: "Om oss", href: "/about-us#about-top" },
+      { label: "System", href: "/our-work#work-top" },
+      { label: "Kontakt", href: "/contact" },
     ],
   },
   {
-    title: "Follow us",
+    title: "Kontakt",
     links: [
-      { label: "Instagram", href: "https://instagram.com" },
-      { label: "Facebook", href: "http://facebook.com" },
-      { label: "Tiktok", href: "http://tiktok.com" },
-      { label: "Twitter", href: "http://x.com" },
+      { label: "E-post", href: "mailto:kontakt@modernasidor.se" },
+      { label: "LinkedIn", href: "https://linkedin.com" },
     ],
   },
 ];
@@ -45,8 +45,8 @@ export default function Footer({
               ? mergeWithPrevious
                 ? compactEnd
                   ? compactOffset === "project"
-                    ? "mt-[158px] sm:mt-[101px]"
-                    : "mt-[125px] sm:mt-[92px]"
+                    ? "mt-12 sm:mt-10"
+                    : "mt-10 sm:mt-10"
                   : "mt-[155px] sm:mt-[99px]"
                 : "mt-24"
               : "mt-6"
@@ -55,26 +55,25 @@ export default function Footer({
           {showNewsletter ? (
             <div className="w-full max-w-[688px]">
               <h3 className="w-full text-[52px] font-medium leading-[0.9] tracking-[-0.04em] sm:text-[clamp(4rem,5.9375vw,4.75rem)]">
-                Stay in loop
+                Moderna Sidor
               </h3>
               <p className="mt-6 max-w-[284px] text-base leading-[1.3] tracking-[-0.03em] text-[#f0f5f9]">
-                Join our newsletter and stay updated on the latest trends in
-                digital design.
+                Skräddarsydda digitala system för företag med specifika behov.
               </p>
               <form
                 className="mt-8 flex items-end gap-3"
-                action="mailto:webdesignbylazar@gmail.com."
+                action="mailto:kontakt@modernasidor.se"
                 method="post"
                 encType="text/plain"
               >
                 <label className="flex w-[300px] flex-none flex-col gap-3">
                   <span className="w-fit text-base font-medium leading-[1.3] tracking-[-0.03em]">
-                    Email
+                    E-post
                   </span>
                   <input
                     name="email"
                     type="email"
-                    placeholder="jane@framer.com"
+                    placeholder="namn@foretag.se"
                     className="h-12 rounded-[4px] border-0 bg-[#f0f5f9] px-3 text-base leading-[1.2] tracking-[-0.02em] text-[#061218] outline-none placeholder:text-[#7d8487]"
                   />
                 </label>
@@ -114,33 +113,33 @@ export default function Footer({
 
         {showNewsletter ? (
           <>
-            <p className="mt-14 text-[72px] font-medium leading-[0.9] tracking-[-0.05em] text-[#f0f5f9] sm:mt-0 sm:hidden">
-              Nori Studio
+            <p className="mt-6 text-[72px] font-medium leading-[0.9] tracking-[-0.05em] text-[#f0f5f9] sm:mt-0 sm:hidden">
+              Moderna Sidor
             </p>
-            <p className="mt-14 hidden whitespace-nowrap text-[clamp(11rem,18.6vw,22rem)] font-medium leading-[0.9] tracking-[-0.06em] text-[#f0f5f9] sm:block">
-              Nori Studio
-            </p>
+            <div className="mt-24 hidden w-full overflow-visible sm:block">
+              <FooterWordmark />
+            </div>
           </>
         ) : null}
 
         <div
-          className={`flex flex-col items-start justify-between gap-4 border-t border-[#f0f5f9]/12 pt-6 text-base leading-[1.3] tracking-[-0.03em] text-[#f0f5f9] sm:flex-row sm:items-center ${
+          className={`flex flex-col items-start justify-between gap-4 border-t border-[#f0f5f9]/12 pt-3 text-base leading-[1.3] tracking-[-0.03em] text-[#f0f5f9] sm:flex-row sm:items-center ${
             showNewsletter
               ? mergeWithPrevious
                 ? compactEnd
-                  ? "mt-8"
+                  ? "mt-4"
                   : "mt-12"
                 : "mt-8 sm:mt-[63px]"
               : "mt-10"
           }`}
         >
           <a href="/privacy-policy" className="transition-opacity hover:opacity-70">
-            Privacy policy
+            Integritetspolicy
           </a>
           <a href="/terms-of-service" className="transition-opacity hover:opacity-70">
-            Terms of Service
+            Villkor
           </a>
-          <span>© 2026 Nori. All rights reserved.</span>
+          <span>© 2026 Moderna Sidor. Grundat 2024.</span>
         </div>
       </div>
     </footer>

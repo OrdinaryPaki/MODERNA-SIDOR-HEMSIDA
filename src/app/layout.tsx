@@ -25,9 +25,9 @@ const switzer = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Nori Studio – Creative Agency Website Template",
+  title: "Moderna Sidor – Skräddarsydda digitala system",
   description:
-    "Nori Studio is a modern Framer template for agencies, studios, and freelancers to showcase portfolios with style and impact.",
+    "Moderna Sidor utvecklar skräddarsydda digitala system, AI-funktioner och plattformar för företag med specifika behov.",
 };
 
 export const viewport: Viewport = {
@@ -42,7 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="sv"
       className={`${geistSans.variable} ${geistMono.variable} ${switzer.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">

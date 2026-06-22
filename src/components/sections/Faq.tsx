@@ -4,28 +4,28 @@ import { useState } from "react";
 
 const FAQS = [
   {
-    q: "How long does a typical project take?",
-    a: "Most brand projects take 4-6 weeks, websites take 6-8 weeks, and marketing campaigns launch within 2-3 weeks.",
+    q: "Vad bygger Moderna Sidor?",
+    a: "Vi bygger digitala system för företag där arbetet behöver mer än ett färdigt verktyg.",
   },
   {
-    q: "What does your process look like?",
-    a: "We usually start with a discovery call to understand your goals. Then we move into strategy and initial concepts, refine them through feedback rounds, and deliver a polished final product. Every step is transparent so you always know where we are in the process.",
+    q: "Är ni en webbyrå?",
+    a: "Inte i första hand. En hemsida kan ingå, men vårt fokus är system, portaler, AI-flöden och digitala produkter.",
   },
   {
-    q: "What's included in ongoing support?",
-    a: "All projects include 30 days of support post-launch, including updates and technical assistance.",
+    q: "Kan ni bygga med AI?",
+    a: "Ja, när AI gör arbetet tydligare eller snabbare. Till exempel i offerter, dokument, sök, analys eller interna flöden.",
   },
   {
-    q: "How much should I budget for a project?",
-    a: "Projects typically range from $8,000 to $25,000 depending on scope. We provide detailed quotes after discovery calls.",
+    q: "Hur börjar ett projekt?",
+    a: "Med ett samtal om hur arbetet ser ut idag, vad som tar tid och vad systemet behöver hålla ihop.",
   },
   {
-    q: "What if I'm not happy with initial concepts?",
-    a: "We include revision rounds in every project and won't proceed until you're satisfied with the direction.",
+    q: "Arbetar ni med färdiga paket?",
+    a: "Nej. Varje lösning formas efter verksamheten, omfattningen och vad som faktiskt ska fungera i vardagen.",
   },
   {
-    q: "Do you offer payment plans?",
-    a: "Yes, most projects can be split into 2-3 payments aligned with project milestones.",
+    q: "Kan systemet växa över tid?",
+    a: "Ja. Vi bygger med vidareutveckling i åtanke, så systemet kan växa när verksamheten gör det.",
   },
 ];
 
@@ -37,20 +37,20 @@ export default function Faq() {
       <div className="grid gap-[66px] lg:grid-cols-2 lg:gap-6">
         <div>
           <p className="w-fit font-mono text-base font-medium leading-[1.3] tracking-[-0.02em] text-[#1f75b2] sm:text-[20px]">
-            {"//010 FAQ"}
+            {"//010 Frågor"}
           </p>
           <h2 className="mt-3 max-w-[353px] text-[46px] font-medium uppercase leading-[0.96] tracking-[-0.06em] sm:max-w-[554px] sm:text-[clamp(2.75rem,5.3125vw,4.25rem)] sm:leading-[1.1] sm:tracking-[-0.04em]">
-            Questions we often get
+            Vanliga frågor
           </h2>
           <p className="mt-3 max-w-[353px] text-[16px] leading-[1.38] tracking-[-0.03em] text-[#061218] sm:mt-5 sm:max-w-[410px] sm:text-xl sm:leading-[1.3] sm:tracking-[-0.04em]">
-            Every project timeline is confirmed during onboarding, so you
-            always know what to expect.
+            Några enkla svar innan vi börjar prata om teknik, scope och nästa
+            steg.
           </p>
           <a
             href="/contact"
             className="mt-4 inline-flex h-11 w-[171px] items-center justify-center rounded-[4px] bg-[#1f75b2] text-[15px] font-medium leading-[1.3] tracking-[-0.03em] text-white transition-colors hover:bg-[#1b679d] sm:mt-5 sm:h-[45px] sm:text-base"
           >
-            Start your project
+            Kontakt
           </a>
         </div>
 

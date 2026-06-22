@@ -3,12 +3,8 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
-const SCROLL_DURATION_SECONDS = 10;
+const SCROLL_LERP = 0.078;
 const FORM_FIELD_TAGS = new Set(["INPUT", "TEXTAREA", "SELECT"]);
-
-function easeOutExpo(progress: number) {
-  return Math.min(1, 1.001 - 2 ** (-10 * progress));
-}
 
 function shouldPreventSmoothScroll(node: Element) {
   if (
@@ -112,8 +108,7 @@ export default function SmoothScroll() {
       }
 
       lenis = new Lenis({
-        duration: SCROLL_DURATION_SECONDS,
-        easing: easeOutExpo,
+        lerp: SCROLL_LERP,
         smoothWheel: true,
         syncTouch: false,
         prevent: shouldPreventSmoothScroll,

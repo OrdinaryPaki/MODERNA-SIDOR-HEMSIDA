@@ -3,9 +3,13 @@ import assert from "node:assert/strict";
 
 const services = readFileSync("src/components/sections/Services.tsx", "utf8");
 
-assert.match(services, /\/\/04 Our services/, "Services label should match the reference section marker.");
-assert.match(services, /bg-\[#061218\]/, "Services section should use the Nori dark background.");
-assert.match(services, /text-\[#f0f5f9\]/, "Service titles should use the Nori near-white color.");
+assert.match(services, /\/\/04 Områden/, "Services label should match the Moderna Sidor section marker.");
+assert.match(services, /bg-\[#061218\]/, "Services section should use the reference dark background.");
+assert.match(services, /text-\[#f0f5f9\]/, "Service titles should use the reference near-white color.");
+assert.match(services, /Affärssystem/, "Services should include business systems.");
+assert.match(services, /Portaler/, "Services should include portals.");
+assert.match(services, /AI-funktioner/, "Services should include AI functions.");
+assert.match(services, /SaaS-produkter/, "Services should include SaaS products.");
 assert.match(
   services,
   /mt-8.*sm:mt-12/s,
@@ -38,8 +42,8 @@ assert.match(
 );
 assert.match(
   services,
-  /<span className="block sm:inline">Our<\/span>/,
-  "Mobile services heading should break into the reference two-line title."
+  /<span className="block sm:inline">Det vi<\/span>/,
+  "Mobile services heading should break into the Moderna Sidor two-line title."
 );
 assert.doesNotMatch(
   services,

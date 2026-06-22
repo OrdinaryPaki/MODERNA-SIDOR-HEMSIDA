@@ -1,13 +1,13 @@
 const FIELDS = [
-  { id: "name", label: "Name", type: "text", placeholder: "Jane Smith" },
-  { id: "email", label: "Email", type: "email", placeholder: "jane@framer.com" },
-  { id: "company", label: "Company", type: "text", placeholder: "Your company" },
+  { id: "name", label: "Namn", type: "text", placeholder: "Ditt namn" },
+  { id: "email", label: "E-post", type: "email", placeholder: "namn@foretag.se" },
+  { id: "company", label: "Företag", type: "text", placeholder: "Företagsnamn" },
 ];
 
 const QUICK_LINKS = [
-  { icon: "clock", label: "Quick 24-hour response" },
-  { icon: "dollar", label: "Transparent pricing" },
-  { icon: "calendar", label: "Easy Scheduling" },
+  { icon: "clock", label: "Förståelse först" },
+  { icon: "dollar", label: "Scope innan pris" },
+  { icon: "calendar", label: "Byggt i tydliga steg" },
 ];
 
 function QuickIcon({ icon }: { icon: (typeof QUICK_LINKS)[number]["icon"] }) {
@@ -46,7 +46,7 @@ export default function Contact({ compact = false }: { compact?: boolean }) {
     <section
       id="kontakt"
       className={`bg-[#1f75b2] px-5 text-white sm:px-8 ${
-        compact ? "pb-16 pt-[60px] lg:pb-[94px] lg:pt-20" : "pb-[94px] pt-20"
+        compact ? "pb-10 pt-[60px] lg:pb-12 lg:pt-20" : "pb-[94px] pt-20"
       }`}
     >
       <div
@@ -56,19 +56,20 @@ export default function Contact({ compact = false }: { compact?: boolean }) {
       >
         <div>
           <p className="w-fit font-mono text-base font-medium leading-[1.3] tracking-[-0.02em] text-[#f0f5f9] sm:text-[20px]">
-            {"//Contact"}
+            {"//Kontakt"}
           </p>
           <h2 className={headingClass}>
-            Ready to start?
+            Kontakt
           </h2>
           <p className="mt-[19px] max-w-[288px] text-[17px] leading-[1.42] tracking-[-0.03em] text-white sm:text-xl sm:leading-[1.3] sm:tracking-[-0.04em]">
-            Reach out today, we’ll respond fast and keep things simple.
+            Berätta kort vad ni försöker lösa. Vi svarar med vad nästa steg
+            bör vara.
           </p>
           <a
-            href="mailto:webdesignbylazar@gmail.com."
+            href="mailto:kontakt@modernasidor.se"
             className="mt-[23px] inline-flex h-[45px] w-full items-center justify-center rounded-[4px] bg-[#f0f5f9] text-base font-medium leading-[1.3] tracking-[-0.03em] text-[#1f75b2] transition-colors hover:bg-white sm:w-[163px]"
           >
-            Email us directly
+            E-posta direkt
           </a>
 
           <div
@@ -91,7 +92,7 @@ export default function Contact({ compact = false }: { compact?: boolean }) {
 
         <form
           className="rounded-lg bg-[#f0f5f9] p-5"
-          action="mailto:webdesignbylazar@gmail.com."
+          action="mailto:kontakt@modernasidor.se"
           method="post"
           encType="text/plain"
         >
@@ -111,12 +112,12 @@ export default function Contact({ compact = false }: { compact?: boolean }) {
             ))}
             <label className="flex flex-col gap-3">
               <span className="w-fit text-base font-medium leading-[1.3] tracking-[-0.03em] text-[#061218]">
-                Message
+                Meddelande
               </span>
               <textarea
                 name="message"
                 rows={4}
-                placeholder="Your message"
+                placeholder="Vad vill ni bygga?"
                 className="h-[92px] resize-y rounded-[4px] border-0 bg-white px-3 py-3 text-base leading-[1.2] tracking-[-0.01em] text-[#061218] outline-none placeholder:text-[#7d8487] focus:ring-1 focus:ring-[#2280c2] sm:h-[100px]"
               />
             </label>
@@ -124,16 +125,16 @@ export default function Contact({ compact = false }: { compact?: boolean }) {
               type="submit"
               className="inline-flex h-12 items-center justify-center rounded-[4px] bg-[#1f75b2] text-base font-medium leading-[1.3] tracking-[-0.03em] text-white transition-colors hover:bg-[#1b679d]"
             >
-              Send request
+              Skicka
             </button>
             <p className="text-center text-sm leading-[1.3] tracking-[-0.03em] text-[#061218]/70">
-              By submitting, you agree to our{" "}
+              Genom att skicka godkänner du våra{" "}
               <a href="/terms-of-service" className="underline">
-                Terms
+                villkor
               </a>{" "}
-              and{" "}
+              och{" "}
               <a href="/privacy-policy" className="underline">
-                Privacy<span className="hidden sm:inline"> Policy</span>
+                integritetspolicy
               </a>
               .
             </p>

@@ -5,9 +5,9 @@ const files = {
   header: readFileSync("src/components/SiteHeader.tsx", "utf8"),
   page: readFileSync("src/app/page.tsx", "utf8"),
   pricing: readFileSync("src/components/sections/Pricing.tsx", "utf8"),
-  blog: readFileSync("src/components/sections/Blog.tsx", "utf8"),
   faq: readFileSync("src/components/sections/Faq.tsx", "utf8"),
   footer: readFileSync("src/components/sections/Footer.tsx", "utf8"),
+  footerWordmark: readFileSync("src/components/FooterWordmark.tsx", "utf8"),
   contact: readFileSync("src/components/sections/Contact.tsx", "utf8"),
   testimonials: readFileSync("src/components/sections/Testimonials.tsx", "utf8"),
 };
@@ -29,20 +29,14 @@ const checks = [
     pass: files.hero.includes("hero-nav-enter relative z-20 h-11 sm:h-auto"),
   },
   {
-    name: "pricing mobile top and total height match reference",
+    name: "process mobile top and total height match reference",
     pass:
       files.pricing.includes("pt-[60px]") &&
       files.pricing.includes("pb-[78px]") &&
       files.pricing.includes("sm:pb-[47px]") &&
-      files.pricing.includes("sm:pt-20"),
-  },
-  {
-    name: "latest insights mobile top and section height match reference",
-    pass:
-      files.blog.includes("pt-[60px]") &&
-      files.blog.includes("pb-[69px]") &&
-      files.blog.includes("sm:pb-[89px]") &&
-      files.blog.includes("sm:pt-[71px]"),
+      files.pricing.includes("sm:pt-20") &&
+      files.pricing.includes("//07 Process") &&
+      files.pricing.includes("Så arbetet går till"),
   },
   {
     name: "faq mobile list starts at reference y-position",
@@ -53,37 +47,61 @@ const checks = [
       files.faq.includes("sm:pt-[121px]"),
   },
   {
-    name: "faq mobile questions keep Nori one-line width",
+    name: "faq mobile questions keep compact one-line width",
     pass: files.faq.includes("text-[14.5px]"),
   },
   {
-    name: "contact mobile intro uses Nori narrow text column",
+    name: "contact mobile intro uses narrow text column",
     pass:
       files.contact.includes("max-w-[288px]") &&
       !files.contact.includes("mt-[19px] max-w-[353px]"),
   },
   {
-    name: "merged footer still draws Nori separator line",
+    name: "home contact footer merge avoids large blue gap",
+    pass:
+      files.contact.includes("compact ? \"pb-10 pt-[60px] lg:pb-12 lg:pt-20\"") &&
+      files.footer.includes("mt-10 sm:mt-10") &&
+      files.footer.includes("mt-24 hidden w-full") &&
+      files.footer.includes("border-t border-[#f0f5f9]/12 pt-3") &&
+      files.footer.includes('? "mt-4"'),
+  },
+  {
+    name: "merged footer still draws separator line",
     pass:
       !files.footer.includes("mergeWithPrevious ? null") &&
       files.footer.includes('className="h-px bg-[#f0f5f9]/12"'),
   },
   {
-    name: "footer uses Nori full-width outer wrapper",
+    name: "footer uses full-width outer wrapper",
     pass:
       files.footer.includes('className="mx-auto w-full max-w-[1856px]"') &&
       !files.footer.includes('className="mx-auto max-w-[1376px]"'),
   },
   {
-    name: "footer bottom details match Nori reference items",
+    name: "footer large wordmark fills the established footer width",
     pass:
-      !files.footer.includes("Framer template created by Lazar Filipovic") &&
-      files.footer.includes("Privacy policy") &&
-      files.footer.includes("Terms of Service") &&
-      files.footer.includes("© 2026 Nori. All rights reserved."),
+      files.footer.includes("mt-24 hidden w-full overflow-visible sm:block") &&
+      files.footer.includes("import FooterWordmark") &&
+      files.footer.includes("<FooterWordmark />") &&
+      files.footerWordmark.includes("ResizeObserver") &&
+      files.footerWordmark.includes("scaleX") &&
+      !files.footer.includes('textLength="1000"') &&
+      !files.footer.includes('lengthAdjust="spacingAndGlyphs"') &&
+      !files.footer.includes("import FitText") &&
+      !files.footer.includes("<FitText") &&
+      !files.footer.includes("w-screen") &&
+      !files.footer.includes("text-[clamp(11rem,18.6vw,22rem)]"),
   },
   {
-    name: "client results headline uses wide-desktop Framer-like fit clamp",
+    name: "footer bottom details match Moderna Sidor items",
+    pass:
+      !files.footer.includes("Framer template created by Lazar Filipovic") &&
+      files.footer.includes("Integritetspolicy") &&
+      files.footer.includes("Villkor") &&
+      files.footer.includes("© 2026 Moderna Sidor. Grundat 2024."),
+  },
+  {
+    name: "system built headline uses wide-desktop reference-like fit clamp",
     pass:
       files.testimonials.includes("sm:text-[clamp(5rem,14.2vw,11.75rem)]") &&
       files.testimonials.includes("lg:text-[clamp(11.75rem,12.5vw,16rem)]"),

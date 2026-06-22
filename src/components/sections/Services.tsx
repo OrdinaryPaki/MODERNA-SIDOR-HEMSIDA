@@ -2,34 +2,34 @@ const SERVICES = [
   {
     nr: "001",
     mobileNr: "01",
-    title: "Branding",
-    mobileTitle: "Branding",
-    text: "Visual systems that make your business unforgettable and differentiate you from competitors.",
-    mobileText: "Visual systems that make your business unforgettable.",
+    title: "Affärssystem",
+    mobileTitle: "System",
+    text: "För vardagen bakom företaget: kunder, ärenden, uppföljning och beslut samlat på ett ställe.",
+    mobileText: "Kunder, ärenden, uppföljning och beslut samlat.",
   },
   {
     nr: "002",
     mobileNr: "02",
-    title: "Web design",
-    mobileTitle: "Web design",
-    text: "Custom websites that look stunning, perform flawlessly, and convert visitors into customers.",
-    mobileText: "Custom sites that look great and convert visitors.",
+    title: "Portaler",
+    mobileTitle: "Portaler",
+    text: "Vyer för kunder, personal och admin där rätt person ser rätt sak vid rätt tillfälle.",
+    mobileText: "Rätt vy för kunder, personal och admin.",
   },
   {
     nr: "003",
     mobileNr: "03",
-    title: "UX/UI Design",
-    mobileTitle: "UI/UX",
-    text: "Strategic UX/UI design that turns confused visitors into confident, converting loyal customers.",
-    mobileText: "Strategic design that turns visitors into customers.",
+    title: "AI-funktioner",
+    mobileTitle: "AI",
+    text: "AI kopplad till era regler och verktyg, så den hjälper arbetet utan att hitta på sanningen.",
+    mobileText: "AI som hjälper arbetet utan att hitta på.",
   },
   {
     nr: "004",
     mobileNr: "04",
-    title: "Digital marketing",
-    mobileTitle: "Marketing",
-    text: "Data-driven campaigns that reach your ideal customers and drive measurable business growth.",
-    mobileText: "Data-driven campaigns that grow your business.",
+    title: "SaaS-produkter",
+    mobileTitle: "SaaS",
+    text: "Digitala produkter som kan lanseras, säljas och byggas vidare över tid.",
+    mobileText: "Produkter som kan lanseras och växa.",
   },
 ];
 
@@ -40,12 +40,12 @@ export default function Services() {
       className="bg-[#061218] px-5 pb-[60px] pt-[60px] text-[#f0f5f9] sm:px-8 sm:pb-20 sm:pt-20"
     >
       <p className="w-fit font-mono text-base font-medium leading-[1.3] tracking-[-0.02em] text-[#f0f5f9] opacity-70 sm:text-[20px]">
-        {"//04 Our services"}
+        {"//04 Områden"}
       </p>
 
       <h2 className="mt-3 origin-left font-sans text-[77.97272727272727px] font-medium uppercase leading-[1.1] tracking-[-0.04em] sm:mt-6 sm:whitespace-nowrap sm:text-[calc((100vw-40px)*0.15143)] sm:leading-[0.9] sm:tracking-[-0.05em] [@media(min-width:1200px)]:text-[calc(min(100vw-64px,1856px)*0.15136)]">
-        <span className="block sm:inline">Our</span>{" "}
-        <span className="block sm:inline">services</span>
+        <span className="block sm:inline">Det vi</span>{" "}
+        <span className="block sm:inline">bygger</span>
       </h2>
 
       <div className="mt-8 sm:mt-12">

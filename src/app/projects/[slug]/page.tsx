@@ -12,14 +12,13 @@ export async function generateMetadata({
 
   if (!project) {
     return {
-      title: "Project not found – Nori Studio",
+      title: "Projekt saknas – Moderna Sidor",
     };
   }
 
   return {
-    title: "Nori Studio – Design Agency Website Template",
-    description:
-      "Nori Studio is a modern design agency website template built with Framer. Perfect for agencies, studios, and freelancers to showcase their work online.",
+    title: `${project.title} – Moderna Sidor`,
+    description: project.summary,
   };
 }
 

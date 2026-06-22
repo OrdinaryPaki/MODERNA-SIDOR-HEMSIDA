@@ -2,50 +2,50 @@ import Image from "next/image";
 
 const TESTIMONIALS = [
   {
-    company: "Urban Bites",
+    company: "Visionsfastigheter",
     logo: "/reference/Ntc48i8GxNtzZe6K8P7DeRLzQ.svg",
     logoWidth: 256,
     logoHeight: 42,
     quote:
-      "Our digital ordering system finally feels effortless. Customers find it easy to navigate, and we’ve seen orders skyrocket since launch.",
-    person: "Isabella Rodriguez",
-    role: "Founder of Urban Bites",
+      "Ett affärssystem som samlar fastighetsflöden, kunddata och intern uppföljning.",
+    person: "Affärssystem",
+    role: "CRM och verksamhetsstöd",
     avatar: "/reference/WHdoBnCIPWONp7Vxs0PkhrCEnj0.jpg",
     align: "center",
   },
   {
-    company: "Baseline Sports",
+    company: "Glasklart",
     logo: "/reference/faK3uVL6HKHj0lUYRZh2fWmn3o.svg",
     logoWidth: 256,
     logoHeight: 42,
     quote:
-      "The new brand identity gave us the confidence to stand out. Athletes now recognize us instantly, and engagement from our community grew stronger than ever.",
-    person: "Derek Thompson",
-    role: "Founder of Baseline sports",
+      "Ett CRM där arbetsordrar, schema, kunder, ärenden och historik hänger ihop.",
+    person: "CRM",
+    role: "Arbetsorder och kundportal",
     avatar: "/reference/Qtiy6JZJ0E0ZUM1L1TfcKWvXjo.png",
     align: "right",
   },
   {
-    company: "Northcap Supply",
+    company: "ANLAB",
     logo: "/reference/NwlOGrknUmkPlpa4MVL7oF0w48Q.svg",
     logoWidth: 279,
     logoHeight: 42,
     quote:
-      "The rebrand captured exactly what we stand for. Clean, minimal, and bold, it gave our streetwear label the edge we needed to break through.",
-    person: "Sarah Kim",
-    role: "Founder of Northcap Supply",
+      "Ett offertsystem där AI kan hjälpa till, medan regler och data fortfarande styrs av koden.",
+    person: "Offertsystem",
+    role: "AI och offertflöde",
     avatar: "/reference/YH92OiY3WonR2pfeoHvH2CFxNc.png",
     align: "left",
   },
   {
-    company: "Velo Studio",
+    company: "Bolagslista",
     logo: "/reference/awDtj7rqkXF0BCm12jsm7BzLczg.svg",
     logoWidth: 194,
     logoHeight: 37,
     quote:
-      "The new website completely reflects our creative energy. It’s smooth, dynamic, and has opened the door to exciting new collaborations",
-    person: "Marcus Chen",
-    role: "Director of Velo Studio",
+      "En datadriven plattform för bolagsinformation, struktur och sökbara arbetsflöden.",
+    person: "SaaS",
+    role: "Dataplattform",
     avatar: "/reference/ugLvMpISL7m7PF7OpfK4y3598xU.png",
     align: "center",
   },
@@ -99,11 +99,11 @@ export default function Testimonials() {
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden px-5 sm:px-8">
         <h2 className="w-full text-center text-[48px] font-medium uppercase leading-[0.9] tracking-[-0.04em] text-[#061218]/18 sm:text-[clamp(5rem,14.2vw,11.75rem)] lg:text-[clamp(11.75rem,12.5vw,16rem)]">
           <span className="sm:hidden">
-            Client
+            Byggt
             <br />
-            Results
+            nära
           </span>
-          <span className="hidden whitespace-nowrap sm:inline">Client Results</span>
+          <span className="hidden whitespace-nowrap sm:inline">Byggt nära</span>
         </h2>
       </div>
 

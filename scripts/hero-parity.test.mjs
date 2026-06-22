@@ -8,7 +8,7 @@ const canvas = await readFile(
   "utf8",
 );
 
-test("hero canvas uses the Nori reference wave shader controls", () => {
+test("hero canvas keeps the reference wave shader controls", () => {
   for (const token of [
     "u_seed",
     "u_waveSpeed",
@@ -28,9 +28,12 @@ test("hero canvas uses the Nori reference wave shader controls", () => {
   }
 });
 
-test("hero foreground matches the Nori reference controls", () => {
-  assert.match(hero, /rounded-\[2px\]/, "CTA radius should be 2px like Framer");
-  assert.match(hero, /text-\[16px\].*leading-\[1\.3\]/s, "CTA text should be 16px/1.3");
+test("hero foreground presents Moderna Sidor content in the reference layout", () => {
+  assert.doesNotMatch(hero, /href="\/contact"/, "hero should not render the removed contact CTA block");
+  assert.doesNotMatch(hero, /Byggt för verksamhet|>\s*System\s*</, "hero should not render the removed proof text block");
   assert.doesNotMatch(hero, /★★★★★/, "stars should be SVG icons, not text glyphs");
-  assert.match(hero, /font-medium.*We are a creative studio/s, "desktop hero paragraph should use medium text");
+  assert.match(hero, /Moderna[\s\S]*Sidor/, "hero should use the Moderna Sidor name");
+  assert.match(hero, /Since 2024/, "hero should show the founded year");
+  assert.match(hero, /font-medium.*Vi utvecklar digitala system för företag med egna arbetssätt, där färdiga verktyg inte räcker till/s, "desktop hero paragraph should use medium text and the product positioning");
+  assert.doesNotMatch(hero, /Nori|creative studio from Canada|Since 2019/, "hero should not ship template copy");
 });

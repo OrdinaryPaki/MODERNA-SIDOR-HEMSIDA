@@ -6,10 +6,20 @@ const heroCanvas = readFileSync("src/components/HeroCanvas.tsx", "utf8");
 const css = readFileSync("src/app/globals.css", "utf8");
 
 assert.match(hero, /hero-shell/, "Hero section should opt into hero entrance styling.");
+assert.match(
+  hero,
+  /style=\{\{ backgroundColor: "#1F75B2" \}\}[\s\S]*bg-\[#1F75B2\]/,
+  "Hero should keep a non-animated blue fallback behind all animated layers."
+);
 assert.match(hero, /hero-bg-enter/, "Hero background layers should reveal after the blue loading frame.");
 assert.match(hero, /hero-noise-enter/, "Hero should animate the top noise/image layer like the reference.");
 assert.match(hero, /hero-nav-enter/, "Hero nav should be part of the entrance sequence.");
 assert.match(hero, /hero-content-enter/, "Hero content should be hidden during the first loading frame.");
+assert.doesNotMatch(
+  hero,
+  /Z9CrRqnCTARlA5DxyfNo67pwF4|mzTZXyUqwi6w4yHY89NUGc7Rvg/,
+  "Hero should not render opaque light reference images that can cover the blue fallback when WebGL remounts."
+);
 
 assert.match(
   heroCanvas,
@@ -23,33 +33,38 @@ assert.doesNotMatch(
 );
 assert.match(
   heroCanvas,
-  /u_warp|u_flow|u_ridge/,
-  "Hero canvas shader should include stronger wave/warp uniforms matching the moving reference background."
+  /u_waveAmplitude|u_waveAngle|u_waveFreqX|u_waveFreqY|u_waveSpeed/,
+  "Hero canvas shader should include wave uniforms matching the moving reference background."
 );
 assert.match(
   heroCanvas,
-  /u_silk|foldA|foldB|foldC/,
-  "Hero canvas shader should use large moving silk folds, not only subtle fbm noise."
+  /warpUV|blendUV/,
+  "Hero canvas shader should warp the gradient rather than rendering a static image."
 );
 assert.match(
   heroCanvas,
-  /Math\.min\(window\.devicePixelRatio,\s*2\)/,
-  "Hero canvas should render at up to 2x device pixel ratio like the Framer reference."
+  /Math\.min\(Math\.max\(window\.devicePixelRatio,\s*1\),\s*2\)/,
+  "Hero canvas should cap rendering at 2x device pixel ratio for production performance."
 );
 assert.match(
   heroCanvas,
-  /settledMotionScale/,
-  "Hero canvas should ramp into stronger post-loader motion so the settled hero keeps moving visibly."
+  /requestAnimationFrame\(render\)/,
+  "Hero canvas should keep moving after the first render."
 );
 assert.match(
   heroCanvas,
-  /foldTravel|u_silkSweep/,
-  "Hero canvas should move the large folds across the viewport, not just shimmer them in place."
+  /prefers-reduced-motion: reduce/,
+  "Hero canvas should respect reduced motion."
+);
+assert.doesNotMatch(
+  heroCanvas,
+  /WEBGL_lose_context|loseContext/,
+  "Hero canvas should not force WebGL context loss during route navigation."
 );
 assert.match(
   heroCanvas,
-  /baseAlpha|foldAlpha/,
-  "Hero canvas should keep the static overlay light while the moving folds carry the visible contrast."
+  /u_blendAmount|u_maskSoftness/,
+  "Hero canvas should keep visible contrast controls for the wave blend."
 );
 
 assert.match(css, /@keyframes hero-bg-enter/, "Hero CSS should define background reveal animation.");

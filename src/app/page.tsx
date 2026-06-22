@@ -7,7 +7,6 @@ import Services from "@/components/sections/Services";
 import Stats from "@/components/sections/Stats";
 import Testimonials from "@/components/sections/Testimonials";
 import Pricing from "@/components/sections/Pricing";
-import Blog from "@/components/sections/Blog";
 import Faq from "@/components/sections/Faq";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
@@ -24,7 +23,6 @@ export default function Home() {
       <Stats />
       <Testimonials />
       <Pricing />
-      <Blog />
       <Faq />
       <Contact compact />
       <Footer mergeWithPrevious compactEnd />
