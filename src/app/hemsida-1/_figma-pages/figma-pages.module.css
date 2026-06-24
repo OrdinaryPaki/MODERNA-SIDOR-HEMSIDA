@@ -3,12 +3,13 @@
   --off: #f9f9f9;
   --figma-scale: calc(100vw / 1512px);
   position: relative;
-  width: 100vw;
-  min-width: 0;
+  width: 100%;
   overflow: hidden;
   background: #fff;
   color: var(--black);
   font-family: var(--hemsida-figma-inter), Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricprecision;
 }
 
 .canvas {
@@ -21,13 +22,26 @@
   transform-origin: top left;
 }
 
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .image,
+.backdropImage,
 .box,
 .text,
 .nav,
 .footerLink,
-.searchIcon,
-.arrowIcon {
+.arrowIcon,
+.textMarquee {
   position: absolute;
 }
 
@@ -36,8 +50,18 @@
   display: block;
 }
 
+.backdropImage {
+  display: block;
+  background-image: var(--backdrop-src);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+}
+
 .box {
   background: var(--box-color);
+  border: var(--box-border, 0);
   border-radius: var(--radius, 0);
 }
 
@@ -58,11 +82,30 @@
   white-space: pre-wrap;
 }
 
+.inlineStar {
+  position: absolute;
+  display: block;
+  width: 21px;
+  height: 28px;
+  font-family: var(--hemsida-figma-inter), Arial, sans-serif;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+}
+
+.starLinkText {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
 .nav {
+  position: fixed;
   top: 17px;
   left: 16px;
-  z-index: 20;
-  width: 1480px;
+  right: 16px;
+  z-index: 200;
+  width: auto;
   height: 88px;
   overflow: hidden;
   border-radius: 8px;
@@ -73,13 +116,13 @@
   position: absolute;
   top: 29px;
   left: 19px;
-  width: 154px;
+  width: 180px;
   color: var(--black);
-  font-family: var(--hemsida-figma-archivo), sans-serif;
-  font-size: 24px;
+  font-family: var(--hemsida-figma-inter), sans-serif;
+  font-size: 24.4px;
   font-weight: 500;
   line-height: 24px;
-  letter-spacing: -0.72px;
+  letter-spacing: -1px;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -87,7 +130,7 @@
 .navLinks {
   position: absolute;
   top: 32px;
-  left: 190px;
+  left: 240px;
   display: flex;
   gap: 16px;
   align-items: center;
@@ -95,17 +138,18 @@
 
 .navLinks a {
   color: var(--black);
-  font-family: var(--hemsida-figma-inter-tight), sans-serif;
-  font-size: 16px;
+  font-family: var(--hemsida-figma-inter), sans-serif;
+  font-size: 16.3px;
   font-weight: 500;
   line-height: 16px;
+  letter-spacing: 0.1px;
   text-decoration: none;
 }
 
 .search {
   position: absolute;
   top: 29px;
-  right: 202px;
+  right: 220px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -121,6 +165,7 @@
   position: relative;
   width: 20px;
   height: 20px;
+  flex: 0 0 auto;
 }
 
 .searchIcon::before {
@@ -156,40 +201,227 @@
   text-decoration: none;
 }
 
-.arrowIcon {
+.navCtaButton {
+  top: 20px;
+  right: 20px;
+  display: flex;
+  width: 160px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--black);
+  border-radius: 8px;
+}
+
+.careerApply {
+  position: absolute;
+  z-index: 60;
+}
+
+.careerApply[data-open="true"] {
+  z-index: 120;
+}
+
+.careerApply > button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  width: 99px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--black);
+  font-family: var(--hemsida-figma-inter), Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  cursor: pointer;
+}
+
+.careerApply > button span:first-child {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.careerApply > button span:last-child {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.careerApply > button[aria-expanded="true"] span:last-child {
+  text-decoration: none;
+}
+
+.careerApply > button:focus-visible {
+  outline: 1px solid #121212;
+  outline-offset: 4px;
+}
+
+.careerApply :global(.careerApplyDropdown) {
+  position: absolute;
+  top: 42px;
+  right: 0;
+  display: grid;
+  width: 420px;
+  gap: 14px;
+  padding: 24px;
+  border: 1px solid #d8d8d8;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 18px 55px rgba(18, 18, 18, 0.14);
+}
+
+.careerApply :global(.careerApplyDropdown p) {
+  margin: 0 0 2px;
+  font-family: var(--hemsida-figma-inter), Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.careerApply :global(.careerApplyDropdown label) {
+  display: grid;
+  gap: 6px;
+  color: #121212;
+  font-family: var(--hemsida-figma-inter), Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.careerApply :global(.careerApplyDropdown input),
+.careerApply :global(.careerApplyDropdown textarea) {
+  width: 100%;
+  border: 1px solid #dedede;
+  border-radius: 8px;
+  background: #f7f7f7;
+  color: #121212;
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.careerApply :global(.careerApplyDropdown input) {
+  height: 42px;
+  padding: 0 12px;
+}
+
+.careerApply :global(.careerApplyDropdown textarea) {
+  min-height: 82px;
+  padding: 10px 12px;
+  resize: vertical;
+}
+
+.careerApply :global(.careerApplyDropdown > button) {
+  height: 44px;
+  border: 0;
+  border-radius: 8px;
+  background: #121212;
+  color: #fff;
+  font-family: var(--hemsida-figma-inter), Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.footerStar {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  display: block;
   width: 21px;
-  height: 22px;
-}
-
-.arrowIcon::before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 2px;
-  width: 17px;
-  height: 2px;
-  background: currentColor;
-}
-
-.arrowIcon::after {
-  content: "";
-  position: absolute;
-  top: 5px;
-  right: 2px;
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  transform: rotate(45deg);
+  height: 28px;
+  color: currentColor;
+  font-size: 15px;
+  line-height: 28px;
+  text-decoration: none;
 }
 
 .footerLink {
   color: #fff;
-  font-family: var(--hemsida-figma-inter-tight), sans-serif;
+  font-family: var(--hemsida-figma-inter), sans-serif;
   font-size: 20px;
-  font-weight: 500;
-  line-height: 16px;
+  font-weight: 400;
+  line-height: 28px;
   text-decoration: none;
+}
+
+.footerLinkText {
+  position: absolute;
+  top: 0;
+  left: 33px;
+  width: 148px;
+  height: 28px;
+  line-height: 28px;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.textMarquee {
+  overflow: hidden;
+  background: #fff;
+  color: var(--black);
+  font-family: var(--hemsida-figma-inter), Arial, sans-serif;
+}
+
+.textMarquee h2 {
+  margin: 0 0 68px;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 43px;
+  letter-spacing: -0.72px;
+  text-align: center;
+}
+
+.marqueeViewport {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 64px;
+  animation: figmaLogoSpin 22s linear infinite;
+  will-change: transform;
+}
+
+.marqueeItem {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 12px;
+  color: #181818;
+  font-size: 29px;
+  font-weight: 650;
+  line-height: 40px;
+  letter-spacing: -0.78px;
+  white-space: nowrap;
+}
+
+.marqueeItem::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  opacity: 0.62;
+}
+
+@keyframes figmaLogoSpin {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .input {

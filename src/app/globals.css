@@ -30,10 +30,12 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 html {
   width: 100%;
+  overflow-x: hidden;
 }
 
 html.lenis {

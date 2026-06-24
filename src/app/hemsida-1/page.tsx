@@ -1,91 +1,72 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Archivo, Inter, Inter_Tight } from "next/font/google";
+import { MobileNav } from "./MobileNav";
+import { navHref, navItems, socialItems } from "./navigation";
+import { TestimonialRotator } from "./TestimonialRotator";
 import styles from "./page.module.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--hemsida-1-inter",
-  weight: ["400"],
-});
-
-const interTight = Inter_Tight({
-  subsets: ["latin"],
-  variable: "--hemsida-1-inter-tight",
-  weight: ["500", "600"],
-});
-
-const archivo = Archivo({
-  subsets: ["latin"],
-  variable: "--hemsida-1-archivo",
-  weight: ["500"],
-});
 
 export const metadata: Metadata = {
   title: "Hemsida 1 - Moderna Sidor",
   description:
-    "Kodad Figma-inspirerad sida för Moderna Sidor och skräddarsydda digitala system.",
+    "Digitala system, AI-stöd och arbetsflöden byggda runt arbetet, datan och besluten i er verksamhet.",
 };
-
-const navItems = ["Start", "Om oss", "Case", "Process", "Kontakt"];
-const socials = ["LinkedIn", "Instagram", "Mail"];
 
 const projects = [
   {
-    eyebrow: "CRM",
-    title: "Glasklart",
-    text: "Kunder, arbetsordrar, schema, karta och fakturor samlat i ett operativt flöde.",
+    eyebrow: "AI",
+    title: "Arbetsflöden",
+    text: "Ansvar, status och nästa steg samlat i samma vy",
     image: "/figma/hemsida-1/casper-ai.png",
   },
   {
-    eyebrow: "AI",
-    title: "Balko.ai",
-    text: "Beräkningar, material, offerter och fakturaunderlag för byggprojekt i samma arbetsyta.",
+    eyebrow: "ML",
+    title: "Beslutsstöd",
+    text: "Rapporter som visar vad som behöver göras",
     image: "/figma/hemsida-1/tune-ai.png",
   },
   {
-    eyebrow: "SYSTEM",
-    title: "Visionsfastigheter",
-    text: "Ett internt system för kontakter, lokalbehov, anteckningar, avtal och uppföljning.",
+    eyebrow: "DL",
+    title: "Automatisering",
+    text: "AI-stöd och regler som tar bort repetitivt arbete",
     image: "/figma/hemsida-1/ring-models.png",
   },
 ];
 
 const awards = [
   {
-    title: "Operativa system",
+    title: "Tydligare arbetsflöden",
     year: "01",
-    category: "CRM, arbetsorder, planering och interna verktyg",
+    category: "Ansvar, status och nästa steg i samma vy",
   },
   {
-    title: "AI och automation",
+    title: "Bättre beslutsunderlag",
     year: "02",
-    category: "AI-flöden, beräkningar, dokument och beslutsstöd",
+    category: "Data och rapporter som går att agera på",
   },
   {
-    title: "Offert och säljstöd",
+    title: "Smartare automatisering",
     year: "03",
-    category: "Offertsystem, PDF-underlag, status och utskick",
+    category: "AI-stöd där det sparar faktisk tid",
   },
   {
-    title: "Långsiktig produktgrund",
+    title: "System som går att växa med",
     year: "04",
-    category: "Kod, struktur och lösningar som går att bygga vidare på",
+    category: "En stabil grund för fler flöden och användare",
   },
 ];
 
-function ArrowLink({ children, light = false }: { children: string; light?: boolean }) {
+function ArrowLink({ children, href = "#", light = false, showIcon = true }: { children: string; href?: string; light?: boolean; showIcon?: boolean }) {
   return (
-    <a className={`${styles.arrowLink} ${light ? styles.arrowLinkLight : ""}`} href="#">
-      <span className={styles.arrowIcon} aria-hidden="true" />
+    <a className={`${styles.arrowLink} ${light ? styles.arrowLinkLight : ""}`} href={href}>
+      {showIcon ? <span className={styles.arrowIcon} aria-hidden="true">✦</span> : null}
       <span>{children}</span>
     </a>
   );
 }
 
-function PillButton({ children, dark = false }: { children: string; dark?: boolean }) {
+function PillButton({ children, href = navHref.solutions, dark = false }: { children: string; href?: string; dark?: boolean }) {
   return (
-    <a className={`${styles.pillButton} ${dark ? styles.pillButtonDark : ""}`} href="#">
+    <a className={`${styles.pillButton} ${dark ? styles.pillButtonDark : ""}`} href={href}>
       {children}
     </a>
   );
@@ -102,29 +83,20 @@ function SectionLabel({ children }: { children: string }) {
 
 export default function Hemsida1() {
   return (
-    <main
-      className={`${inter.variable} ${interTight.variable} ${archivo.variable} ${styles.page}`}
-    >
+    <main className={styles.page}>
+      <div className={styles.canvas}>
       <section className={styles.hero}>
-        <Image
-          src="/figma/hemsida-1/hero.png"
-          alt=""
-          width={1513}
-          height={856}
-          priority
-          unoptimized
-          className={styles.heroImage}
-        />
+        <div className={styles.heroBackdrop} aria-hidden="true" />
         <header className={styles.nav}>
           <div className={styles.navInner}>
             <div className={styles.navLeft}>
-              <a className={styles.logo} href="#">
+              <a className={styles.logo} href={navHref.home}>
                 Moderna Sidor
               </a>
               <nav className={styles.navLinks} aria-label="Primary">
                 {navItems.map((item) => (
-                  <a href="#" key={item}>
-                    {item}
+                  <a href={item.href} key={item.label}>
+                    {item.label}
                   </a>
                 ))}
               </nav>
@@ -134,19 +106,19 @@ export default function Hemsida1() {
                 <span className={styles.searchIcon} aria-hidden="true" />
                 Sök
               </button>
-              <PillButton>Se case</PillButton>
+              <PillButton>Se lösningar</PillButton>
             </div>
+            <MobileNav />
           </div>
         </header>
         <div className={styles.heroContent}>
-          <h1>Skräddarsydda digitala system för företag med specifika behov</h1>
+          <h1>Digitala system byggda runt hur ni faktiskt jobbar</h1>
           <p>
-            Vi bygger affärssystem, AI-funktioner och arbetsflöden som passar hur
-            verksamheten faktiskt jobbar
+            Vi samlar flöden, data och AI-stöd i system som teamet faktiskt använder.
           </p>
           <div className={styles.heroActions}>
-            <PillButton>Se case</PillButton>
-            <PillButton dark>Kontakta oss</PillButton>
+            <PillButton>Se lösningar</PillButton>
+            <PillButton href={navHref.contact} dark>Kontakta oss</PillButton>
           </div>
         </div>
       </section>
@@ -155,37 +127,41 @@ export default function Hemsida1() {
         <SectionLabel>Om oss</SectionLabel>
         <div className={styles.aboutCopy}>
           <p>
-            Vi bygger system när kalkylark, mejl och standardverktyg inte längre räcker.
-            Allt formas runt hur teamet faktiskt jobbar.
+            Moderna Sidor utvecklar digitala system för företag som har vuxit ifrån
+            kalkylark, lösa dokument och generiska verktyg. Vi formar lösningen runt
+            arbetet, datan och besluten som redan finns i verksamheten.
           </p>
-          <ArrowLink>Läs mer om oss</ArrowLink>
+          <a className={styles.starLink} href={navHref.about}>
+            <span aria-hidden="true">✦</span>
+            <span>Läs mer om oss</span>
+          </a>
         </div>
       </section>
 
       <section className={styles.videoSection}>
         <div className={styles.videoWrap}>
           <Image
-            src="/figma/hemsida-1/showreel.png"
-          alt=""
-          width={1384}
-          height={581}
-          loading="eager"
-          unoptimized
-          className={styles.videoImage}
+            src="/figma/hemsida-1/showreel-bg.png"
+            alt=""
+            fill
+            sizes="100vw"
+            loading="eager"
+            unoptimized
+            className={styles.videoImage}
           />
           <button className={styles.playButton} type="button">
             <span className={styles.playIcon} aria-hidden="true" />
-            Se arbetet
+            <span className={styles.playLabel}>Se case</span>
           </button>
         </div>
       </section>
 
       <section className={styles.solutions}>
         <div className={styles.solutionsIntro}>
-          <h2>System som samlar arbetet på ett ställe</h2>
+          <h2>Det vi bygger in</h2>
           <p>
-            Vi går igenom roller, uppgifter och beslut. Sedan bygger vi vyerna,
-            flödena och automationen som gör jobbet enklare att följa.
+            Varje system byggs runt verkliga arbetssätt: tydliga roller, rätt data,
+            smarta integrationer och automatisering där den gör konkret nytta.
           </p>
         </div>
         <div className={styles.projectList}>
@@ -196,7 +172,7 @@ export default function Hemsida1() {
                 <div className={styles.projectText}>
                   <h3>{project.title}</h3>
                   <p>{project.text}</p>
-                  <ArrowLink>Se vad vi byggde</ArrowLink>
+                  <ArrowLink>Se vad vi gjorde</ArrowLink>
                 </div>
                 <div
                   aria-hidden="true"
@@ -212,38 +188,15 @@ export default function Hemsida1() {
       <section className={styles.impact}>
         <div className={styles.impactIntro}>
           <SectionLabel>Effekt</SectionLabel>
-          <h2>Färre lösa verktyg. Tydligare status. Bättre kontroll.</h2>
+          <h2>När systemet följer arbetet minskar friktionen och teamet får bättre fart</h2>
         </div>
-        <div className={styles.testimonial}>
-          <div className={styles.quotePane}>
-            <blockquote>
-              Allt samlas på ett ställe. Teamet ser kunder, uppgifter, status och
-              nästa steg utan att hoppa mellan kalkylark, mejl och olika verktyg.
-            </blockquote>
-            <div className={styles.person}>
-              <strong>Moderna Sidor</strong>
-              <span>System som samlar arbetet</span>
-            </div>
-          </div>
-          <Image
-            src="/figma/hemsida-1/testimonial.png"
-            alt=""
-            width={692}
-            height={617}
-            loading="eager"
-            unoptimized
-            className={styles.testimonialImage}
-          />
-        </div>
-        <div className={styles.sliderMarks} aria-hidden="true">
-          <span />
-          <span />
-          <span />
+        <div className={styles.impactBody}>
+          <TestimonialRotator />
         </div>
       </section>
 
       <section className={styles.awards}>
-        <h2>Det vi bygger bäst</h2>
+        <h2>Det vi bygger in</h2>
         <div className={styles.awardsList}>
           {awards.map((award) => (
             <article className={styles.award} key={`${award.title}-${award.year}`}>
@@ -257,50 +210,45 @@ export default function Hemsida1() {
         </div>
       </section>
 
-      <div className={styles.ctaSpacer} aria-hidden="true" />
-
-      <section className={styles.cta}>
-        <h2>Har ni ett arbetsflöde som behöver bli ett riktigt system?</h2>
-        <div className={styles.ctaCopy}>
-          <p>
-            Berätta hur ni jobbar idag, vad som fastnar och vad ni vill kunna göra
-            snabbare. Vi hjälper er forma ett system som passar verksamheten från start.
-          </p>
-          <ArrowLink light>Kontakta oss</ArrowLink>
-        </div>
-      </section>
-
       <footer className={styles.footer}>
-        <div className={styles.footerTop}>
+        <div className={styles.footerCta}>
+          <h2>Låt oss bygga ett system runt ert arbetssätt</h2>
+          <a className={styles.footerContactLink} href={navHref.contact}>
+            <span aria-hidden="true">✦</span>
+            <span>Kontakta oss</span>
+          </a>
+        </div>
+        <div className={styles.footerBottom}>
           <div className={styles.footerBrand}>
             <h2>Moderna Sidor</h2>
-            <p>Skräddarsydda digitala system, AI-funktioner och plattformar.</p>
+            <p>Skräddarsydda digitala system för företag som vill jobba tydligare</p>
           </div>
           <div className={styles.footerColumns}>
             <div>
-              <h3>Sidor</h3>
+              <h3>Pages</h3>
               <nav>
                 {navItems.map((item) => (
-                  <a href="#" key={item}>
-                    {item}
+                  <a href={item.href} key={item.label}>
+                    {item.label}
                   </a>
                 ))}
               </nav>
             </div>
             <div>
-              <h3>Socialt</h3>
+              <h3>Socials</h3>
               <nav>
-                {socials.map((item) => (
-                  <a href="#" key={item}>
-                    {item}
+                {socialItems.map((item) => (
+                  <a href={item.href} key={item.label}>
+                    {item.label}
                   </a>
                 ))}
               </nav>
             </div>
           </div>
         </div>
-        <p className={styles.copyright}>© 2026 — Moderna Sidor</p>
+        <p className={styles.copyright}>© 2024 — Copyright OneDraft</p>
       </footer>
+      </div>
     </main>
   );
 }

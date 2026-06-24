@@ -1,0 +1,618 @@
+.desktopOnly {
+  display: block;
+}
+
+.responsive {
+  position: absolute;
+  top: 0;
+  left: -10000px;
+  visibility: hidden;
+  width: 390px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.hero,
+.wide,
+.reviewImage {
+  position: relative;
+}
+
+.hero {
+  height: 900px;
+}
+
+.wide {
+  height: 394px;
+}
+
+.reviewImage {
+  min-height: 302px;
+}
+
+.searchLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.searchIcon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+
+.searchIcon::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 11px;
+  height: 11px;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+}
+
+.searchIcon::after {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  width: 7px;
+  height: 2px;
+  background: currentColor;
+  transform: rotate(45deg);
+  transform-origin: left center;
+}
+
+@media (max-width: 1024px) {
+  .desktopOnly {
+    display: none;
+  }
+
+  .responsive {
+    position: static;
+    visibility: visible;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+    color: #121212;
+    font-family: var(--hemsida-1-inter), Arial, sans-serif;
+  }
+
+  .hero {
+    height: 900px;
+    overflow: hidden;
+  }
+
+  .hero img,
+  .wide img,
+  .reviewImage img {
+    object-fit: cover;
+  }
+
+  .nav {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .nav a {
+    color: #121212;
+    text-decoration: none;
+  }
+
+  .nav > a:first-child {
+    margin-right: auto;
+    font-weight: 600;
+  }
+
+  .nav nav {
+    display: flex;
+    gap: 14px;
+  }
+
+  .hero h1 {
+    position: absolute;
+    left: 32px;
+    bottom: 92px;
+    margin: 0;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 52px;
+  }
+
+  .wide {
+    height: 394px;
+  }
+
+  .positions {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 56px;
+    padding: 72px 32px 154px;
+    background: #f9f9f9;
+  }
+
+  .label {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .label span {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #121212;
+    border-radius: 50%;
+  }
+
+  .jobs article {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 24px;
+    padding: 0 0 28px;
+    border-bottom: 1px solid #d6d6d6;
+  }
+
+  .jobs article + article {
+    margin-top: 28px;
+  }
+
+  .jobs h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 34px;
+  }
+
+  .jobs p,
+  .jobs a,
+  .jobs span {
+    margin: 0;
+    color: #121212;
+    font-size: 14px;
+    line-height: 20px;
+    text-decoration: none;
+  }
+
+  .applyDropdown {
+    justify-self: end;
+  }
+
+  .applyDropdown[data-open="true"] {
+    z-index: 30;
+  }
+
+  .applyDropdown > button {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #121212;
+    font-size: 14px;
+    line-height: 20px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .applyDropdown > button span:first-child {
+    font-size: 12px;
+    line-height: 1;
+    text-decoration: none;
+  }
+
+  .applyDropdown > button[aria-expanded="true"] span:last-child {
+    text-decoration: none;
+  }
+
+  .applyDropdown > button:focus-visible {
+    outline: 1px solid #121212;
+    outline-offset: 4px;
+  }
+
+  .applyDropdown :global(.careerApplyDropdown) {
+    position: absolute;
+    top: 42px;
+    right: 0;
+    z-index: 20;
+    display: grid;
+    width: min(420px, calc(100vw - 64px));
+    gap: 12px;
+    padding: 20px;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 18px 50px rgba(18, 18, 18, 0.14);
+  }
+
+  .applyDropdown :global(.careerApplyDropdown p) {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+  }
+
+  .applyDropdown :global(.careerApplyDropdown label) {
+    display: grid;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+
+  .applyDropdown :global(.careerApplyDropdown input),
+  .applyDropdown :global(.careerApplyDropdown textarea) {
+    width: 100%;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+    background: #f7f7f7;
+    color: #121212;
+    font: inherit;
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .applyDropdown :global(.careerApplyDropdown input) {
+    height: 40px;
+    padding: 0 12px;
+  }
+
+  .applyDropdown :global(.careerApplyDropdown textarea) {
+    min-height: 76px;
+    padding: 10px 12px;
+    resize: vertical;
+  }
+
+  .applyDropdown :global(.careerApplyDropdown > button) {
+    height: 42px;
+    border: 0;
+    border-radius: 8px;
+    background: #121212;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .review {
+    padding: 72px 32px 120px;
+  }
+
+  .reviewCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 56px;
+    background: #f9f9f9;
+  }
+
+  .reviewCard > div:first-child {
+    padding: 48px 32px;
+  }
+
+  .review p {
+    margin: 0 0 36px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+
+  .review strong,
+  .review span {
+    display: block;
+    font-size: 12px;
+    line-height: 17px;
+  }
+
+  .reviewImage {
+    min-height: 302px;
+  }
+
+  .reviewControls {
+    display: flex;
+    gap: 24px;
+    margin-top: 40px;
+    justify-content: center;
+  }
+
+  .reviewControls button {
+    display: grid;
+    width: 64px;
+    height: 64px;
+    place-items: center;
+    border: 1px solid #121212;
+    border-radius: 999px;
+    background: transparent;
+    color: #121212;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .footer {
+    height: 562px;
+    padding: 80px 32px 40px;
+    background: #121212;
+    color: #fff;
+  }
+
+  .footer a {
+    color: #fff;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: none;
+  }
+
+  .footerTop > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .footerTop > a span:first-child {
+    font-size: 15px;
+    line-height: 1;
+    text-decoration: none;
+  }
+
+  .footerTop > a span:last-child {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .footerTop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    min-height: 220px;
+  }
+
+  .footer h2 {
+    margin: 0;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 67px;
+  }
+
+  .footerBottom {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 80px;
+    margin-top: 40px;
+    text-align: left;
+  }
+
+  .footerBottom > div,
+  .footerBottom nav {
+    justify-self: start;
+    text-align: left;
+  }
+
+  .footer h3 {
+    margin: 0 0 24px;
+    font-size: 28px;
+  }
+
+  .footer p {
+    margin: 0;
+    max-width: 300px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .footer nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .footer nav a {
+    display: inline-flex;
+    width: auto;
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav nav,
+  .nav > span,
+  .nav > a:not(:first-child) {
+    display: none;
+  }
+
+  .nav::after {
+    content: none;
+  }
+
+  .hero h1 {
+    left: 16px;
+    bottom: 18px;
+    max-width: 330px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 28px;
+    line-height: 30.8px;
+    letter-spacing: -0.84px;
+  }
+
+  .wide {
+    height: 200px;
+  }
+
+  .positions {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 40px 16px 250px;
+  }
+
+  .jobs article {
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+  }
+
+  .jobs h2 {
+    font-size: 16px;
+    line-height: 21px;
+  }
+
+  .jobs p,
+  .jobs a,
+  .jobs span {
+    font-size: 10px;
+    line-height: 14px;
+  }
+
+  .applyDropdown > button {
+    gap: 10px;
+    font-size: 10px;
+    line-height: 14px;
+  }
+
+  .applyDropdown :global(.careerApplyDropdown) {
+    width: calc(100vw - 32px);
+    right: -16px;
+  }
+
+  .review {
+    padding: 48px 16px 889px;
+  }
+
+  .reviewCard {
+    grid-template-columns: 1fr;
+    margin-top: 32px;
+  }
+
+  .reviewImage {
+    order: -1;
+    min-height: 255px;
+  }
+
+  .reviewControls {
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .reviewControls button {
+    width: 52px;
+    height: 52px;
+    font-size: 20px;
+  }
+
+  .reviewCard > div:first-child {
+    padding: 24px;
+  }
+
+  .review p {
+    font-size: 10px;
+    line-height: 15px;
+  }
+
+  .footer {
+    height: 579px;
+    padding: 40px 16px;
+  }
+
+  .footerTop {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    min-height: 180px;
+  }
+
+  .footer h2 {
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .footerBottom {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 56px;
+  }
+
+  .footerBottom > div {
+    grid-column: 1 / -1;
+  }
+
+  .footer h3 {
+    font-size: 16px;
+  }
+
+  .footer p,
+  .footer a {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    height: 62px;
+    padding: 0 20px;
+    border-radius: 8px;
+  }
+
+  .nav > a:first-child {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .jobs a,
+  .footer a,
+  .reviewControls button {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .review {
+    padding-bottom: clamp(72px, 10vw, 120px);
+  }
+
+  .reviewImage {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .footer {
+    height: auto;
+    min-height: 0;
+  }
+
+  .jobs p,
+  .jobs a,
+  .jobs span,
+  .footer p,
+  .footer a {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
