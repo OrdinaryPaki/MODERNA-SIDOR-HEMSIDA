@@ -83,11 +83,11 @@ const footerLuna = {
   texts: commonFooter(900).texts.map((text) =>
     text.text === "Moderna Sidor"
       ? { ...text, x: text.x - 1, size: 27.8, tracking: -0.4 }
-      : text.text === "Let's create AI tailored solutions together"
+      : text.text === "Låt oss bygga ett system runt ert arbetssätt"
       ? { ...text, tracking: -0.84 }
-      : text.text === "Get in touch"
+      : text.text === "Kontakta oss"
         ? { ...text, size: 23.6, tracking: -0.24 }
-        : text.text === "Revolutionize Your Business with Our AI Solutions"
+        : text.text === "Skräddarsydda digitala system för företag som vill jobba tydligare"
           ? { ...text, tracking: -0.3 }
         : text,
   ),
@@ -360,8 +360,8 @@ export const aboutPage: FigmaPageData = {
   ],
   marquees: [
     {
-      title: "Team som jobbar tydligare",
-      items: ["Teleways", "Meetel", "Balko", "Kundia", "Glasklart", "ANLAB", "Moderna Team"],
+      title: "",
+      items: ["Teleways", "Meetel", "Balko", "Kundia", "Glasklart", "ANLAB"],
       x: 0,
       y: 7366,
       w: 1512,
@@ -404,7 +404,6 @@ export const aboutPage: FigmaPageData = {
     { text: "Systemet gav oss en gemensam vy för uppföljning och ansvar. Det blev enklare att agera på rätt saker i rätt tid.", x: 104, y: 6540.5, w: 612, h: 346, size: 36, line: 57.6, tracking: -0.72 },
     { text: "Kundteam", x: 104, y: 6932, w: 140, h: 31, size: 21.6, line: 30.8, tracking: -0.46, weight: 600 },
     { text: "Operativ ledning", x: 104, y: 6965, w: 380, h: 24, size: 19.6, line: 24, tracking: -0.32, family: "inter", weight: 400 },
-    { text: "Team som jobbar tydligare", x: 533, y: 7361, w: 620, h: 58, size: 35.2, line: 57.6, tracking: -0.72 },
     { text: "Jobba med oss", x: 64, y: 7828, w: 440, h: 68, size: 48.4, line: 67.2, tracking: -0.72 },
     { text: "Vi söker personer som vill bygga tydliga system för verkliga arbetsflöden.", x: 853, y: 7828, w: 596, h: 77, size: 24, line: 38.4, tracking: -0.48 },
     { text: "Se öppna roller", x: 97, y: 7920, w: 176, h: 28, size: 20, line: 28, family: "inter", weight: 400 },

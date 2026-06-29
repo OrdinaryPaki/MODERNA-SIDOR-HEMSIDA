@@ -92,7 +92,7 @@
   }
 
   .nav {
-    position: fixed;
+    position: absolute;
     top: 16px;
     left: 16px;
     right: 16px;
@@ -118,7 +118,7 @@
     font-weight: 600;
   }
 
-  .nav nav {
+  .nav > nav {
     display: flex;
     gap: 14px;
   }
@@ -169,6 +169,12 @@
     gap: 32px;
   }
 
+  .card {
+    display: block;
+    color: #121212;
+    text-decoration: none;
+  }
+
   .cardImage {
     height: 355px;
     overflow: hidden;
@@ -194,7 +200,6 @@
     line-height: 15px;
   }
 
-  .card a,
   .join > a,
   .footer a {
     display: inline-flex;
@@ -207,7 +212,6 @@
     white-space: nowrap;
   }
 
-  .card a,
   .join > a {
     background-image: linear-gradient(currentColor, currentColor);
     background-position: right calc(100% - 1px);
@@ -220,7 +224,6 @@
     text-underline-offset: 3px;
   }
 
-  .card a::before,
   .join > a::before {
     content: "✦";
     font-size: 11px;
@@ -343,7 +346,18 @@
 }
 
 @media (max-width: 767px) {
-  .nav nav,
+  .solutions {
+    padding: 56px 16px 112px;
+    background: #fff;
+  }
+
+  .group {
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .nav > nav,
   .nav > span,
   .nav > a:not(:first-child) {
     display: none;
@@ -363,103 +377,183 @@
     letter-spacing: -0.84px;
   }
 
-  .solutions {
-    padding: 56px 16px 80px;
-  }
-
   .group + .group {
-    margin-top: 150px;
+    margin-top: 88px;
   }
 
   .group:not(:last-child)::after {
-    margin-top: 64px;
+    margin-top: 72px;
   }
 
   .group h2 {
-    width: auto;
-    margin-bottom: 22px;
-    font-size: 18px;
-    line-height: 23px;
+    width: min(100%, 260px);
+    margin-bottom: 48px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 33.6px;
+    letter-spacing: -0.48px;
     white-space: normal;
+  }
+
+  .group:first-child h2 {
+    margin-bottom: 48px;
   }
 
   .cards {
     grid-template-columns: 1fr;
-    gap: 88px;
+    gap: 56px;
+  }
+
+  .card {
+    display: block;
   }
 
   .cardImage {
     height: 355px;
+    border-radius: 8px;
   }
 
   .card h3 {
-    font-size: 12px;
-    line-height: 17px;
+    margin: 24px 0 12px;
+    font-family: var(--hemsida-1-inter), sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 33.6px;
+    letter-spacing: -0.48px;
   }
 
   .card p {
+    margin: 0;
+    max-width: 358px;
+    font-family: var(--hemsida-1-inter), sans-serif;
     font-size: 14px;
-    line-height: 20px;
+    font-weight: 400;
+    line-height: 16.8px;
+    letter-spacing: -0.28px;
   }
 
   .join {
-    padding: 56px 16px 88px;
-    margin-bottom: 28px;
+    padding: 72px 16px 96px;
+    margin-bottom: 0;
   }
 
   .joinHead {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 24px;
   }
 
   .join h2 {
-    font-size: 18px;
-    line-height: 23px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 33.6px;
+    letter-spacing: -0.48px;
   }
 
   .join p {
-    font-size: 15px;
-    line-height: 22px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22.4px;
+    letter-spacing: -0.28px;
+  }
+
+  .join > a {
+    min-height: auto;
+    margin-top: 28px;
+    font-size: 20px;
+    line-height: 28px;
   }
 
   .joinImage {
-    height: 250px;
+    height: 183px;
+    margin-top: 32px;
   }
 
   .footer {
-    height: 579px;
-    padding: 40px 16px;
+    height: auto;
+    min-height: 0;
+    padding: 0;
   }
 
   .footerTop {
     grid-template-columns: 1fr;
-    gap: 40px;
-    min-height: 180px;
+    align-content: space-between;
+    gap: 0;
+    min-height: 430px;
+    padding: 40px 20px 28px;
+    border-bottom: 0;
   }
 
   .footer h2 {
-    font-size: 22px;
-    line-height: 27px;
+    max-width: 350px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 33.6px;
+    letter-spacing: -0.48px;
   }
 
   .footerBottom {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    margin-top: 56px;
+    grid-template-columns: 130px 96px;
+    justify-content: space-between;
+    gap: 56px 0;
+    margin-top: 0;
+    padding: 64px 32px 0;
   }
 
-  .footerBottom > div {
+  .footerBottom > div:first-child {
     grid-column: 1 / -1;
   }
 
   .footer h3 {
-    font-size: 16px;
+    margin-bottom: 18px;
+    font-family: var(--hemsida-1-inter), Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.4px;
+    letter-spacing: 0;
   }
 
-  .footer p,
-  .footer a {
-    font-size: 10px;
-    line-height: 14px;
+  .footerTop p {
+    display: none;
+  }
+
+  .footerTop > a,
+  .footerBottom p,
+  .footerBottom a {
+    font-family: var(--hemsida-1-inter), Arial, sans-serif;
+    font-size: 12px;
+    line-height: 14.4px;
+    letter-spacing: 0;
+  }
+
+  .footerBottom p {
+    max-width: 156px;
+    font-size: 12px;
+    line-height: 17px;
+  }
+
+  .footer nav {
+    gap: 18px;
+  }
+
+  .footer nav a {
+    font-size: 16px;
+    line-height: 22px;
+    text-decoration: none;
+  }
+
+  .footerBottom > div:first-child h3 {
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .footer .copyright,
+  .copyright {
+    display: none;
   }
 }
 
@@ -495,17 +589,15 @@
   }
 
   .nav > a:first-child {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: normal;
+    font-family: var(--hemsida-1-archivo), sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0;
   }
 
-  .card a,
-  .join > a,
-  .footer a {
-    min-height: 44px;
-    font-size: 14px;
-    line-height: 20px;
+  .footerBottom a {
+    min-height: auto;
   }
 }
 
@@ -523,11 +615,6 @@
     margin-top: clamp(88px, 12vw, 140px);
   }
 
-  .cardImage {
-    height: auto;
-    aspect-ratio: 4 / 3;
-  }
-
   .join {
     padding-bottom: clamp(80px, 10vw, 128px);
   }
@@ -536,10 +623,110 @@
     height: auto;
     min-height: 0;
   }
+}
 
-  .footer p,
-  .footer a {
-    font-size: 14px;
-    line-height: 20px;
+@media (max-width: 767px) {
+  .hero h1 {
+    bottom: 48px;
+  }
+
+  .solutions {
+    padding-top: 48px;
+    padding-bottom: 72px;
+  }
+
+  .cards {
+    gap: 32px;
+  }
+
+  .group + .group {
+    margin-top: 80px;
+  }
+
+  .group:not(:last-child)::after {
+    margin-top: 80px;
+  }
+
+  .group h2 {
+    margin-bottom: 56px;
+  }
+
+  .card h3 {
+    min-height: 58px;
+    margin: 32px 0 16px;
+  }
+
+  .card p {
+    min-height: 34px;
+  }
+
+  .join {
+    padding-top: 40px;
+    padding-bottom: 72px;
+  }
+
+  .join > a {
+    min-height: auto;
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .joinImage {
+    margin-top: 34px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .footerTop {
+    align-content: space-between;
+    min-height: 356px;
+    padding: 40px 20px 20px;
+    transform: translateY(-36px);
+  }
+
+  .footerTop > a {
+    align-self: end;
+    justify-self: start;
+    width: fit-content;
+    min-height: auto;
+    padding: 0;
+    gap: 12px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .footerTop p {
+    line-height: 22.4px;
+  }
+
+  .footerTop > a span:first-child {
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .footerTop > a span:last-child {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .footerBottom {
+    gap: 48px 0;
+    padding-top: 16px;
+    padding-bottom: 28px;
+  }
+
+  .footerBottom > div:first-child {
+    margin-top: 44px;
+  }
+
+  .footerBottom > div:first-child h3 {
+    margin-bottom: 16px;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .footer .copyright {
+    display: none;
   }
 }

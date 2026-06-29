@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Codex generated visual audit output
+/.codex/figma-audit/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

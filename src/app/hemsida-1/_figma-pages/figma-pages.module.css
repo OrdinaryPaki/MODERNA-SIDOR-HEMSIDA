@@ -215,14 +215,6 @@
 
 .careerApply {
   position: absolute;
-  z-index: 60;
-}
-
-.careerApply[data-open="true"] {
-  z-index: 120;
-}
-
-.careerApply > button {
   display: inline-flex;
   align-items: center;
   gap: 14px;
@@ -236,94 +228,24 @@
   font-size: 20px;
   font-weight: 400;
   line-height: 28px;
+  text-decoration: none;
   cursor: pointer;
 }
 
-.careerApply > button span:first-child {
+.careerApply span:first-child {
   font-size: 14px;
   line-height: 1;
 }
 
-.careerApply > button span:last-child {
+.careerApply span:last-child {
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
 }
 
-.careerApply > button[aria-expanded="true"] span:last-child {
-  text-decoration: none;
-}
-
-.careerApply > button:focus-visible {
+.careerApply:focus-visible {
   outline: 1px solid #121212;
   outline-offset: 4px;
-}
-
-.careerApply :global(.careerApplyDropdown) {
-  position: absolute;
-  top: 42px;
-  right: 0;
-  display: grid;
-  width: 420px;
-  gap: 14px;
-  padding: 24px;
-  border: 1px solid #d8d8d8;
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 18px 55px rgba(18, 18, 18, 0.14);
-}
-
-.careerApply :global(.careerApplyDropdown p) {
-  margin: 0 0 2px;
-  font-family: var(--hemsida-figma-inter), Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 24px;
-}
-
-.careerApply :global(.careerApplyDropdown label) {
-  display: grid;
-  gap: 6px;
-  color: #121212;
-  font-family: var(--hemsida-figma-inter), Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 18px;
-}
-
-.careerApply :global(.careerApplyDropdown input),
-.careerApply :global(.careerApplyDropdown textarea) {
-  width: 100%;
-  border: 1px solid #dedede;
-  border-radius: 8px;
-  background: #f7f7f7;
-  color: #121212;
-  font: inherit;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.careerApply :global(.careerApplyDropdown input) {
-  height: 42px;
-  padding: 0 12px;
-}
-
-.careerApply :global(.careerApplyDropdown textarea) {
-  min-height: 82px;
-  padding: 10px 12px;
-  resize: vertical;
-}
-
-.careerApply :global(.careerApplyDropdown > button) {
-  height: 44px;
-  border: 0;
-  border-radius: 8px;
-  background: #121212;
-  color: #fff;
-  font-family: var(--hemsida-figma-inter), Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
 }
 
 .footerStar {
@@ -388,7 +310,7 @@
   width: max-content;
   align-items: center;
   gap: 64px;
-  animation: figmaLogoSpin 22s linear infinite;
+  animation: figmaLogoSpin 42s linear infinite;
   will-change: transform;
 }
 
@@ -396,7 +318,6 @@
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
-  gap: 12px;
   color: #181818;
   font-size: 29px;
   font-weight: 650;
@@ -406,12 +327,7 @@
 }
 
 .marqueeItem::before {
-  content: "";
-  width: 9px;
-  height: 9px;
-  border: 1.5px solid currentColor;
-  border-radius: 999px;
-  opacity: 0.62;
+  content: none;
 }
 
 @keyframes figmaLogoSpin {

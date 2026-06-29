@@ -94,7 +94,7 @@
   }
 
   .nav {
-    position: fixed;
+    position: absolute;
     top: 16px;
     left: 16px;
     right: 16px;
@@ -120,7 +120,7 @@
     font-weight: 600;
   }
 
-  .nav nav {
+  .nav > nav {
     display: flex;
     gap: 14px;
   }
@@ -157,6 +157,8 @@
   }
 
   .label span {
+    display: block;
+    flex: 0 0 auto;
     width: 12px;
     height: 12px;
     border: 1px solid #121212;
@@ -195,17 +197,10 @@
   }
 
   .applyDropdown {
-    justify-self: end;
-  }
-
-  .applyDropdown[data-open="true"] {
-    z-index: 30;
-  }
-
-  .applyDropdown > button {
     display: inline-flex;
     align-items: center;
     gap: 14px;
+    justify-self: end;
     padding: 0;
     border: 0;
     background: transparent;
@@ -218,83 +213,15 @@
     cursor: pointer;
   }
 
-  .applyDropdown > button span:first-child {
+  .applyDropdown span:first-child {
     font-size: 12px;
     line-height: 1;
     text-decoration: none;
   }
 
-  .applyDropdown > button[aria-expanded="true"] span:last-child {
-    text-decoration: none;
-  }
-
-  .applyDropdown > button:focus-visible {
+  .applyDropdown:focus-visible {
     outline: 1px solid #121212;
     outline-offset: 4px;
-  }
-
-  .applyDropdown :global(.careerApplyDropdown) {
-    position: absolute;
-    top: 42px;
-    right: 0;
-    z-index: 20;
-    display: grid;
-    width: min(420px, calc(100vw - 64px));
-    gap: 12px;
-    padding: 20px;
-    border: 1px solid #d8d8d8;
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0 18px 50px rgba(18, 18, 18, 0.14);
-  }
-
-  .applyDropdown :global(.careerApplyDropdown p) {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 22px;
-  }
-
-  .applyDropdown :global(.careerApplyDropdown label) {
-    display: grid;
-    gap: 6px;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px;
-  }
-
-  .applyDropdown :global(.careerApplyDropdown input),
-  .applyDropdown :global(.careerApplyDropdown textarea) {
-    width: 100%;
-    border: 1px solid #dedede;
-    border-radius: 8px;
-    background: #f7f7f7;
-    color: #121212;
-    font: inherit;
-    font-size: 13px;
-    line-height: 18px;
-  }
-
-  .applyDropdown :global(.careerApplyDropdown input) {
-    height: 40px;
-    padding: 0 12px;
-  }
-
-  .applyDropdown :global(.careerApplyDropdown textarea) {
-    min-height: 76px;
-    padding: 10px 12px;
-    resize: vertical;
-  }
-
-  .applyDropdown :global(.careerApplyDropdown > button) {
-    height: 42px;
-    border: 0;
-    border-radius: 8px;
-    background: #121212;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
   }
 
   .review {
@@ -312,43 +239,23 @@
     padding: 48px 32px;
   }
 
-  .review p {
+  .reviewQuote {
     margin: 0 0 36px;
     font-size: 20px;
     font-weight: 500;
     line-height: 32px;
   }
 
-  .review strong,
-  .review span {
-    display: block;
-    font-size: 12px;
-    line-height: 17px;
+  .reviewRole {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.8px;
+    letter-spacing: -0.28px;
   }
 
   .reviewImage {
     min-height: 302px;
-  }
-
-  .reviewControls {
-    display: flex;
-    gap: 24px;
-    margin-top: 40px;
-    justify-content: center;
-  }
-
-  .reviewControls button {
-    display: grid;
-    width: 64px;
-    height: 64px;
-    place-items: center;
-    border: 1px solid #121212;
-    border-radius: 999px;
-    background: transparent;
-    color: #121212;
-    font-size: 24px;
-    line-height: 1;
-    cursor: pointer;
   }
 
   .footer {
@@ -438,7 +345,11 @@
 }
 
 @media (max-width: 767px) {
-  .nav nav,
+  .hero {
+    height: 852px;
+  }
+
+  .nav > nav,
   .nav > span,
   .nav > a:not(:first-child) {
     display: none;
@@ -450,7 +361,7 @@
 
   .hero h1 {
     left: 16px;
-    bottom: 18px;
+    bottom: 48px;
     max-width: 330px;
     font-family: var(--hemsida-1-inter-tight), sans-serif;
     font-size: 28px;
@@ -459,111 +370,195 @@
   }
 
   .wide {
-    height: 200px;
+    height: 202px;
   }
 
   .positions {
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 40px 16px 250px;
+    gap: 40px;
+    padding: 40px 16px 40px;
+  }
+
+  .positions .label {
+    font-size: 12px;
+    line-height: 22px;
   }
 
   .jobs article {
-    grid-template-columns: 1fr auto;
-    gap: 12px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-bottom: 28px;
+  }
+
+  .applyDropdown {
+    justify-self: start;
+  }
+
+  .jobs a {
+    min-height: auto;
   }
 
   .jobs h2 {
-    font-size: 16px;
-    line-height: 21px;
+    margin-bottom: 17px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22.4px;
   }
 
   .jobs p,
   .jobs a,
   .jobs span {
-    font-size: 10px;
-    line-height: 14px;
+    font-size: 12px;
+    line-height: 17px;
   }
 
-  .applyDropdown > button {
+  .applyDropdown {
+    justify-content: flex-start;
     gap: 10px;
-    font-size: 10px;
-    line-height: 14px;
-  }
-
-  .applyDropdown :global(.careerApplyDropdown) {
-    width: calc(100vw - 32px);
-    right: -16px;
+    font-size: 12px;
+    line-height: 17px;
+    min-height: auto;
   }
 
   .review {
-    padding: 48px 16px 889px;
+    padding: 40px 16px 56px;
+  }
+
+  .review .label {
+    font-size: 12px;
+    line-height: 22px;
   }
 
   .reviewCard {
-    grid-template-columns: 1fr;
-    margin-top: 32px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0;
+    margin-top: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f9f9f9;
   }
 
   .reviewImage {
-    order: -1;
-    min-height: 255px;
+    display: block;
+    min-height: 421px;
+    height: 421px;
+    aspect-ratio: auto;
+    overflow: hidden;
   }
 
-  .reviewControls {
-    gap: 16px;
-    margin-top: 28px;
-  }
-
-  .reviewControls button {
-    width: 52px;
-    height: 52px;
-    font-size: 20px;
+  .reviewImage img {
+    object-fit: cover;
+    object-position: center top;
   }
 
   .reviewCard > div:first-child {
-    padding: 24px;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 332px;
+    padding: 22px 16px 20px;
   }
 
-  .review p {
-    font-size: 10px;
-    line-height: 15px;
+  .reviewQuote {
+    max-width: 326px;
+    margin: 0 0 30px;
+    font-size: 16px;
+    font-family: var(--hemsida-1-inter), sans-serif;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0;
+  }
+
+  .reviewRole {
+    margin: 0;
+    font-size: 14px;
+    line-height: 18px;
   }
 
   .footer {
-    height: 579px;
-    padding: 40px 16px;
+    height: auto;
+    min-height: 0;
+    padding: 0;
   }
 
   .footerTop {
     grid-template-columns: 1fr;
-    gap: 40px;
-    min-height: 180px;
+    align-content: space-between;
+    gap: 0;
+    min-height: 430px;
+    padding: 40px 20px 28px;
   }
 
   .footer h2 {
-    font-size: 22px;
-    line-height: 27px;
+    max-width: 350px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 33.6px;
+    letter-spacing: -0.48px;
+    transform: translateY(101px);
+    transform-origin: top left;
   }
 
   .footerBottom {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    margin-top: 56px;
+    grid-template-columns: 130px 96px;
+    justify-content: space-between;
+    gap: 56px 0;
+    margin-top: 0;
+    padding: 64px 32px 0;
   }
 
-  .footerBottom > div {
+  .footerBottom > div:first-child {
     grid-column: 1 / -1;
   }
 
   .footer h3 {
-    font-size: 16px;
+    margin-bottom: 18px;
+    font-family: var(--hemsida-1-inter), Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.4px;
+    letter-spacing: 0;
   }
 
-  .footer p,
-  .footer a {
-    font-size: 14px;
-    line-height: 20px;
+  .footerBottom > div:not(:first-child) h3 {
+    display: none;
+  }
+
+  .footerTop > a,
+  .footerBottom p,
+  .footerBottom a {
+    font-family: var(--hemsida-1-inter), Arial, sans-serif;
+    font-size: 12px;
+    line-height: 14.4px;
+    letter-spacing: 0;
+  }
+
+  .footerTop > a {
+    transform: translateY(37px);
+    transform-origin: top left;
+  }
+
+  .footerBottom p {
+    max-width: 156px;
+    font-size: 12px;
+    line-height: 17px;
+  }
+
+  .footer nav {
+    gap: 18px;
+  }
+
+  .footer nav a {
+    font-size: 16px;
+    line-height: 22px;
+    text-decoration: none;
+  }
+
+  .footerBottom > div:first-child h3 {
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 22px;
   }
 }
 
@@ -575,14 +570,15 @@
   }
 
   .nav > a:first-child {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: normal;
+    font-family: var(--hemsida-1-archivo), sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0;
   }
 
   .jobs a,
-  .footer a,
-  .reviewControls button {
+  .footer a {
     min-height: 44px;
   }
 }
@@ -607,12 +603,54 @@
     min-height: 0;
   }
 
-  .jobs p,
-  .jobs a,
-  .jobs span,
   .footer p,
   .footer a {
     font-size: 14px;
     line-height: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    height: 852px;
+    min-height: 0;
+  }
+
+  .positions {
+    padding-bottom: 40px;
+  }
+
+  .jobs a,
+  .applyDropdown {
+    min-height: auto;
+  }
+
+  .review {
+    padding-bottom: 56px;
+  }
+
+  .reviewCard {
+    margin-top: 40px;
+  }
+
+  .footerTop {
+    min-height: 462px;
+    padding-bottom: 36px;
+  }
+
+  .footerBottom {
+    gap: 72px 0;
+    padding-top: 76px;
+  }
+
+  .footerTop > a,
+  .footerBottom p,
+  .footerBottom a {
+    font-size: 12px;
+    line-height: 14.4px;
+  }
+
+  .footerBottom p {
+    line-height: 17px;
   }
 }

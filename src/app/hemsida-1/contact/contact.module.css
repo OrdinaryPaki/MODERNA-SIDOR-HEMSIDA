@@ -88,7 +88,7 @@
   }
 
   .nav {
-    position: fixed;
+    position: absolute;
     top: 16px;
     left: 16px;
     right: 16px;
@@ -114,7 +114,7 @@
     font-weight: 600;
   }
 
-  .nav nav,
+  .nav > nav,
   .nav > span,
   .nav > a:not(:first-child) {
     display: none;
@@ -153,22 +153,22 @@
 
   .form {
     position: absolute;
-    top: 282px;
+    top: 302px;
     left: 50%;
     right: auto;
     z-index: 1;
-    width: 360px;
-    padding: 38px 48px;
-    border-radius: 16px;
+    width: 310px;
+    padding: 20px;
+    border-radius: 20px;
     background: #fff;
     transform: translateX(-50%);
   }
 
   .form label {
     display: block;
-    margin: 0 0 18px;
+    margin: 0 0 20px;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 14px;
   }
 
@@ -177,14 +177,15 @@
     display: block;
     width: 100%;
     height: 40px;
-    margin-top: 10px;
-    padding: 0 40px 0 12px;
+    margin-top: 8px;
+    padding: 0 12px;
     border: 1px solid #e4e4e4;
     border-radius: 10px;
     background: #f5f5f5;
     color: #999;
     font: inherit;
     font-weight: 400;
+    line-height: 16.8px;
   }
 
   .form select {
@@ -207,12 +208,12 @@
     border-radius: 10px;
     background: #333;
     color: #fff;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 400;
   }
 
   .offices {
-    padding: 38px 16px 71px;
+    padding: 33px 16px 32px;
     background: #f9f9f9;
   }
 
@@ -276,12 +277,23 @@
     object-fit: cover;
   }
 
-  .footer {
-    height: 886px;
-    padding: 58px 16px 48px;
-    background: #121212;
-    color: #fff;
-  }
+.footerCtaSection,
+.footer {
+  height: 886px;
+  background: #121212;
+  color: #fff;
+}
+
+.footerCtaSection {
+  padding: 40px 0;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 64px 16px;
+}
 
   .footer a {
     color: #fff;
@@ -307,12 +319,12 @@
     text-underline-offset: 3px;
   }
 
-  .footerTop {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 72px;
-    min-height: 388px;
-  }
+.footerTop {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 72px;
+  min-height: 388px;
+}
 
   .footerTop h2 {
     margin: 0;
@@ -332,12 +344,12 @@
     line-height: 18px;
   }
 
-  .footerBottom {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr 1fr;
-    gap: 64px;
-    text-align: left;
-  }
+.footerBottom {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 64px;
+  text-align: left;
+}
 
   .footerBottom > div,
   .footerBottom nav {
@@ -364,35 +376,51 @@
     gap: 18px;
   }
 
-  .footer nav a {
-    display: inline-flex;
-    width: auto;
-    justify-content: flex-start;
-    text-align: left;
-  }
+.footer nav a {
+  display: inline-flex;
+  width: auto;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.copyright {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 4px 0;
+  font-size: 12px;
+  line-height: 22px;
+}
 }
 
 @media (max-width: 767px) {
-  .nav nav,
+  .responsive {
+    width: auto;
+    max-width: none;
+    margin: 0;
+  }
+
+  .nav > nav,
   .nav > span,
   .nav > a:not(:first-child) {
     display: none;
   }
 
   .hero {
-    height: 729px;
+    height: 734px;
   }
 
   .heroCopy {
     left: 20px;
     right: 20px;
-    top: 120px;
+    top: 116px;
     bottom: auto;
     width: auto;
   }
 
   .heroCopy h1 {
-    max-width: 350px;
+    max-width: 292px;
     font-family: var(--hemsida-1-inter-tight), sans-serif;
     font-size: 28px;
     line-height: 30.8px;
@@ -400,7 +428,7 @@
   }
 
   .heroCopy p {
-    max-width: 330px;
+    max-width: 336px;
     font-family: var(--hemsida-1-inter-tight), sans-serif;
     font-size: 14px;
     line-height: 22.4px;
@@ -408,35 +436,55 @@
   }
 
   .form {
-    top: 336px;
-    right: 20px;
+    top: 356px;
+    right: auto;
     bottom: auto;
-    left: 20px;
-    width: auto;
-    padding: 32px 40px 40px;
-    transform: none;
+    left: 50%;
+    width: 310px;
+    padding: 20px;
+    transform: translateX(-50%);
   }
 
   .form label {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     font-size: 12px;
+    font-weight: 500;
+    line-height: 14.4px;
+    letter-spacing: 0;
+  }
+
+  .form label:last-of-type {
+    margin-bottom: 20px;
+  }
+
+  .form input,
+  .form select {
+    margin-top: 10px;
+    line-height: 16.8px;
   }
 
   .form input,
   .form select,
   .form button {
-    height: 38px;
+    height: 40px;
+    min-height: 40px;
     font-size: 12px;
   }
 
+  .form button {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16.8px;
+  }
+
   .offices {
-    padding: 48px 16px 32px;
+    padding: 33px 16px 23px;
   }
 
   .label {
-    margin-bottom: 40px;
-    font-size: 16px;
-    line-height: 24px;
+    margin-bottom: 24px;
+    font-size: 12px;
+    line-height: 22px;
   }
 
   .office {
@@ -445,72 +493,192 @@
   }
 
   .office + .office {
-    margin-top: 48px;
+    margin-top: 20px;
   }
 
   .office p {
-    margin-bottom: 10px;
+    margin-bottom: 9px;
     font-size: 14px;
-    line-height: 22px;
+    line-height: 22.4px;
+    letter-spacing: -0.28px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    max-width: 251px;
   }
 
   .office h2 {
-    margin-bottom: 10px;
-    font-size: 24px;
-    line-height: 32px;
+    margin-bottom: 7px;
+    font-size: 18px;
+    line-height: 28.8px;
+    letter-spacing: -0.36px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    max-width: 280px;
   }
 
-  .office span {
-    margin-top: 6px;
-    font-size: 12px;
-    line-height: 18px;
+  .office span,
+  .office a {
+    display: block;
+    margin-top: 8px;
+    color: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22.4px;
+    letter-spacing: -0.28px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    max-width: 280px;
+    text-decoration: none;
   }
 
   .officeImage {
-    height: 240px;
+    height: 250px;
+    border-radius: 8px;
+  }
+
+  .footerCtaSection {
+    height: auto;
+    min-height: 0;
+    padding: 40px 20px 31px;
   }
 
   .footer {
     height: auto;
     min-height: 0;
-    padding: 72px 16px 48px;
+    gap: 72px;
+    padding: 40px 32px 37px;
   }
 
   .footerTop {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    min-height: 430px;
+    display: block;
+    min-height: 0;
+    padding: 0;
+    border-bottom: 0;
   }
 
   .footerTop h2 {
-    max-width: 300px;
-    font-size: 32px;
-    line-height: 43px;
+    max-width: 350px;
+    margin: 0 0 97px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 33.6px;
+    letter-spacing: -0.48px;
+    transform: translateY(7px);
+    transform-origin: top left;
   }
 
   .footerTop p {
-    margin-bottom: 24px;
+    display: block;
+    max-width: 330px;
+    margin: 0 0 72px;
+    color: #fff;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22.4px;
+    letter-spacing: -0.28px;
+  }
+
+  .footerTop > a {
+    align-self: start;
+    margin-top: 0;
+    min-height: auto;
+    gap: 12px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .footerTop > a span:first-child {
     font-size: 12px;
-    line-height: 20px;
+  }
+
+  .footerTop > a span:last-child {
+    font-size: 16px;
+    line-height: 22px;
   }
 
   .footerBottom {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 130px 96px;
+    justify-content: space-between;
+    gap: 40px 0;
+    padding: 35px 0 0;
   }
 
-  .footerBottom > div {
+  .footerBottom > div:first-child {
     grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footerBottom > div:not(:first-child) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 8px;
   }
 
   .footer h3 {
-    font-size: 20px;
+    margin: 0;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22.4px;
+    letter-spacing: -0.28px;
   }
 
-  .footerBottom p,
+  .footerTop > a,
   .footer a {
+    font-family: var(--hemsida-1-inter), Arial, sans-serif;
     font-size: 14px;
-    line-height: 20px;
+    font-weight: 400;
+    line-height: 16.8px;
+    letter-spacing: -0.28px;
+  }
+
+  .footer a {
+    min-height: auto;
+  }
+
+  .footerBottom p {
+    max-width: 156px;
+    margin: 0;
+    font-family: var(--hemsida-1-inter), Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.8px;
+    letter-spacing: -0.28px;
+  }
+
+  .footer nav {
+    gap: 16px;
+  }
+
+  .footerBottom nav a {
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: 0;
+    text-decoration: none;
+  }
+
+  .footerBottom > div:first-child h3 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28.8px;
+    letter-spacing: -0.36px;
+  }
+
+  .footer .copyright,
+  .copyright {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 27px 0 0;
+    font-family: var(--hemsida-1-inter), Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.8px;
+    letter-spacing: -0.28px;
   }
 }
 
@@ -522,16 +690,20 @@
   }
 
   .nav > a:first-child {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: normal;
+    font-family: var(--hemsida-1-archivo), sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0;
   }
 
   .form input,
-  .form select,
-  .form button,
-  .footer a {
-    min-height: 44px;
+  .form select {
+    min-height: 40px;
+  }
+
+  .form button {
+    min-height: 40px;
   }
 }
 
@@ -541,22 +713,24 @@
     min-height: clamp(680px, 86svh, 760px);
   }
 
-  .footer {
-    height: auto;
-    min-height: 0;
-  }
+.footerCtaSection,
+.footer {
+  height: auto;
+  min-height: 0;
+}
 
   .footerTop p {
     color: #fff;
   }
 
-  .form label,
   .form input,
-  .form select,
-  .form button,
-  .footerBottom p,
-  .footer a {
+  .form select {
     font-size: 14px;
-    line-height: 20px;
+    line-height: 16.8px;
+  }
+
+  .form button {
+    font-size: 14px;
+    line-height: 16.8px;
   }
 }

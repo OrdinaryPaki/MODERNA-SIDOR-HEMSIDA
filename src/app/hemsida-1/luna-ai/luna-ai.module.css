@@ -67,7 +67,11 @@
     overflow: hidden;
     background: #121212;
     color: #fff;
-    font-family: Arial, sans-serif;
+    font-family: var(--hemsida-1-inter), Arial, sans-serif;
+  }
+
+  .hero {
+    height: 844px;
   }
 
   .heroImage {
@@ -76,16 +80,17 @@
   }
 
   .nav {
-    position: fixed;
+    position: absolute;
     top: 16px;
     left: 16px;
     right: 16px;
     z-index: 200;
     display: flex;
     align-items: center;
-    height: 40px;
-    padding: 0 14px;
-    border-radius: 4px;
+    gap: 24px;
+    height: 62px;
+    padding: 0 20px;
+    border-radius: 8px;
     background: #fff;
     color: #121212;
     font-size: 12px;
@@ -99,75 +104,102 @@
 
   .nav > a:first-child {
     margin-right: auto;
-    font-weight: 600;
+    font-family: var(--hemsida-1-archivo), sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
   }
 
-  .nav nav,
+  .nav > nav,
   .nav > span,
   .nav > a:not(:first-child) {
     display: none;
   }
 
-  .nav::after {
-    content: none;
-  }
-
   .message {
     position: absolute;
-    top: 305px;
+    top: 358px;
     left: 0;
     right: 0;
     z-index: 1;
     text-align: center;
   }
 
-  .message h1 {
+  .code {
     margin: 0;
     color: #fff;
-    font-size: 180px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 160px;
     font-weight: 700;
-    line-height: 180px;
-    letter-spacing: -4px;
+    line-height: 160px;
   }
 
-  .message p {
-    margin: 24px 0 0;
+  .message h1 {
+    margin: 40px auto 0;
+    max-width: 270px;
     color: #fff;
-    font-size: 24px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 18px;
     font-weight: 600;
-    line-height: 38px;
+    line-height: 28.8px;
+    letter-spacing: -0.36px;
   }
 
   .message a {
-    color: #fff;
+    color: inherit;
     text-decoration: underline;
-    text-underline-offset: 4px;
+    text-underline-offset: 3px;
   }
 
   .footer {
-    height: 887px;
-    padding: 72px 16px 48px;
     background: #121212;
     color: #fff;
   }
 
-  .footer a {
-    color: #fff;
-    font-size: 12px;
-    line-height: 16px;
-    text-decoration: none;
+  .footerTop {
+    display: grid;
+    align-content: space-between;
+    min-height: 404px;
+    padding: 40px 20px 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .footerTop h2 {
+    margin: 0;
+    max-width: 350px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 33.6px;
+    letter-spacing: -0.48px;
+  }
+
+  .footerTop p {
+    margin: 0;
+    max-width: 350px;
+    color: #121212;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22.4px;
+    letter-spacing: -0.28px;
   }
 
   .footerTop > a {
     display: inline-flex;
     align-items: center;
     gap: 16px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.8px;
+    letter-spacing: -0.28px;
+    text-decoration: none;
   }
 
   .footerTop > a span:first-child {
     font-size: 15px;
     line-height: 1;
-    text-decoration: none;
   }
 
   .footerTop > a span:last-child {
@@ -175,152 +207,65 @@
     text-underline-offset: 3px;
   }
 
-  .footerTop {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 72px;
-    min-height: 388px;
-  }
-
-  .footerTop h2 {
-    margin: 0;
-    max-width: 480px;
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 34px;
-    letter-spacing: -0.5px;
-  }
-
-  .footerTop p {
-    margin: 0 0 48px;
-    max-width: 480px;
-    color: #121212;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 18px;
-  }
-
   .footerBottom {
     display: grid;
-    grid-template-columns: 1.1fr 1fr 1fr;
-    gap: 64px;
-    text-align: left;
+    grid-template-columns: 130px 96px;
+    justify-content: space-between;
+    gap: 48px 0;
+    padding: 36px 32px 0;
   }
 
-  .footerBottom > div,
-  .footerBottom nav {
-    justify-self: start;
-    text-align: left;
+  .footerBottom > div:first-child {
+    grid-column: 1 / -1;
   }
 
   .footer h3 {
-    margin: 0 0 24px;
-    font-size: 16px;
+    margin: 0 0 16px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28.8px;
+    letter-spacing: -0.36px;
+  }
+
+  .footerBottom > div:not(:first-child) h3 {
+    font-size: 14px;
+    line-height: 22.4px;
+    letter-spacing: -0.28px;
   }
 
   .footerBottom p {
     margin: 0;
-    max-width: 300px;
-    font-size: 10px;
-    line-height: 14px;
+    max-width: 130px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.8px;
+    letter-spacing: -0.28px;
   }
 
   .footer nav {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 18px;
+    gap: 14px;
   }
 
   .footer nav a {
-    display: inline-flex;
-    width: auto;
-    justify-content: flex-start;
-    text-align: left;
-  }
-}
-
-@media (max-width: 767px) {
-  .message {
-    top: 330px;
-  }
-
-  .message h1 {
-    font-size: 120px;
-    line-height: 120px;
-  }
-
-  .message p {
-    margin-top: 18px;
-    font-size: 18px;
-    line-height: 28px;
-  }
-
-  .footer {
-    height: auto;
-    min-height: 0;
-  }
-
-  .footerTop {
-    min-height: 430px;
-  }
-
-  .footerTop h2 {
-    max-width: 300px;
-    font-size: 32px;
-    line-height: 43px;
-  }
-
-  .footerBottom {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-  }
-
-  .footerBottom > div {
-    grid-column: 1 / -1;
-  }
-
-  .footer h3 {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .nav {
-    height: 52px;
-    padding: 4px 8px 4px 14px;
-  }
-
-  .nav > a:first-child {
-    font-size: 16px;
-    line-height: 20px;
-  }
-
-  .footer a {
-    min-height: 44px;
-    font-size: 14px;
-    line-height: 20px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .hero {
-    height: auto;
-    min-height: clamp(560px, 92svh, 760px);
-  }
-
-  .footer {
-    height: auto;
-    min-height: 0;
-  }
-
-  .footerTop p {
     color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: -0.28px;
+    text-decoration: none;
   }
 
-  .footerBottom p,
-  .footer a {
+  .copyright {
+    margin: 43px 0 0;
+    padding: 0 36px 81px;
+    font-family: var(--hemsida-1-inter-tight), sans-serif;
     font-size: 14px;
-    line-height: 20px;
+    font-weight: 500;
+    line-height: 22.4px;
+    letter-spacing: -0.28px;
   }
 }

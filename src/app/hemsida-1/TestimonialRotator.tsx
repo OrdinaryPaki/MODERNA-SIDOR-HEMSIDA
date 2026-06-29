@@ -1,31 +1,30 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 
 const slides = [
   {
     quote:
-      "Moderna Sidor hjälpte oss samla uppföljning, ansvar och nästa steg i ett tydligt flöde. Det blev enklare att hitta rätt information och fatta beslut.",
+      "Moderna Sidor hjälpte oss samla uppföljning, ansvar och nästa steg i ett tydligt flöde. Det blev enklare att hitta rätt information, följa upp vad som fastnade och fatta beslut utan att hoppa mellan flera underlag. Vi fick också bättre överblick mellan teamen när något behövde prioriteras snabbt.",
     name: "Kundteam",
-    role: "Operativ verksamhet",
-    desktopImage: "/figma/hemsida-1/impact.jpg",
-    mobileImage: "/figma/hemsida-1/testimonial.png",
+    role: "Operativ ledning",
+    desktopImage: "https://framerusercontent.com/images/XrnXAfMIemeJb08mW1AhrUQMjT0.jpg?width=9238&height=6159",
+    mobileImage: "https://framerusercontent.com/images/XrnXAfMIemeJb08mW1AhrUQMjT0.jpg?width=9238&height=6159",
   },
   {
     quote:
-      "Vi gick från spridda dokument till en gemensam arbetsyta där teamet ser status, prioritet och nästa steg utan att leta.",
-    name: "Projektteam",
-    role: "Tillväxtbolag",
+      "Vi fick en gemensam vy för status, ansvar och kundhistorik. Teamet behövde lägga mindre tid på att leta och mer tid på att agera.",
+    name: "Projektansvarig",
+    role: "Leverans och uppföljning",
     desktopImage: "/figma/hemsida-1/impact-crop.jpg",
     mobileImage: "/figma/hemsida-1/pages/about-testimonial.png",
   },
   {
     quote:
-      "Automatiseringen tog bort återkommande manuella moment och gav oss bättre underlag för beslut varje vecka.",
+      "Rapporteringen gick från splittrade utdrag till ett system där vi kunde prioritera rätt snabbare och följa upp vad som faktiskt fastnade.",
     name: "Ledningsgrupp",
-    role: "Serviceverksamhet",
+    role: "Beslut och planering",
     desktopImage: "/figma/hemsida-1/pages/about-testimonial.png",
     mobileImage: "/figma/hemsida-1/impact.jpg",
   },
@@ -38,7 +37,7 @@ export function TestimonialRotator() {
   useEffect(() => {
     const timer = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % slides.length);
-    }, 4000);
+    }, 24000);
 
     return () => window.clearInterval(timer);
   }, []);
@@ -54,39 +53,17 @@ export function TestimonialRotator() {
           </div>
         </div>
         <div className={styles.testimonialImageWrap}>
-          <Image
-            key={activeSlide.desktopImage}
-            src={activeSlide.desktopImage}
-            alt=""
-            fill
-            sizes="50vw"
-            loading="eager"
-            unoptimized
+          <div
+            key={`${activeSlide.desktopImage}-desktop`}
             className={styles.testimonialImage}
+            style={{ backgroundImage: `url(${activeSlide.desktopImage})` }}
           />
-          <Image
-            key={activeSlide.mobileImage}
-            src={activeSlide.mobileImage}
-            alt=""
-            fill
-            sizes="100vw"
-            loading="eager"
-            unoptimized
+          <div
+            key={`${activeSlide.mobileImage}-mobile`}
             className={`${styles.testimonialImage} ${styles.testimonialImageMobile}`}
+            style={{ backgroundImage: `url(${activeSlide.mobileImage})` }}
           />
         </div>
-      </div>
-      <div className={styles.sliderMarks} aria-label="Testimonial slides">
-        {slides.map((slide, index) => (
-          <button
-            aria-label={`Visa testimonial ${index + 1}: ${slide.name}`}
-            aria-current={index === activeIndex}
-            className={index === activeIndex ? styles.sliderMarkActive : undefined}
-            key={slide.name}
-            onClick={() => setActiveIndex(index)}
-            type="button"
-          />
-        ))}
       </div>
     </>
   );

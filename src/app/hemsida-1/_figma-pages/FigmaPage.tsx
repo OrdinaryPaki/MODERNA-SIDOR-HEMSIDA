@@ -189,7 +189,7 @@ function isBackdropLayer(image: ImageLayer) {
 function FigmaNav({ ctaVariant = "text" }: { ctaVariant?: FigmaPageData["navCtaVariant"] }) {
   return (
     <header className={styles.nav}>
-      <a className={styles.logo} href="/hemsida-1">
+      <a className={styles.logo} href={navHref.home}>
         Moderna Sidor
       </a>
       <nav className={styles.navLinks} aria-label="Primary">
@@ -223,7 +223,7 @@ function TextMarquee({ layer }: { layer: MarqueeLayer }) {
         height: layer.h,
       }}
     >
-      <h2>{layer.title}</h2>
+      {layer.title ? <h2>{layer.title}</h2> : null}
       <div className={styles.marqueeViewport}>
         <div className={styles.marqueeTrack}>
           {items.map((item, index) => (
