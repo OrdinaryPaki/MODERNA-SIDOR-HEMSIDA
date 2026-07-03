@@ -19,9 +19,9 @@
   --color-blue-mid: var(--blue-mid);
   --color-blue-deep: var(--blue-deep);
   --color-muted: var(--muted);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-switzer);
+  --font-sans: system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-display: system-ui, sans-serif;
 }
 
 body {
@@ -29,7 +29,7 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--hemsida-1-inter), system-ui, sans-serif;
   overflow-x: hidden;
 }
 

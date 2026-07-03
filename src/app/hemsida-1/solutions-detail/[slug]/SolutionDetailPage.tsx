@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MobileNav } from "../../MobileNav";
@@ -55,11 +56,13 @@ export default async function SolutionDetailPage({ params }: PageProps) {
   return (
     <main className={styles.page}>
       <section className={styles.hero}>
-        <img
+        <Image
           alt={detail.title}
           className={styles.heroImage}
-          loading="eager"
           src={detail.heroImage}
+          fill
+          priority
+          sizes="100vw"
         />
         <header className={styles.nav}>
           <Link href={navHref.home}>{siteCopy.brand}</Link>
@@ -87,22 +90,26 @@ export default async function SolutionDetailPage({ params }: PageProps) {
         </div>
 
         <div className={styles.challengeImageWrap}>
-          <img
+          <Image
             alt=""
             className={styles.challengeImage}
-            loading="eager"
             src={detail.storyImage}
+            fill
+            sizes="100vw"
+            loading="lazy"
           />
         </div>
 
         <p className={styles.storyText}>{detail.story}</p>
 
         <div className={styles.storyImageWrap}>
-          <img
+          <Image
             alt=""
             className={styles.storyImage}
-            loading="eager"
             src={detail.detailImage ?? detail.cardImage}
+            fill
+            sizes="100vw"
+            loading="lazy"
           />
         </div>
 

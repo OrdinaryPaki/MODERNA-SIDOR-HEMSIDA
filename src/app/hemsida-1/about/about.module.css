@@ -403,6 +403,7 @@
   }
 
   .clientLogo {
+    position: relative;
     display: flex;
     width: 164px;
     height: 110px;
@@ -413,8 +414,6 @@
 
   .clientLogo img {
     display: block;
-    width: 100%;
-    height: 100%;
     object-fit: contain;
   }
 

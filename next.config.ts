@@ -6,6 +6,14 @@ const projectRoot = dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
   devIndicators: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "framerusercontent.com",
+      },
+    ],
+  },
   async redirects() {
     return [
       {

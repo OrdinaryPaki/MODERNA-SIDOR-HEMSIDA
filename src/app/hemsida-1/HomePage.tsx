@@ -154,9 +154,8 @@ export default function Hemsida1() {
             src="/figma/hemsida-1/showreel-bg.png"
             alt=""
             fill
-            sizes="100vw"
-            loading="eager"
-            unoptimized
+            sizes="(max-width: 768px) calc(100vw - 32px), calc(100vw - 128px)"
+            loading="lazy"
             className={styles.videoImage}
           />
           <button className={styles.playButton} type="button">
@@ -189,11 +188,15 @@ export default function Hemsida1() {
                   <p>{project.text}</p>
                   <ArrowLink href={project.href}>Se exempel</ArrowLink>
                 </div>
-                <div
-                  aria-hidden="true"
-                  className={styles.projectImage}
-                  style={{ backgroundImage: `url(${project.image})` }}
-                />
+                <div className={styles.projectImage} aria-hidden="true">
+                  <Image
+                    src={project.image}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1024px) calc(100vw - 64px), 62vw"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </article>
           ))}

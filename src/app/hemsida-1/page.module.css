@@ -561,12 +561,16 @@
 }
 
 .projectImage {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   min-height: 320px;
   border-radius: 8px;
-  background-position: center;
-  background-size: cover;
+  overflow: hidden;
+}
+
+.projectImage img {
+  object-fit: cover;
 }
 
 .impact {

@@ -170,7 +170,7 @@ function AboutResponsive() {
           <div className={styles.clientTrack}>
             {[...clientLogos, ...clientLogos].map((logo, index) => (
               <div className={styles.clientLogo} key={`${logo}-${index}`}>
-                <img src={logo} alt="" loading="lazy" />
+                <Image src={logo} alt="" fill sizes="164px" loading="lazy" />
               </div>
             ))}
           </div>

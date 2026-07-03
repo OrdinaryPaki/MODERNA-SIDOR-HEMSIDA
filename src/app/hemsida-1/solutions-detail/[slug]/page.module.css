@@ -188,14 +188,15 @@
 
 .challengeImageWrap,
 .storyImageWrap {
+  position: relative;
   margin: 40px -16px 0;
+  height: 259px;
+  overflow: hidden;
 }
 
 .challengeImage,
 .storyImage {
   display: block;
-  width: 100%;
-  height: 259px;
   object-fit: cover;
 }
 
@@ -404,12 +405,8 @@
     margin-top: 40px;
   }
 
-  .challengeImage,
-  .storyImage {
-    height: 200px;
-  }
-
-  .storyImage {
+  .challengeImageWrap,
+  .storyImageWrap {
     height: 200px;
   }
 
