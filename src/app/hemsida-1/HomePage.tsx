@@ -15,21 +15,21 @@ const projects = [
     eyebrow: "AI",
     title: "Arbetsflöden",
     text: "Ansvar, status och nästa steg samlat på ett ställe.",
-    image: "/figma/hemsida-1/casper-ai.png",
+    image: "/figma/hemsida-1/casper-ai.webp",
     href: solutionDetailHref("casper-ai"),
   },
   {
     eyebrow: "ML",
     title: "Beslutsunderlag",
     text: "Data och rapporter som gör arbetet enklare att följa upp och leda.",
-    image: "/figma/hemsida-1/tune-ai.png",
+    image: "/figma/hemsida-1/tune-ai.webp",
     href: solutionDetailHref("tune-ai"),
   },
   {
     eyebrow: "DL",
     title: "Automatisering",
     text: "Stöd och regler som minskar onödiga steg utan att ta bort kontrollen från teamet.",
-    image: "/figma/hemsida-1/ring-models.png",
+    image: "/figma/hemsida-1/ring-models.webp",
     href: solutionDetailHref("ring-models-in-healthcare"),
   },
 ];
@@ -88,7 +88,18 @@ export default function Hemsida1() {
     <main className={styles.page}>
       <div className={styles.canvas}>
       <section className={styles.hero}>
-        <div className={styles.heroBackdrop} aria-hidden="true" />
+        <div className={styles.heroBackdrop} aria-hidden="true">
+          <Image
+            src="/figma/hemsida-1/hero-bg.webp"
+            alt=""
+            fill
+            sizes="100vw"
+            loading="eager"
+            fetchPriority="high"
+            unoptimized
+            className={styles.heroBackdropImage}
+          />
+        </div>
         <header className={styles.nav}>
           <div className={styles.navInner}>
             <div className={styles.navLeft}>
@@ -151,11 +162,12 @@ export default function Hemsida1() {
       <section className={styles.videoSection}>
         <div className={styles.videoWrap}>
           <Image
-            src="/figma/hemsida-1/showreel-bg.png"
+            src="/figma/hemsida-1/showreel-bg.webp"
             alt=""
             fill
             sizes="(max-width: 768px) calc(100vw - 32px), calc(100vw - 128px)"
-            loading="lazy"
+            loading="eager"
+            unoptimized
             className={styles.videoImage}
           />
           <button className={styles.playButton} type="button">
@@ -194,7 +206,8 @@ export default function Hemsida1() {
                     alt=""
                     fill
                     sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1024px) calc(100vw - 64px), 62vw"
-                    loading="lazy"
+                    loading="eager"
+                    unoptimized
                   />
                 </div>
               </div>

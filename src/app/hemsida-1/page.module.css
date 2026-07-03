@@ -29,12 +29,11 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-    url("/figma/hemsida-1/hero-bg.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: #5f92b3;
+}
+
+.heroBackdropImage {
+  object-fit: cover;
 }
 
 .nav {
