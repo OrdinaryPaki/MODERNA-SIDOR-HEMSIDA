@@ -198,7 +198,7 @@
   }
 
   .info + .info {
-    padding-top: 12px;
+    padding-top: 0;
   }
 
   .label {
@@ -570,7 +570,7 @@
   }
 
   .info + .info {
-    padding-top: 40px;
+    padding-top: 24px;
   }
 
   .label {

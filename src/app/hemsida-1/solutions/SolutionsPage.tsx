@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FigmaPage } from "../_figma-pages/FigmaPage";
+import { Footer } from "../Footer";
 import { MobileNav } from "../MobileNav";
 import { solutionsPage } from "../_figma-pages/pages";
-import { navHref, navItems, siteCopy, socialItems, solutionDetailHref } from "../navigation";
+import { navHref, navItems, siteCopy, solutionDetailHref } from "../navigation";
 import { solutionGroups } from "./solutions-data";
 import styles from "./solutions.module.css";
 
@@ -65,31 +66,7 @@ function SolutionsResponsive() {
           <Image src="/figma/hemsida-1/pages/solutions-team.png" alt="" fill loading="eager" unoptimized />
         </div>
       </section>
-      <footer className={styles.footer}>
-        <div className={styles.footerTop}>
-          <h2>{siteCopy.footerHeadline}</h2>
-          <p>Skicka några rader om nuläge, verktyg och var arbetet fastnar. Vi återkommer med nästa steg.</p>
-          <a href={navHref.contact}>
-            <span aria-hidden="true">✦</span>
-            <span>{siteCopy.footerLink}</span>
-          </a>
-        </div>
-        <div className={styles.footerBottom}>
-          <div>
-            <h3>{siteCopy.footerBrand}</h3>
-            <p>{siteCopy.footerTagline}</p>
-          </div>
-          <div>
-            <h3>{siteCopy.pagesHeading}</h3>
-            <nav>{navItems.map((item) => <a href={item.href} key={item.label}>{item.label}</a>)}</nav>
-          </div>
-          <div>
-            <h3>{siteCopy.socialsHeading}</h3>
-            <nav>{socialItems.map((item) => <a href={item.href} key={item.label}>{item.label}</a>)}</nav>
-          </div>
-        </div>
-        <p className={styles.copyright}>© 2026 Moderna Sidor</p>
-      </footer>
+      <Footer />
     </main>
   );
 }

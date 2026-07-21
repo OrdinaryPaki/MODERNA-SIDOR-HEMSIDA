@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FigmaPage } from "../_figma-pages/FigmaPage";
+import { Footer } from "../Footer";
 import { MobileNav } from "../MobileNav";
 import { aboutPage } from "../_figma-pages/pages";
-import { navHref, navItems, siteCopy, socialItems, solutionDetailHref } from "../navigation";
+import { navHref, navItems, siteCopy, solutionDetailHref } from "../navigation";
 import styles from "./about.module.css";
 
 export const metadata: Metadata = {
@@ -103,16 +104,26 @@ function AboutResponsive() {
           <a href={navHref.solutions}>{siteCopy.primaryCta}</a>
           <MobileNav />
         </header>
-        <h1>Digitala system för företag som vuxit ur standardverktyg</h1>
+        <h1>Vi bygger system för idag — och utvecklar dem för framtiden</h1>
       </section>
 
-      <Info label="Mer om oss">
-        Moderna Sidor bygger digitala system runt hur verksamheten faktiskt arbetar.
-        Vi börjar i flöden, ansvar och data innan vi väljer teknik.
+      <Info label="Vad gör vi?">
+        Vi utvecklar digitala system som gör verksamheten enklare att driva. Våra
+        lösningar effektiviserar arbetet, skapar struktur och stärker verksamheten
+        - utan att störa den dagliga driften.
       </Info>
-      <Info label="Vårt arbetssätt">
-        Vi gör komplexa processer tydliga, kopplar ihop verktyg och lägger AI-stöd
-        där det skapar mätbar nytta.
+      <Info label="Hur gör vi?">
+        Vi börjar med att förstå hur verksamheten fungerar. Därefter skapar vi
+        digitala lösningar som anpassas efter era processer, förenklar
+        arbetsflöden och ger bättre överblick, tydligare ansvar och smidigare
+        samarbete.
+      </Info>
+
+      <Info label="När ska vi?">
+        När verksamheten har vuxit ur sina nuvarande arbetssätt eller när
+        processer, information och ansvar börjar bli svåra att hålla ihop. Då
+        hjälper vi er att bygga en stabil digital grund som gör det enklare att
+        utvecklas och växa.
       </Info>
 
       <section className={styles.statement}>
@@ -188,29 +199,7 @@ function AboutResponsive() {
         </div>
       </section>
 
-      <footer className={styles.footer}>
-        <div className={styles.footerTop}>
-          <h2>{siteCopy.footerHeadline}</h2>
-          <a href={navHref.contact}>
-            <span aria-hidden="true">✦</span>
-            <span>{siteCopy.footerLink}</span>
-          </a>
-        </div>
-        <div className={styles.footerBottom}>
-          <div>
-            <h3>{siteCopy.footerBrand}</h3>
-            <p>{siteCopy.footerTagline}</p>
-          </div>
-          <div>
-            <h3>{siteCopy.pagesHeading}</h3>
-            <nav>{navItems.map((item) => <a href={item.href} key={item.label}>{item.label}</a>)}</nav>
-          </div>
-          <div>
-            <h3>{siteCopy.socialsHeading}</h3>
-            <nav>{socialItems.map((item) => <a href={item.href} key={item.label}>{item.label}</a>)}</nav>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

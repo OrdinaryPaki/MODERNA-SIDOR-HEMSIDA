@@ -100,7 +100,7 @@
 }
 
 .nav {
-  position: fixed;
+  position: absolute;
   top: 17px;
   left: 16px;
   right: 16px;

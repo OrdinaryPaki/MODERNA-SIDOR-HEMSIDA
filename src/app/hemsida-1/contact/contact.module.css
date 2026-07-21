@@ -729,6 +729,11 @@
     line-height: 16.8px;
   }
 
+  .form select {
+    padding-right: 44px;
+    line-height: 40px;
+  }
+
   .form button {
     font-size: 14px;
     line-height: 16.8px;

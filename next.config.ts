@@ -18,12 +18,22 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/hemsida-1/solutions-detail/:slug",
-        destination: "/hemsida-1/solutions/:slug",
+        destination: "/solutions/:slug",
         permanent: true,
       },
       {
         source: "/hemsida-1/luna-ai",
-        destination: "/hemsida-1/solutions/luna-ai",
+        destination: "/solutions/luna-ai",
+        permanent: true,
+      },
+      {
+        source: "/hemsida-1",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/hemsida-1/:path*",
+        destination: "/:path*",
         permanent: true,
       },
       {

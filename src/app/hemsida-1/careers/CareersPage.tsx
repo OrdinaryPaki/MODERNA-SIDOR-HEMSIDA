@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { CareerApplyDropdown } from "../CareerApplyDropdown";
 import { FigmaPage } from "../_figma-pages/FigmaPage";
+import { Footer } from "../Footer";
 import { MobileNav } from "../MobileNav";
 import { careersPage } from "../_figma-pages/pages";
-import { navHref, navItems, siteCopy, socialItems } from "../navigation";
+import { navHref, navItems, siteCopy } from "../navigation";
 import styles from "./careers.module.css";
 
 export const metadata: Metadata = {
@@ -72,29 +73,7 @@ function CareersResponsive() {
           </div>
         </div>
       </section>
-      <footer className={styles.footer}>
-        <div className={styles.footerTop}>
-          <h2>{siteCopy.footerHeadline}</h2>
-          <a href={navHref.contact}>
-            <span aria-hidden="true">✦</span>
-            <span>{siteCopy.footerLink}</span>
-          </a>
-        </div>
-        <div className={styles.footerBottom}>
-          <div>
-            <h3>{siteCopy.footerBrand}</h3>
-            <p>{siteCopy.footerTagline}</p>
-          </div>
-          <div>
-            <h3>{siteCopy.pagesHeading}</h3>
-            <nav>{navItems.map((item) => <a href={item.href} key={item.label}>{item.label}</a>)}</nav>
-          </div>
-          <div>
-            <h3>{siteCopy.socialsHeading}</h3>
-            <nav>{socialItems.map((item) => <a href={item.href} key={item.label}>{item.label}</a>)}</nav>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

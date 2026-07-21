@@ -183,6 +183,13 @@
   letter-spacing: -1.8px;
 }
 
+.heroSeparator {
+  width: 50%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  margin-top: 16px;
+}
+
 .heroContent .heroKicker {
   width: auto;
   font-family: var(--hemsida-1-inter), sans-serif;
@@ -208,7 +215,7 @@
   justify-content: center;
   width: 100%;
   height: 48px;
-  margin-top: 28px;
+  margin-top: 56px;
 }
 
 .pillButton {
@@ -833,286 +840,8 @@
   background: #fff;
 }
 
-.footerCtaSection,
-.footer {
-  width: 100%;
-  background: var(--black);
-  color: #fff;
-}
-
-.footerCtaSection {
-  min-height: 0;
-  padding: 112px 64px 0;
-}
-
-.footer {
-  min-height: 0;
-  height: auto;
-  padding: 0 64px 40px;
-}
-
-.footerCta {
-  display: grid;
-  grid-template-columns: 560px minmax(0, 1fr);
-  column-gap: 190px;
-  width: 100%;
-  min-height: 360px;
-}
-
-.footerCtaCopy {
-  width: 680px;
-  max-width: 100%;
-}
-
-.footerCta h2 {
-  width: 100%;
-  margin: 0;
-  color: #fff;
-  font-family: var(--hemsida-1-inter), sans-serif;
-  font-size: 48px;
-  font-weight: 500;
-  line-height: 67.2px;
-  letter-spacing: -1.44px;
-}
-
-.footerCtaCopy p {
-  width: min(100%, 640px);
-  margin: 32px 0 0;
-  color: rgba(255, 255, 255, 0.76);
-  font-family: var(--hemsida-1-inter), sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 32px;
-  letter-spacing: -0.4px;
-}
-
-.footerContactLink {
-  align-self: start;
-  justify-self: start;
-  margin-top: 224px;
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 20px;
-  line-height: 28px;
-  letter-spacing: -0.4px;
-  text-decoration: none;
-  min-height: 44px;
-}
-
-.footerContactLink span:last-child {
-  text-decoration: underline;
-  text-underline-offset: 5px;
-}
-
-.footerContactLink span:first-child {
-  font-size: 15px;
-  line-height: 1;
-  text-decoration: none;
-}
-
-.footerBottom {
-  display: grid;
-  grid-template-columns: 560px minmax(0, 1fr);
-  column-gap: 196px;
-  width: 100%;
-  margin-top: 104px;
-}
-
-.footerBrand {
-  width: 460px;
-}
-
-.footerBrand h2 {
-  width: auto;
-  margin: 0 0 24px;
-  color: #fff;
-  font-family: var(--hemsida-1-inter), sans-serif;
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 33.6px;
-  letter-spacing: -0.56px;
-}
-
-.footerBrand p {
-  width: 460px;
-  margin: 0;
-  color: #fff;
-  font-family: var(--hemsida-1-inter), sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: -0.4px;
-}
-
-.footerColumns {
-  display: grid;
-  grid-template-columns: 250px minmax(0, 1fr);
-  column-gap: 280px;
-  text-align: left;
-}
-
-.footerColumns > div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-self: start;
-}
-
-.footerColumns h3 {
-  display: none;
-  margin: 0;
-  color: #fff;
-}
-
-.footerColumns nav {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 19px;
-  text-align: left;
-}
-
-.footerColumns a {
-  display: inline-flex;
-  align-items: center;
-  width: max-content;
-  justify-content: flex-start;
-  min-height: 44px;
-  padding: 0;
-  background: var(--black);
-  color: #fff;
-  font-family: var(--hemsida-1-inter), sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: -0.4px;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-@media (max-width: 1200px) and (min-width: 1025px) {
-  .projectBody {
-    grid-template-columns: minmax(300px, 34%) minmax(420px, 1fr);
-    column-gap: clamp(40px, 6vw, 80px);
-  }
-
-  .projectText,
-  .projectText p {
-    width: 100%;
-  }
-
-  .footerCta,
-  .footerBottom {
-    grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1fr);
-    column-gap: 80px;
-  }
-
-  .footerColumns {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 64px;
-  }
-}
-
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .footer {
-    height: auto;
-    min-height: 100svh;
-    padding: 0 32px;
-  }
-
-  .footerCta,
-  .footerBottom,
-  .footerColumns {
-    width: 100%;
-    height: auto;
-  }
-
-  .footerCta,
-  .footerBottom,
-  .footerColumns {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .footerCta {
-    min-height: 340px;
-    align-items: start;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.24);
-  }
-
-  .footerCta h2 {
-    display: block;
-  }
-
-  .footerCtaCopy,
-  .footerCtaCopy p {
-    width: 100%;
-  }
-
-  .footerContactLink {
-    align-self: end;
-    margin: 0 0 16px;
-    font-size: 14px;
-    line-height: 20px;
-  }
-
-  .footerBottom {
-    margin-top: 72px;
-    gap: 81px;
-  }
-
-  .footerColumns {
-    grid-template-columns: 1fr 96px;
-    gap: 0;
-  }
-
-  .footerColumns nav {
-    gap: 15px;
-  }
-
-  .footerColumns a {
-    min-height: 28px;
-    font-size: 20px;
-    line-height: 28px;
-  }
-
-  .footerBrand,
-  .footerBrand p {
-    width: 100%;
-  }
-
-  .footerBrand h2 {
-    font-size: 20px;
-    line-height: 24px;
-  }
-
-  .footerBrand p {
-    width: min(100%, 420px);
-    font-size: 14px;
-    line-height: 17px;
-  }
-}
-
-.footerColumns > div:last-child a {
-  font-family: var(--hemsida-1-inter), sans-serif;
-}
-
-.copyright {
-  display: block;
-  margin: 96px 0 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-family: var(--hemsida-1-inter), sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: 0;
-}
-
 @media (max-width: 1024px) {
-  .page {
+.page {
     min-height: 0;
     overflow-x: hidden;
   }
@@ -1203,7 +932,7 @@
     height: auto;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 4px;
+    margin-top: 24px;
   }
 
   .pillButton {
@@ -1212,18 +941,6 @@
     border-radius: 5px;
     font-size: 12px;
     line-height: 16px;
-  }
-
-  .about,
-  .solutions,
-  .impact,
-  .awards,
-  .footerCtaSection,
-  .footer {
-    width: 100%;
-    height: auto;
-    min-height: 0;
-    padding: 40px 24px;
   }
 
   .about,
@@ -1297,16 +1014,6 @@
   .solutionsIntroCopy {
     width: 100%;
     gap: 18px;
-  }
-
-  .solutionsIntro h2,
-  .impactIntro h2,
-  .footerCta h2,
-  .awards h2 {
-    width: 100%;
-    font-size: 28px;
-    line-height: 34px;
-    letter-spacing: 0;
   }
 
   .impactIntro h2 {
@@ -1439,114 +1146,10 @@
     line-height: 17px;
   }
 
-  .footerCtaSection {
-    min-height: 0;
-    padding: 40px 16px 0;
-  }
-
-  .footer {
-    min-height: 0;
-    padding: 0 16px 32px;
-  }
-
-  .footerCta,
-  .footerBottom,
-  .footerColumns {
-    width: 100%;
-    height: auto;
-  }
-
-  .footerCta,
-  .footerBottom,
-  .footerColumns {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .footerCta {
-    min-height: 349px;
-    align-items: stretch;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.24);
-  }
-
-  .footerCta h2 {
-    display: block;
-    width: min(100%, 326px);
-    font-family: var(--hemsida-1-inter-tight), sans-serif;
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 27px;
-    letter-spacing: 0;
-  }
-
-  .footerCtaCopy,
-  .footerCtaCopy p {
-    width: 100%;
-  }
-
-  .footerCtaCopy p {
-    margin-top: 18px;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0;
-  }
-
-  .footerContactLink {
-    align-self: start;
-    margin: 0 0 24px;
-    font-size: 12px;
-    line-height: 17px;
-  }
-
-  .footerBottom {
-    margin-top: 48px;
-    gap: 56px;
-  }
-
-  .footerColumns {
-    grid-template-columns: 1fr 96px;
-    gap: 0;
-  }
-
-  .footerColumns h3 {
-    display: block;
-    margin: 0 0 18px;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 17px;
-    letter-spacing: 0;
-  }
-
-  .footerColumns a {
-    min-height: 26px;
-    font-size: 16px;
-    line-height: 22px;
-  }
-
-  .footerColumns nav {
-    gap: 12px;
-  }
-
-  .footerBrand,
-  .footerBrand p {
-    width: 100%;
-  }
-
-  .footerBrand h2 {
-    font-size: 16px;
-    line-height: 22px;
-  }
-
-  .footerBrand p {
-    width: min(100%, 320px);
-    font-size: 12px;
-    line-height: 17px;
-  }
 }
 
 @media (max-width: 767px) {
-  .hero {
+.hero {
     min-height: 844px;
     height: 844px;
   }
@@ -1615,7 +1218,7 @@
 
   .heroActions {
     gap: 14px;
-    margin-top: 8px;
+    margin-top: 28px;
   }
 
   .about,
@@ -1672,15 +1275,6 @@
     font-size: 22px;
     line-height: 30.8px;
     letter-spacing: -0.44px;
-  }
-
-  .solutionsIntro h2,
-  .impactIntro h2,
-  .footerCta h2,
-  .awards h2 {
-    font-family: var(--hemsida-1-inter-tight), sans-serif;
-    font-size: 24px;
-    line-height: 33.6px;
   }
 
   .solutionsIntro h2 {
@@ -1973,79 +1567,10 @@
     min-width: 44px;
   }
 
-  .footerCtaSection {
-    min-height: 460px;
-    padding: 0 32px;
-  }
-
-  .footerCta {
-    min-height: 460px;
-    align-content: space-between;
-    gap: 0;
-    padding: 40px 0 36px;
-    border-bottom: 0;
-  }
-
-  .footerCta h2 {
-    width: min(100%, 314px);
-    font-size: 24px;
-    line-height: 33.6px;
-    transform: none;
-  }
-
-  .footerCtaCopy p {
-    width: min(100%, 314px);
-    margin-top: 20px;
-    font-size: 14px;
-    line-height: 21px;
-  }
-
-  .footerContactLink {
-    align-self: start;
-    margin: 0;
-  }
-
-  .footer {
-    min-height: 579px;
-    padding: 64px 32px 32px;
-  }
-
-  .footerBottom {
-    margin-top: 0;
-    gap: 48px;
-  }
-
-  .footerColumns {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 44px;
-  }
-
-  .footerColumns h3 {
-    display: block;
-    margin: 0 0 18px;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 14.4px;
-    letter-spacing: 0;
-  }
-
-  .footerColumns nav {
-    gap: 18px;
-  }
-
-  .footerBrand h2 {
-    margin-bottom: 16px;
-    font-size: 20px;
-    line-height: 28px;
-  }
-
-  .footerBrand p {
-    width: min(100%, 300px);
-  }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .hero {
+.hero {
     min-height: max(720px, 100svh);
     height: auto;
   }
@@ -2064,11 +1589,6 @@
     padding-bottom: 153px;
   }
 
-  .footer {
-    height: auto;
-    min-height: 0;
-  }
-
   .testimonialImageWrap {
     aspect-ratio: 16 / 9;
   }
@@ -2080,4 +1600,5 @@
   .testimonialImageMobile {
     display: none;
   }
+
 }

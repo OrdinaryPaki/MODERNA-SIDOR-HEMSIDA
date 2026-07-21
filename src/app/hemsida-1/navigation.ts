@@ -1,9 +1,9 @@
 export const navItems = [
-  { label: "Start", href: "/hemsida-1" },
-  { label: "Om oss", href: "/hemsida-1/about" },
-  { label: "Lösningar", href: "/hemsida-1/solutions" },
-  { label: "Karriär", href: "/hemsida-1/careers" },
-  { label: "Kontakt", href: "/hemsida-1/contact" },
+  { label: "Start", href: "/" },
+  { label: "Om oss", href: "/about" },
+  { label: "Lösningar", href: "/solutions" },
+  { label: "Karriär", href: "/careers" },
+  { label: "Kontakt", href: "/contact" },
 ] as const;
 
 export const socialItems = [
@@ -12,29 +12,29 @@ export const socialItems = [
 ] as const;
 
 export const navHref = {
-  home: "/hemsida-1",
-  about: "/hemsida-1/about",
-  solutions: "/hemsida-1/solutions",
-  careers: "/hemsida-1/careers",
-  contact: "/hemsida-1/contact",
+  home: "/",
+  about: "/about",
+  solutions: "/solutions",
+  careers: "/careers",
+  contact: "/contact",
 } as const;
 
 export function solutionDetailHref(slug: string) {
-  return `/hemsida-1/solutions/${slug}`;
+  return `/solutions/${slug}`;
 }
 
 export const siteCopy = {
   brand: "Moderna Sidor",
   search: "Sök",
-  primaryCta: "Se lösningar",
+  primaryCta: "Se projekt",
   contactCta: "Boka ett samtal",
-  footerHeadline: "Bygg ett system runt ert arbetssätt.",
+  footerHeadline: "Boka ett samtal med våra rådgivare",
   footerBody:
-    "Berätta hur era flöden ser ut. Vi hjälper er se vilken digital struktur som behöver finnas bakom — och bygger systemet som samlar arbetet i en tydligare helhet.",
+    "Ett första samtal handlar om hur ni arbetar i dag och vad ett system skulle behöva innehålla. Utifrån det tar vi fram ett förslag.",
   footerLink: "Boka ett samtal",
   footerBrand: "Moderna Sidor",
   footerTagline:
-    "Skräddarsydda digitala system för organisationer som vill skapa mer struktur, kontroll och sammanhang i sitt arbete.",
+    "Anpassade system för företag, utvecklade från grunden.",
   pagesHeading: "Sidor",
   socialsHeading: "Socialt",
 } as const;
