@@ -28,10 +28,10 @@ export const siteCopy = {
   search: "Sök",
   primaryCta: "Se projekt",
   contactCta: "Boka ett samtal",
-  footerHeadline: "Boka ett samtal med våra rådgivare",
+  footerHeadline: "Berätta om er verksamhet.",
   footerBody:
     "Ett första samtal handlar om hur ni arbetar i dag och vad ett system skulle behöva innehålla. Utifrån det tar vi fram ett förslag.",
-  footerLink: "Boka ett samtal",
+  footerLink: "Prata med en rådgivare",
   footerBrand: "Moderna Sidor",
   footerTagline:
     "Anpassade system för företag, utvecklade från grunden.",
