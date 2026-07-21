@@ -122,7 +122,7 @@ export default function Hemsida1() {
         </header>
         <div className={styles.heroContent}>
           <h1>
-            Digitala system för organisationer som behöver mer sammanhang.
+            Mer än ett system – en lösning som växer med verksamheten.
           </h1>
           <p>
             Vi bygger system som samlar arbete, data och beslut i en stabil
