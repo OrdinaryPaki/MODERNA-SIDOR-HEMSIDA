@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Footer } from "./Footer";
+import { HomeFooter } from "./Footer";
+import { LogoCarousel } from "./LogoCarousel";
 import { MobileNav } from "./MobileNav";
 import { navHref, navItems, siteCopy, solutionDetailHref } from "./navigation";
 import styles from "./page.module.css";
@@ -67,9 +68,22 @@ function ArrowLink({ children, href = "#", light = false, showIcon = true }: { c
   );
 }
 
-function PillButton({ children, href = navHref.solutions, dark = false }: { children: string; href?: string; dark?: boolean }) {
+function PillButton({
+  children,
+  href = navHref.solutions,
+  dark = false,
+  large = false,
+}: {
+  children: string;
+  href?: string;
+  dark?: boolean;
+  large?: boolean;
+}) {
   return (
-    <a className={`${styles.pillButton} ${dark ? styles.pillButtonDark : ""}`} href={href}>
+    <a
+      className={`${styles.pillButton} ${dark ? styles.pillButtonDark : ""} ${large ? styles.pillButtonLarge : ""}`}
+      href={href}
+    >
       {children}
     </a>
   );
@@ -127,8 +141,9 @@ export default function Hemsida1() {
           </h1>
           <div className={styles.heroSeparator} aria-hidden="true" />
           <div className={styles.heroActions}>
-            <PillButton>{siteCopy.primaryCta}</PillButton>
-            <PillButton href={navHref.contact} dark>{siteCopy.contactCta}</PillButton>
+            <PillButton href={navHref.contact} large>
+              Boka kostnadsfri rådgivning
+            </PillButton>
           </div>
         </div>
       </section>
@@ -172,15 +187,16 @@ export default function Hemsida1() {
         </div>
       </section>
 
+      <LogoCarousel />
+
       <section className={styles.solutions}>
         <div className={styles.solutionsIntro}>
           <SectionLabel>Vad vi bygger</SectionLabel>
           <div className={styles.solutionsIntroCopy}>
-            <h2>Ett system, byggt i delar som hänger ihop.</h2>
+            <h2>Lösningar som formas av verksamheten.</h2>
             <p>
-              Vilka delar ett system innehåller beror på verksamheten. De
-              flesta byggs upp av tre: arbetsflöden, beslutsunderlag och
-              automatisering.
+              Bakom varje kundcase finns ett nära samarbete och en lösning
+              anpassad efter verksamhetens behov.
             </p>
           </div>
         </div>
@@ -246,7 +262,7 @@ export default function Hemsida1() {
         </div>
       </section>
 
-      <Footer />
+      <HomeFooter />
       </div>
     </main>
   );

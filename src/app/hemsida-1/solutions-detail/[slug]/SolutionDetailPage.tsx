@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Footer } from "../../Footer";
 import { MobileNav } from "../../MobileNav";
 import { navHref, navItems, siteCopy } from "../../navigation";
 import {
@@ -137,7 +136,6 @@ export default async function SolutionDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

@@ -1,5 +1,4 @@
 import type { FigmaPageData } from "./FigmaPage";
-import { commonFooter } from "./FigmaPage";
 
 const projectCards = [
   ["Affärssystem", "Samlar ansvar, status och beslut i ett tydligt flöde", "/figma/hemsida-1/casper-ai.png"],
@@ -7,119 +6,6 @@ const projectCards = [
   ["Integrationer", "Kopplar system, kunddata och arbetsflöden utan dubbelarbete", "/figma/hemsida-1/ring-models.png"],
 ] as const;
 
-const footerContact = {
-  ...commonFooter(2028),
-  texts: commonFooter(1988).texts.map((text) =>
-    text.text === "Moderna Sidor"
-      ? { ...text, x: text.x - 1, y: text.y - 1, size: 27.8, tracking: -0.4 }
-      : text.text === "Låt oss bygga ett system runt ert arbetssätt"
-        ? { ...text, y: text.y - 1, size: 48, tracking: -0.84 }
-      : text.text === "Berätta var arbetsflödet fastnar. Vi hjälper er samla rätt flöden, data och AI-stöd i ett system."
-          ? { ...text, size: 23.6, tracking: -0.24 }
-        : text.text === "Digitala system byggda runt hur ni faktiskt jobbar"
-          ? { ...text, y: text.y - 1, size: 20.2, tracking: -0.36 }
-        : text.text === "Sidor"
-          ? { ...text, x: text.x + 1, y: text.y - 1, size: 20, tracking: -0.5 }
-        : text.text === "Socialt"
-          ? { ...text, y: text.y - 1, size: 20, tracking: -0.5 }
-        : text.text === "Twitter"
-          ? { ...text, x: text.x + 1, y: text.y - 2, size: 19.6, tracking: 0.2 }
-        : ["Start", "Om oss", "Case", "Process", "Kontakt", "Twitter", "LinkedIn", "Instagram"].includes(text.text)
-          ? { ...text, y: text.y - 2, size: 19.6, tracking: 0.2 }
-        : text,
-  ),
-  links: (commonFooter(2028).links ?? []).map((link) => ({
-    ...link,
-    x: link.x + 0.5,
-    hideIcon: false,
-    size: 20.2,
-    tracking: 0,
-  })),
-};
-const footerCareers = {
-  ...commonFooter(3175),
-  texts: commonFooter(3175).texts.map((text) =>
-    text.text === "Moderna Sidor"
-      ? { ...text, x: text.x - 1, size: 27.8, tracking: -0.4 }
-      : text.text === "Låt oss bygga ett system runt ert arbetssätt"
-      ? { ...text, tracking: -0.84 }
-      : text.text === "Berätta var arbetsflödet fastnar. Vi hjälper er samla rätt flöden, data och AI-stöd i ett system."
-        ? { ...text, y: text.y + 0.5, size: 24.2, tracking: -0.54, scaleX: 1.001 }
-        : text.text === "Digitala system byggda runt hur ni faktiskt jobbar"
-          ? { ...text, size: 20.2, tracking: -0.3 }
-        : text,
-  ),
-  links: (commonFooter(3175).links ?? []).map((link) => ({
-    ...link,
-    x: link.x + 0.5,
-    hideIcon: false,
-    size: 20.2,
-    tracking: 0,
-  })),
-};
-const footerSolutions = {
-  ...commonFooter(4633.1796875),
-  texts: commonFooter(4633.1796875).texts.map((text) =>
-    text.text === "Moderna Sidor"
-      ? { ...text, x: text.x - 1, size: 27.8, tracking: -0.4 }
-      : text.text === "Låt oss bygga ett system runt ert arbetssätt"
-      ? { ...text, tracking: -0.84 }
-      : text.text === "Berätta var arbetsflödet fastnar. Vi hjälper er samla rätt flöden, data och AI-stöd i ett system."
-        ? { ...text, y: text.y + 1, size: 23.6, tracking: -0.24 }
-        : text.text === "Digitala system byggda runt hur ni faktiskt jobbar"
-          ? { ...text, tracking: -0.3 }
-        : text,
-  ),
-  links: (commonFooter(4633.1796875).links ?? []).map((link) => ({
-    ...link,
-    x: link.x + 0.5,
-    hideIcon: false,
-    size: 20.2,
-    tracking: 0,
-  })),
-};
-const footerLuna = {
-  ...commonFooter(900),
-  texts: commonFooter(900).texts.map((text) =>
-    text.text === "Moderna Sidor"
-      ? { ...text, x: text.x - 1, size: 27.8, tracking: -0.4 }
-      : text.text === "Låt oss bygga ett system runt ert arbetssätt"
-      ? { ...text, tracking: -0.84 }
-      : text.text === "Kontakta oss"
-        ? { ...text, size: 23.6, tracking: -0.24 }
-        : text.text === "Skräddarsydda digitala system för företag som vill jobba tydligare"
-          ? { ...text, tracking: -0.3 }
-        : text,
-  ),
-  links: (commonFooter(900).links ?? []).map((link) => ({
-    ...link,
-    x: link.x + 0.5,
-    hideIcon: false,
-    size: 20.2,
-    tracking: 0,
-  })),
-};
-const footerAbout = {
-  ...commonFooter(9328.125),
-  texts: commonFooter(9328.125).texts.map((text) =>
-    text.text === "Moderna Sidor"
-      ? { ...text, x: text.x - 1, size: 27.8, tracking: -0.4 }
-      : text.text === "Låt oss bygga ett system runt ert arbetssätt"
-      ? { ...text, tracking: -0.84 }
-      : text.text === "Berätta var arbetsflödet fastnar. Vi hjälper er samla rätt flöden, data och AI-stöd i ett system."
-        ? { ...text, size: 23.6, tracking: -0.24 }
-        : text.text === "Digitala system byggda runt hur ni faktiskt jobbar"
-          ? { ...text, tracking: -0.3 }
-        : text,
-  ),
-  links: (commonFooter(8840.125).links ?? []).map((link) => ({
-    ...link,
-    x: link.x + 0.5,
-    hideIcon: false,
-    size: 20.2,
-    tracking: 0,
-  })),
-};
 const solutionCardImages = Array.from(
   { length: 9 },
   (_, index) => `/figma/hemsida-1/pages/solution-card-${index + 1}.png`,
@@ -136,7 +22,7 @@ const labelMark = (y: number) => ({
 });
 
 export const contactPage: FigmaPageData = {
-  height: 2936,
+  height: 2028,
   textOffsetY: 1,
   navCtaVariant: "button",
   boxes: [
@@ -147,7 +33,6 @@ export const contactPage: FigmaPageData = {
     { x: 856, y: 606.1953125, w: 440, h: 40, color: "#333333", radius: 10, foreground: true },
     { x: 0, y: 900, w: 1512, h: 1128, color: "#f9f9f9", wide: true },
     labelMark(1020),
-    ...footerContact.boxes,
   ],
   images: [
     { src: "/figma/hemsida-1/pages/contact-hero-bg.png", x: 0, y: 0, w: 1512, h: 900, priority: true },
@@ -176,13 +61,11 @@ export const contactPage: FigmaPageData = {
     { text: "Vi hittar vad som ska förenklas och kopplas ihop.", x: 66, y: 1644, w: 720, h: 39, size: 24, line: 38.4, tracking: -0.54 },
     { text: "Skicka process, export eller exempel", x: 64, y: 1691, w: 520, h: 39, size: 24, line: 38.4, tracking: -0.54 },
     { text: "business@modernasidor.se", x: 64, y: 1738, w: 322, h: 39, size: 24, line: 38.4, tracking: -0.54 },
-    ...footerContact.texts,
   ],
-  links: footerContact.links,
 };
 
 export const careersPage: FigmaPageData = {
-  height: 4112,
+  height: 3175,
   offsetAfterY: 574,
   yOffsetAfter: 29,
   navCtaVariant: "button",
@@ -195,7 +78,6 @@ export const careersPage: FigmaPageData = {
     { x: 769, y: 2990, w: 64, h: 64, color: "transparent", border: "1px solid #121212", radius: 999, foreground: true },
     labelMark(1397),
     labelMark(2202),
-    ...footerCareers.boxes,
   ],
   images: [
     { src: "/figma/hemsida-1/pages/careers-hero-bg.png", x: 0, y: 0, w: 1512, h: 603, priority: true },
@@ -219,7 +101,6 @@ export const careersPage: FigmaPageData = {
     { text: "Produkt och utveckling", x: 104.5, y: 2713, w: 380, h: 24, size: 20.2, line: 24, tracking: -0.38, family: "inter", weight: 400 },
     { text: "←", x: 701, y: 3008, w: 22, h: 28, size: 24, line: 28, family: "inter", weight: 400, align: "center" },
     { text: "→", x: 790, y: 3008, w: 22, h: 28, size: 24, line: 28, family: "inter", weight: 400, align: "center" },
-    ...footerCareers.texts,
   ],
   careerApplications: [
     { role: "Fullstack-utvecklare", x: 1365.21875, y: 1447.4140625, w: 99 },
@@ -227,11 +108,10 @@ export const careersPage: FigmaPageData = {
     { role: "AI- och automationsspecialist", x: 1365.21875, y: 1738.2109375, w: 99 },
     { role: "Produktdesigner", x: 1365.21875, y: 1883.609375, w: 99 },
   ],
-  links: footerCareers.links,
 };
 
 export const solutionsPage: FigmaPageData = {
-  height: 5585,
+  height: 4633,
   offsetAfterY: 856,
   yOffsetAfter: 44,
   boxes: [
@@ -240,7 +120,6 @@ export const solutionsPage: FigmaPageData = {
     { x: 64, y: 1890, w: 1384, h: 644, color: "#ffffff" },
     { x: 64, y: 2737, w: 1384, h: 644, color: "#ffffff" },
     { x: 0, y: 3501, w: 1512, h: 1132, color: "#ffffff", wide: true },
-    ...footerSolutions.boxes,
   ],
   images: [
     { src: "/figma/hemsida-1/pages/solutions-hero-bg.png", x: 0, y: 0, w: 1512, h: 900, priority: true },
@@ -259,9 +138,12 @@ export const solutionsPage: FigmaPageData = {
   ],
   texts: [
     { text: "Lösningar byggda runt era flöden, data och beslut", as: "h1", x: 64, y: 595.203125, w: 817, h: 141, size: 64.15, line: 70.4, tracking: -1.8, color: "#ffffff", weight: 600, scaleX: 0.9985 },
-    { text: "Affärssystem", x: 64, y: 976, w: 700, h: 135, size: 48, line: 67.2, tracking: -0.96 },
-    { text: "Smarta AI-lösningar", x: 64, y: 1890, w: 800, h: 68, size: 48.15, line: 67.2, tracking: -1.08 },
-    { text: "Anpassade lösningar", x: 64, y: 2736, w: 700, h: 68, size: 48.2, line: 67.2, tracking: -0.9 },
+    { text: "Smarta Affärsystem", x: 64, y: 976, w: 700, h: 68, size: 48, line: 67.2, tracking: -0.96 },
+    { text: "Se exemplar", x: 93, y: 1055, w: 160, h: 28, size: 20, line: 28, family: "inter", weight: 400 },
+    { text: "Smartare AI lösningar", x: 64, y: 1890, w: 800, h: 68, size: 48.15, line: 67.2, tracking: -1.08 },
+    { text: "Se exemplar", x: 93, y: 1965, w: 160, h: 28, size: 20, line: 28, family: "inter", weight: 400 },
+    { text: "Unika verktyg", x: 64, y: 2736, w: 700, h: 68, size: 48.2, line: 67.2, tracking: -0.9 },
+    { text: "Se exemplar", x: 93, y: 2812, w: 160, h: 28, size: 20, line: 28, family: "inter", weight: 400 },
     ...[1158, 2005, 2852].flatMap((baseY, row) =>
       projectCards.map((card, index) => ({
         text: row === 0 ? ["Projektflöde", "Kundvy", "Ärendehantering"][index] : row === 1 ? ["Rapporter", "Prognoser", "Prioritering"][index] : ["AI-stöd", "Integrationer", "Skalbar grund"][index],
@@ -297,21 +179,16 @@ export const solutionsPage: FigmaPageData = {
         weight: 500 as const,
       }))
     ),
-    { text: "Jobba med oss", x: 66, y: 3620.5, w: 440, h: 68, size: 48.4, line: 67.2, tracking: -0.9, scaleX: 1.001 },
-    { text: "Bygg system som gör vardagen enklare för team som har vuxit ur standardverktyg.", x: 853, y: 3621.5, w: 596, h: 77, size: 24.2, line: 38.4, tracking: -0.6, scaleX: 1.001 },
-    { text: "Se öppna roller", x: 97, y: 3713, w: 176, h: 28, size: 20.2, line: 28, family: "inter", weight: 400 },
-    ...footerSolutions.texts,
+    { text: "Vår enda begränsning är dina idéer", x: 66, y: 3620.5, w: 700, h: 135, size: 48.4, line: 67.2, tracking: -0.9, scaleX: 1.001 },
+    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", x: 853, y: 3621.5, w: 596, h: 115, size: 24.2, line: 38.4, tracking: -0.6, scaleX: 1.001 },
   ],
-  links: footerSolutions.links,
 };
 
 export const lunaPage: FigmaPageData = {
-  height: 1809,
+  height: 900,
   srOnlyTitle: "404",
   navCtaVariant: "button",
-  boxes: [
-    ...footerLuna.boxes,
-  ],
+  boxes: [],
   images: [
     { src: "/figma/hemsida-1/pages/not-found-bg.jpg", x: 0, y: 0, w: 1512, h: 900, priority: true },
   ],
@@ -319,13 +196,11 @@ export const lunaPage: FigmaPageData = {
     { text: "404", as: "h1", x: 523, y: 292, w: 467, h: 291, size: 240, line: 240, tracking: -4.8, color: "#ffffff", weight: 600 },
     { text: "Här fanns inget att se…", x: 571, y: 583, w: 300, h: 44, size: 28, line: 44.8, tracking: -0.56, color: "#ffffff", weight: 600 },
     { text: "Gå hem", x: 865, y: 583, w: 110, h: 44, size: 28, line: 44.8, tracking: -0.56, color: "#ffffff", weight: 600 },
-    ...footerLuna.texts,
   ],
-  links: footerLuna.links,
 };
 
 export const aboutPage: FigmaPageData = {
-  height: 10280,
+  height: 9328,
   offsetAfterY: 856,
   yOffsetAfter: 44,
   boxes: [
@@ -346,7 +221,6 @@ export const aboutPage: FigmaPageData = {
     labelMark(1464),
     labelMark(1992),
     labelMark(6679),
-    ...footerAbout.boxes,
   ],
   images: [
     { src: "/figma/hemsida-1/pages/about-hero-bg.png", x: 0, y: 0, w: 1512, h: 900, priority: true },
@@ -411,7 +285,5 @@ export const aboutPage: FigmaPageData = {
     { text: "Jobba med oss", x: 64, y: 8316, w: 440, h: 68, size: 48.4, line: 67.2, tracking: -0.72 },
     { text: "Vi söker personer som vill bygga tydliga system för verkliga arbetsflöden.", x: 853, y: 8316, w: 596, h: 77, size: 24, line: 38.4, tracking: -0.48 },
     { text: "Se öppna roller", x: 97, y: 8408, w: 176, h: 28, size: 20, line: 28, family: "inter", weight: 400 },
-    ...footerAbout.texts,
   ],
-  links: footerAbout.links,
 };

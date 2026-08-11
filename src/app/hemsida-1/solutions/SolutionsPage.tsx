@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FigmaPage } from "../_figma-pages/FigmaPage";
-import { Footer } from "../Footer";
 import { MobileNav } from "../MobileNav";
 import { solutionsPage } from "../_figma-pages/pages";
 import { navHref, navItems, siteCopy, solutionDetailHref } from "../navigation";
@@ -42,6 +41,10 @@ function SolutionsResponsive() {
         {solutionGroups.map((group) => (
           <div className={styles.group} key={group.title}>
             <h2>{group.title}</h2>
+            <Link className={styles.groupCta} href={solutionDetailHref(group.cards[0].slug)}>
+              <span aria-hidden="true">✦</span>
+              Se exemplar
+            </Link>
             <div className={styles.cards}>
               {group.cards.map((card) => (
                 <Link className={styles.card} href={solutionDetailHref(card.slug)} key={card.slug}>
@@ -58,15 +61,16 @@ function SolutionsResponsive() {
       </section>
       <section className={styles.join}>
         <div className={styles.joinHead}>
-          <h2>Jobba med oss</h2>
-          <p>Bygg system som gör vardagen enklare för team som har vuxit ur standardverktyg.</p>
+          <h2>Vår enda begränsning är dina idéer</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
         </div>
-        <a href={navHref.careers}>Se öppna roller</a>
         <div className={styles.joinImage}>
           <Image src="/figma/hemsida-1/pages/solutions-team.png" alt="" fill loading="eager" unoptimized />
         </div>
       </section>
-      <Footer />
     </main>
   );
 }

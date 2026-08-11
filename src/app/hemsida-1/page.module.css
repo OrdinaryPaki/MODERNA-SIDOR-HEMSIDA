@@ -214,7 +214,7 @@
   gap: 16px;
   justify-content: center;
   width: 100%;
-  height: 48px;
+  height: auto;
   margin-top: 56px;
 }
 
@@ -242,6 +242,16 @@
   border-color: #fff;
   background: transparent;
   color: #fff;
+}
+
+.pillButtonLarge {
+  width: auto;
+  min-width: 280px;
+  height: 64px;
+  padding: 0 36px;
+  border-radius: 10px;
+  font-size: 18px;
+  line-height: 20px;
 }
 
 .about {
@@ -940,6 +950,16 @@
     height: 34px;
     border-radius: 5px;
     font-size: 12px;
+    line-height: 16px;
+  }
+
+  .pillButtonLarge {
+    width: auto;
+    min-width: 220px;
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 8px;
+    font-size: 14px;
     line-height: 16px;
   }
 

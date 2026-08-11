@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { FigmaPage } from "../_figma-pages/FigmaPage";
-import { Footer } from "../Footer";
 import { MobileNav } from "../MobileNav";
 import { contactPage } from "../_figma-pages/pages";
 import { navHref, navItems, siteCopy } from "../navigation";
@@ -74,7 +73,6 @@ function ContactResponsive() {
         />
       </section>
 
-      <Footer />
     </main>
   );
 }

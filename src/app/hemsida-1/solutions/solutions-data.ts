@@ -169,15 +169,15 @@ const allCards: SolutionDetail[] = [
 
 export const solutionGroups: SolutionGroup[] = [
   {
-    title: "Affärssystem",
+    title: "Smarta Affärsystem",
     cards: allCards.slice(0, 3),
   },
   {
-    title: "Smarta AI-lösningar",
+    title: "Smartare AI lösningar",
     cards: allCards.slice(3, 6),
   },
   {
-    title: "Anpassade lösningar",
+    title: "Unika verktyg",
     cards: allCards.slice(6, 9),
   },
 ];

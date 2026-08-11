@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FigmaPage } from "../_figma-pages/FigmaPage";
-import { Footer } from "../Footer";
 import { MobileNav } from "../MobileNav";
 import { aboutPage } from "../_figma-pages/pages";
 import { navHref, navItems, siteCopy, solutionDetailHref } from "../navigation";
@@ -199,7 +198,6 @@ function AboutResponsive() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

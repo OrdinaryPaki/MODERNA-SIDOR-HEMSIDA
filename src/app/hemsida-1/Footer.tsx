@@ -2,18 +2,19 @@ import Link from "next/link";
 import { navHref, navItems, siteCopy, socialItems } from "./navigation";
 import styles from "./footer.module.css";
 
-export function Footer() {
+/** Home-only footer. */
+export function HomeFooter() {
   return (
     <>
       <section className={styles.footerCtaSection}>
         <div className={styles.footerCta}>
           <div className={styles.footerCtaCopy}>
-            <h2>{siteCopy.footerHeadline}</h2>
-            <p>{siteCopy.footerBody}</p>
+            <h2>{siteCopy.homeFooterHeadline}</h2>
+            <p>{siteCopy.homeFooterBody}</p>
           </div>
           <Link className={styles.footerContactLink} href={navHref.contact}>
             <span aria-hidden="true">✦</span>
-            <span>{siteCopy.footerLink}</span>
+            <span>{siteCopy.homeFooterLink}</span>
           </Link>
         </div>
       </section>
@@ -22,7 +23,7 @@ export function Footer() {
         <div className={styles.footerBottom}>
           <div className={styles.footerBrand}>
             <h2>{siteCopy.footerBrand}</h2>
-            <p>{siteCopy.footerTagline}</p>
+            <p>{siteCopy.homeFooterTagline}</p>
           </div>
           <div className={styles.footerColumns}>
             <div>

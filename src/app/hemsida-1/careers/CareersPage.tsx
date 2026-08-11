@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { CareerApplyDropdown } from "../CareerApplyDropdown";
 import { FigmaPage } from "../_figma-pages/FigmaPage";
-import { Footer } from "../Footer";
 import { MobileNav } from "../MobileNav";
 import { careersPage } from "../_figma-pages/pages";
 import { navHref, navItems, siteCopy } from "../navigation";
@@ -73,7 +72,6 @@ function CareersResponsive() {
           </div>
         </div>
       </section>
-      <Footer />
     </main>
   );
 }

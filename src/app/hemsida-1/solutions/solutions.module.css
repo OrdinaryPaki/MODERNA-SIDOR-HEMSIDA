@@ -156,11 +156,23 @@
   .group h2 {
     width: auto;
     max-width: 100%;
-    margin: 0 0 32px;
+    margin: 0 0 16px;
     font-size: 36px;
     font-weight: 500;
     line-height: 43px;
-    white-space: nowrap;
+    white-space: normal;
+  }
+
+  .groupCta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 32px;
+    color: #121212;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    text-decoration: none;
   }
 
   .cards {
@@ -386,8 +398,8 @@
   }
 
   .group h2 {
-    width: min(100%, 260px);
-    margin-bottom: 48px;
+    width: min(100%, 320px);
+    margin-bottom: 16px;
     font-family: var(--hemsida-1-inter-tight), sans-serif;
     font-size: 24px;
     font-weight: 500;
@@ -396,8 +408,14 @@
     white-space: normal;
   }
 
-  .group:first-child h2 {
+  .groupCta {
     margin-bottom: 48px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .group:first-child h2 {
+    margin-bottom: 16px;
   }
 
   .cards {
@@ -648,6 +666,10 @@
   }
 
   .group h2 {
+    margin-bottom: 16px;
+  }
+
+  .groupCta {
     margin-bottom: 56px;
   }
 

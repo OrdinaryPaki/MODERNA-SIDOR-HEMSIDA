@@ -115,6 +115,7 @@ function Text({ layer, offsetY = 0, data }: { layer: TextLayer; offsetY?: number
     "View open careers",
     "Se vad vi gjorde",
     "Se öppna roller",
+    "Se exemplar",
     "Ansök",
   ].includes(layer.text) && !layer.hideIcon;
 
@@ -342,72 +343,3 @@ export function FigmaPage({ data }: { data: FigmaPageData }) {
     </main>
   );
 }
-
-export const commonFooter = (top: number, boxTop = top): Pick<FigmaPageData, "boxes" | "texts" | "links"> => ({
-  boxes: [
-    { x: 0, y: boxTop, w: 1512, h: 447, color: "#121212", wide: true },
-    { x: 0, y: boxTop + 447, w: 1512, h: 461, color: "#121212", wide: true },
-  ],
-  texts: [
-    {
-      text: "Låt oss bygga ett system runt ert arbetssätt",
-      x: 64,
-      y: top + 120,
-      w: 540,
-      h: 202,
-      size: 48,
-      line: 67.2,
-      tracking: -0.96,
-      color: "#ffffff",
-    },
-    {
-      text: "Moderna Sidor",
-      x: 64,
-      y: top + 512,
-      w: 240,
-      h: 45,
-      size: 28,
-      line: 44.8,
-      tracking: -0.56,
-      color: "#ffffff",
-      weight: 600,
-    },
-    {
-      text: "Skräddarsydda digitala system för företag som vill jobba tydligare",
-      x: 64,
-      y: top + 572,
-      w: 374,
-      h: 48,
-      size: 20,
-      line: 24,
-      tracking: -0.4,
-      color: "#ffffff",
-      family: "inter",
-      weight: 400,
-    },
-    ...[
-      ["Start", 812, top + 564.6953125, 90],
-      ["Om oss", 812, top + 607.6953125, 90],
-      ["Lösningar", 812, top + 650.6953125, 110],
-      ["Karriär", 812, top + 693.6953125, 90],
-      ["Kontakt", 812, top + 736.6953125, 90],
-      ["Twitter", 1352, top + 564.6953125, 100],
-      ["LinkedIn", 1352, top + 607.6953125, 110],
-      ["Instagram", 1352, top + 650.6953125, 120],
-    ].map(([text, x, y, w]) => ({
-      text: text as string,
-      x: x as number,
-      y: y as number,
-      w: w as number,
-      h: 16,
-      size: 20,
-      line: 16,
-      color: "#ffffff",
-      family: "inter" as const,
-      weight: 500 as const,
-    })),
-  ],
-  links: [
-    { text: "Kontakta oss", x: 811.3671875, y: top + 301, w: 158, h: 28, size: 20, line: 28, color: "#ffffff" },
-  ],
-});
