@@ -1,0 +1,6 @@
+.preview { position: relative; isolation: isolate; padding: 32px; background: #fff; animation: enter .45s var(--ease) both; }
+.dark { background: #111; --hero-ink: #fff; --hero-secondary-border: #ffffff55; }
+.blue { background: #003cff; --hero-ink: #fff; --hero-primary-bg: #fff; --hero-primary-ink: #003cff; --hero-secondary-border: #ffffff88; --hero-brand-accent: #fff; }
+@keyframes enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 809px) { .preview { padding: 24px 20px; } }
+@media (prefers-reduced-motion: reduce) { .preview { animation: none; } }

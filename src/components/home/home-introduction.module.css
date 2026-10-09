@@ -1,0 +1,32 @@
+.section {
+  padding: 0 var(--gutter) 100px;
+}
+
+.section .rule {
+  margin: 0 0 60px;
+}
+
+.section .rule,
+.section .description h2 {
+  /* The shared Reveal handles the entrance as one sequence. */
+  animation: none;
+}
+
+@media (max-width: 809px) {
+  .section {
+    padding: 0 20px 50px;
+  }
+
+  .section .rule {
+    margin-bottom: 28px;
+  }
+
+  .section .description h2 {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -.02em;
+    color: #444;
+    text-wrap: pretty;
+  }
+}

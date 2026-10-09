@@ -1,0 +1,55 @@
+.hero { position: relative; padding-top: 140px; padding-bottom: 60px; }
+.chooser { position: relative; display: flex; flex-direction: column; gap: 18px; margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid #ddd; }
+.chooserHeading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.selectedName { font-size: 13px; font-weight: 500; }
+.optionGroups { display: flex; gap: 32px; flex-wrap: wrap; }
+.optionGroup { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.groupTitle { font-size: 11px; color: #777; }
+.chooserTitle { font-size: 11px; letter-spacing: .1em; color: #666; }
+.choices { display: flex; gap: 6px; flex-wrap: wrap; }
+.choices button { display: flex; align-items: center; justify-content: center; width: 44px; min-height: 44px; border: 1px solid #ccc; border-radius: 30px; padding: 10px; background: #fff; font-size: 12px; cursor: pointer; transition: color .2s, background .2s; }
+.choices button:hover { background: #eee; }
+.choices button[aria-pressed="true"] { background: #000; color: #fff; border-color: #000; }
+.choices button > span:first-child { font-weight: 600; }
+.hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.heading, .bottom { position: relative; }
+.nameTop { width: 100%; }
+.heading { gap: 16px; }
+.bottom { display: grid; grid-template-columns: 1.55fr 1fr; gap: 24px; align-items: end; }
+.logoText { font-family: var(--font-display); font-weight: 700; letter-spacing: -.012em; fill: currentColor; stroke: currentColor; stroke-width: 2; paint-order: stroke fill; }
+.flagArea { position: relative; min-height: 0; aspect-ratio: 328 / 104; border-radius: 0; background: #111; mask-size: 100% 100%; mask-repeat: no-repeat; }
+.flagPhoto { position: absolute; inset: 0; width: 100%; height: 100%; }
+.flag { position: absolute; inset: 0; width: 100%; height: 100%; color: #000; opacity: .12; pointer-events: none; transition: opacity .3s; }
+.variant0 .flag, .variant2 .flag, .variant5 .flag { opacity: 1; }
+.variant1 .flag { opacity: .7; }
+.flag.swedishFlag { opacity: 1; }
+.variant2, .variant4, .variant5 { gap: 28px; }
+.variant2 .bottom, .variant4 .bottom, .variant5 .bottom { gap: 52px; }
+.variant5 .logoText { font-weight: 600; letter-spacing: -.06em; stroke: none; }
+.variant4 .flagArea { visibility: hidden; }
+.variant3 { gap: 8px; }
+.variant3 .bottom { gap: 10px; }
+.originalFlag { position: relative; border-radius: 0; }
+/* Match the visible Sidor glyph bounds within its 192-unit line box. */
+.originalSymbol { position: absolute; top: 3.17%; left: 0; display: block; width: 100%; height: 93.87%; color: #000; }
+@media (min-width: 810px) { .originalHeading .originalTop { width: calc((100% - 20px) / 2); } }
+@media (max-width: 809px) {
+  .hero { padding-top: 112px; padding-bottom: 40px; }
+  .chooser { gap: 16px; margin-bottom: 28px; }
+  .chooserHeading { align-items: flex-start; }
+  .selectedName { max-width: 160px; text-align: right; font-size: 12px; }
+  .optionGroups { flex-direction: column; gap: 16px; }
+  .chooserTitle { font-size: 9px; letter-spacing: .07em; }
+  .choices { gap: 5px; }
+  .choices button { width: 40px; }
+  .heading { gap: 8px; }
+  .bottom { display: grid; grid-template-columns: 1.55fr 1fr; gap: 12px; }
+  .bottom > svg { width: 100%; }
+  .bottom .flagArea { min-height: 0; height: auto; width: 100%; }
+  .variant2, .variant4, .variant5 { gap: 16px; }
+  .variant2 .bottom, .variant4 .bottom, .variant5 .bottom { gap: 24px; }
+  .variant3 { gap: 5px; }
+  .variant3 .bottom { gap: 5px; }
+}
+@media (prefers-reduced-motion: reduce) { .choices button, .flag { transition: none; } }
+@media (max-width: 370px) { .choices button { width: 36px; padding-inline: 8px; } }

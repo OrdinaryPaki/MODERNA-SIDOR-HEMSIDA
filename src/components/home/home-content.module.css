@@ -1,0 +1,10 @@
+.firstScreen [data-reveal] {
+  transition-duration: .45s;
+}
+
+@media (max-width: 809px) {
+  .firstScreen {
+    /* Keep the next section below the fold, with spare space after the copy. */
+    min-height: 100svh;
+  }
+}

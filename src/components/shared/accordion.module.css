@@ -1,0 +1,7 @@
+.item{border-top:1px solid var(--line)}.item:last-child{border-bottom:1px solid var(--line)}
+.question{border:0;background:none;text-align:left;width:100%;padding:36px 0;display:flex;align-items:center;justify-content:space-between;gap:30px;font-family:var(--font-body);font-size:20px;line-height:1.4;cursor:pointer;transition:color .25s}
+.question:hover{color:var(--blue)}
+.icon{flex:none;font-size:28px;font-weight:400;line-height:20px;width:20px;height:20px;display:flex;align-items:center;justify-content:center;transition:transform .35s var(--ease)}
+.answer{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .4s var(--ease),opacity .35s var(--ease)}.answer>div{min-height:0;overflow:hidden}.answer p{font-size:18px;line-height:1.4;color:#666;padding:0 0 36px;max-width:720px}
+.item[data-open=true] .answer{grid-template-rows:1fr;opacity:1}.item[data-open=true] .icon{transform:rotate(180deg)}
+@media(max-width:809px){.question{padding:24px 0;font-size:16px;gap:20px}.answer p{font-size:15px;padding-bottom:24px}.icon{font-size:26px}}

@@ -1,0 +1,24 @@
+.title { font-family: var(--font-display); font-weight: 500; font-size: clamp(44px, 5.2vw, 82px); line-height: 1.03; letter-spacing: -.055em; text-wrap: balance; color: var(--hero-ink, #000); }
+.copy { max-width: 450px; font-size: 18px; line-height: 1.55; letter-spacing: -.025em; color: var(--hero-ink, #000); opacity: .75; }
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.primary, .secondary { display: inline-flex; justify-content: center; align-items: center; gap: 16px; min-height: 50px; padding: 14px 23px; border: 1px solid transparent; border-radius: 4px; font-size: 15px; line-height: 1.2; font-weight: 500; transition: transform .2s, background .2s; }
+.primary { background: var(--hero-primary-bg, #003cff); color: var(--hero-primary-ink, #fff); }
+.secondary { border-color: var(--hero-secondary-border, #c8c8c8); color: var(--hero-ink, #000); }
+.primary:hover, .secondary:hover { transform: translateY(-2px); }
+.secondary:hover { background: #80808012; }
+.primary svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.photo { position: relative; overflow: hidden; }
+.photo img { object-fit: cover; }
+.nav { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 42px; color: var(--hero-ink, #000); }
+.brand { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: -.05em; white-space: nowrap; }
+.brand span { color: var(--hero-brand-accent, #003cff); }
+.nav nav { display: flex; flex-wrap: wrap; gap: 28px; font-size: 13px; }
+.nav nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 809px) {
+  .title { font-size: clamp(40px, 8vw, 60px); }
+  .copy { font-size: 16px; }
+  .nav { padding-bottom: 30px; flex-wrap: wrap; gap: 16px; }
+  .nav nav { gap: 18px; font-size: 12px; }
+  .primary, .secondary { padding: 13px 18px; font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .primary, .secondary { transition: none; } }

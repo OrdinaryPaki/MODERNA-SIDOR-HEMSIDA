@@ -1,0 +1,14 @@
+.document{background:#f3f3f1}.hero{position:relative;height:900px;padding:200px 64px 64px;display:flex;align-items:center;justify-content:center;overflow:hidden}.background{position:absolute!important;inset:0;opacity:.49}.overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(242,242,240,.5),#f3f3f1);pointer-events:none}.heroContent{position:relative;z-index:1;text-align:center;width:100%}.heroContent h1{font-size:96px;line-height:1;letter-spacing:-.06em;font-weight:500}.updated{display:flex;gap:4px;justify-content:center;margin-top:32px;font-size:24px;line-height:33.6px;letter-spacing:-.96px;color:#666}.body{padding:96px 64px}.content{max-width:800px;margin:auto;font-size:16px;line-height:22.4px;letter-spacing:-.32px;color:#666}.content h2{font-size:48px;line-height:1.1;letter-spacing:-.04em;color:#000;margin-top:40px}.content h2:first-child{margin-top:0}.content h3{font-size:32px;line-height:1.2;letter-spacing:-.02em;color:#000;margin-top:40px}.content h2+p{margin-top:20px}.content p+p,.content ul+p{margin-top:20px}.content ul{margin:0;padding-left:24px}.content li{padding-left:0}.content li::marker{font-size:.8em;color:#666}
+@media(max-width:809px){.hero{height:auto;padding:180px 24px 120px}.heroContent h1{font-size:48px;line-height:1;letter-spacing:-.06em}.updated{font-size:18px;line-height:25.2px;letter-spacing:-.72px}.body{padding:48px 24px}.content{font-size:14px;line-height:19.6px;letter-spacing:-.28px}.content h2{font-size:32px;line-height:1.1;letter-spacing:-.04em}.content h3{font-size:22px;line-height:1.2;letter-spacing:-.02em}}
+
+.document{width:calc(100% - 4px)}
+
+.content h3+p{margin-top:20px}.content ul{padding-left:1.291015625em}
+
+.background img{top:-10%!important;height:120%!important}
+
+.entrance[data-reveal]{opacity:.001;transform:translateY(-60px);transition:opacity 1s cubic-bezier(.55,0,0,1),transform 1s cubic-bezier(.55,0,0,1);transition-delay:var(--reveal-delay,0s)}.entrance[data-reveal]:global(.is-visible){opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.entrance[data-reveal]{opacity:1;transform:none;transition:none}}
+
+.backgroundEntrance[data-reveal]{position:absolute;inset:0;opacity:.001;transform:translateY(60px);transition:opacity 1s cubic-bezier(.55,0,0,1),transform 1s cubic-bezier(.55,0,0,1)}.backgroundEntrance[data-reveal]:global(.is-visible){opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.backgroundEntrance[data-reveal]{opacity:1;transform:none;transition:none}}

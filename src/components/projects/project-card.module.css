@@ -1,0 +1,18 @@
+.card{display:flex;flex-direction:column;gap:12px;min-width:0;color:var(--ink)}
+.cardButton{width:100%;padding:0;border:0;background:none;text-align:left;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:32px;z-index:1000;transform:translateX(-50%);padding:12px 20px;border-radius:10px;background:#111;color:#fff;font-size:15px;font-weight:500;box-shadow:0 8px 30px #0003;white-space:nowrap;pointer-events:none}
+.image{position:relative;overflow:hidden;aspect-ratio:var(--project-image-ratio);border-radius:12px;width:100%;--project-parallax-range:150px}
+.parallaxImage{position:absolute;top:calc(-1 * var(--project-parallax-range));left:0;width:100%;height:calc(100% + var(--project-parallax-range));max-width:none;object-fit:cover;transition:transform .2s ease-out;will-change:transform}
+.staticImage{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hoverArrow{position:absolute;right:24px;bottom:24px;width:56px;height:56px;display:grid;place-items:center;border-radius:50%;background:white;color:black;opacity:0;transform:translateY(84px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+@media(min-width:810px) and (hover:hover){.card:hover .hoverArrow,.card:focus-visible .hoverArrow{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.parallaxImage{top:0;height:100%;transform:none!important}}
+.caption{display:flex;align-items:center;justify-content:space-between;gap:16px;min-width:0}
+.caption h3{font-family:var(--font-display);font-size:32px;font-weight:500;line-height:1.2;letter-spacing:-.02em}
+.tags{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
+.tags span{font-size:14px;line-height:1.4;letter-spacing:-.02em;font-weight:500;color:rgba(0,0,0,.6);border:1px solid #999;border-radius:10px;padding:4px 9px;white-space:nowrap}
+@media(max-width:1199px){.caption{align-items:flex-start;flex-direction:column;gap:8px}.tags{justify-content:flex-start}}
+@media(max-width:809px){.card{gap:8px}.image{border-radius:12px;--project-parallax-range:var(--project-mobile-range,80px)}.hoverArrow{display:none}.caption h3{font-size:22px;line-height:1.2;letter-spacing:-.02em}.tags{gap:8px}.tags span{font-size:12px;line-height:1.4;padding:4px 9px}}
+@media(max-width:809px){.horizontal{gap:12px}.horizontal .caption{flex-direction:row;align-items:center;gap:12px}.horizontal .tags{justify-content:flex-end}.horizontal .tags span{padding:4px 9px}}
+
+.card:not(a) .hoverArrow{display:none}

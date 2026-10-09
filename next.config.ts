@@ -1,86 +1,16 @@
 import type { NextConfig } from "next";
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
 
-const projectRoot = dirname(fileURLToPath(import.meta.url));
-
-const nextConfig: NextConfig = {
+const config: NextConfig = {
   devIndicators: false,
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "framerusercontent.com",
-      },
-    ],
-  },
-  async redirects() {
-    return [
-      {
-        source: "/hemsida-1/solutions-detail/:slug",
-        destination: "/solutions/:slug",
-        permanent: true,
-      },
-      {
-        source: "/hemsida-1/luna-ai",
-        destination: "/solutions/luna-ai",
-        permanent: true,
-      },
-      {
-        source: "/hemsida-1",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/hemsida-1/:path*",
-        destination: "/:path*",
-        permanent: true,
-      },
-      {
-        source: "/about-us",
-        destination: "/about",
-        permanent: true,
-      },
-      {
-        source: "/our-work",
-        destination: "/solutions",
-        permanent: true,
-      },
-      {
-        source: "/projects/:slug",
-        destination: "/solutions/:slug",
-        permanent: true,
-      },
-      {
-        source: "/luna-ai",
-        destination: "/solutions/luna-ai",
-        permanent: true,
-      },
-      {
-        source: "/articles/:slug",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/blog",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/privacy-policy",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/terms-of-service",
-        destination: "/",
-        permanent: true,
-      },
-    ];
-  },
-  turbopack: {
-    root: projectRoot,
+  turbopack: { root: process.cwd() },
+  images: { qualities: [75, 90], formats: ["image/webp"] },
+  async headers() {
+    // Versioned Next assets keep their automatic immutable cache policy.
+    // Public files can change at the same URL, so give them a bounded lifetime.
+    return ["/assets/:path*", "/brand/:path*", "/fonts/:path*"].map(source => ({
+      source,
+      headers: [{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=86400" }],
+    }));
   },
 };
-
-export default nextConfig;
+export default config;

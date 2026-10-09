@@ -1,0 +1,34 @@
+@font-face{font-family:'Unique Onest';src:url('/fonts/unique/onest.woff2') format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Unique Manrope';src:url('/fonts/unique/manrope.woff2') format('woff2');font-weight:100 900;font-display:swap}
+.contact{padding:300px var(--gutter) 80px}.title{font-size:96px;line-height:1;letter-spacing:-.06em;font-weight:500}.contactGrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(40px,6vw,120px);margin-top:96px}.details{display:flex;flex-direction:column;gap:30px}.details>div>p:first-child{font-size:20px;line-height:28px;letter-spacing:-.4px;margin-bottom:4px}.details a,.details>div>p+p{display:block;font-size:24px;line-height:33.6px;letter-spacing:-.96px;color:#666}.details>div>p+p{max-width:280px}.details a{transition:color .3s}.details a:hover{color:var(--blue)}.formColumn h2{font-size:48px;line-height:1.1;letter-spacing:-.04em}.form{margin-top:96px;display:flex;flex-direction:column;align-items:flex-start;gap:60px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:32px;width:100%}.form input,.form textarea{width:100%;border:0;border-bottom:1px solid #777;background:transparent;color:#000;border-radius:0;outline:none;font-family:'Unique Onest',sans-serif;font-size:24px;font-weight:500;line-height:1.2;letter-spacing:0;padding:0 0 12px;transition:border-color .3s}.form input::placeholder,.form textarea::placeholder{color:#666;opacity:1}.form input:focus,.form textarea:focus{border-bottom:2px solid #003cff;padding-bottom:11px}.form textarea{height:220px;padding-bottom:0;resize:vertical}.form textarea:focus{padding-bottom:0}.submit{display:inline-flex;align-items:center;gap:12px;justify-content:space-between;border:0;border-bottom:2px solid #000;padding:0 0 6px;background:none;font-size:24px;line-height:33.6px;letter-spacing:-.96px;cursor:pointer;transition:color .3s,border-color .3s}.submit>span+span{color:var(--blue);font-size:28px;transition:transform .3s var(--ease)}.submit:hover{color:var(--blue);border-color:var(--blue)}.submit:hover>span+span{transform:translate(3px,-3px)}.submitMessage{font-size:16px;line-height:1.4;color:#666;margin-top:-30px}.trust{padding:100px var(--gutter)}.trust>div>h2,.faqIntro h2{font-size:72px;line-height:1;letter-spacing:-.04em}.trustGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(32px,4vw,72px);margin-top:80px}.trustGrid h3{font-size:32px;line-height:1.2;letter-spacing:-.02em}.trustGrid p{font-size:20px;line-height:28px;letter-spacing:-.4px;color:#666;margin-top:32px}.faq{padding:100px var(--gutter);display:grid;grid-template-columns:32.5% 1fr;gap:140px}.faqIntro h2{margin-top:30px}.faqIntro p{font-size:20px;line-height:28px;letter-spacing:-.4px;color:#666;margin-top:30px}.faqIntro>a{margin-top:30px;padding-bottom:4px}.accordion button{font-family:'Unique Manrope',sans-serif}.accordion [role=region] p{font-family:'Unique Manrope',sans-serif;max-width:none}
+@media(max-width:1199px) and (min-width:810px){.contact{padding-top:220px}.contactGrid{gap:60px}.title{font-size:72px}.formColumn h2{font-size:40px}.trustGrid{grid-template-columns:repeat(2,1fr);gap:60px}.faq{gap:60px;grid-template-columns:1fr 1.3fr}}
+@media(max-width:809px){.contact{padding:180px var(--gutter) 40px}.title{font-size:48px;line-height:1;letter-spacing:-.06em}.contactGrid{display:flex;flex-direction:column;gap:64px;margin-top:48px}.formColumn{order:-1}.formColumn h2{font-size:32px;line-height:1.1;letter-spacing:-.04em}.details>div>p:first-child{font-size:16px;line-height:22.4px;letter-spacing:-.32px}.details a,.details>div>p+p{font-size:18px;line-height:25.2px;letter-spacing:-.72px}.details>div>p+p{max-width:280px}.form{margin-top:48px;gap:40px}.fields{display:flex;flex-direction:column;gap:40px}.form input,.form textarea{font-size:18px;line-height:1.2;padding-bottom:8px}.form input:focus{padding-bottom:7px}.form textarea{height:120px;padding-bottom:0}.submit{font-size:18px;line-height:25.2px;letter-spacing:-.72px;padding-bottom:4px}.submit>span+span{font-size:24px}.trust{padding:48px 24px}.trust>div>h2,.faqIntro h2{font-size:42px;line-height:1.1;letter-spacing:-.04em}.trustGrid{grid-template-columns:1fr;gap:48px;margin-top:48px}.trustGrid h3{font-size:22px;line-height:1.2;letter-spacing:-.02em}.trustGrid p{font-size:16px;line-height:22.4px;letter-spacing:-.32px;margin-top:24px}.faq{padding:50px var(--gutter);display:flex;flex-direction:column;gap:40px}.faqIntro h2{margin-top:20px}.faqIntro p{font-size:16px;line-height:22.4px;letter-spacing:-.32px;margin-top:20px}.faqIntro>a{margin-top:20px}}
+
+.route{width:calc(100% - 4px)}.form input{border-bottom:0;box-shadow:inset 0 -1px #777}.form input:focus{border-bottom:0;padding-bottom:12px;box-shadow:inset 0 -2px #003cff}
+@media(max-width:809px){.fields{gap:32px}.form{gap:32px}.form input:focus{padding-bottom:8px}.submit{height:40px}}
+
+.faqIntro>a{border-bottom-width:2px}
+@media(max-width:809px){.faqIntro>a{margin-top:30px;letter-spacing:-.72px}}
+
+.form{gap:64px}.form input,.form input:focus{padding-bottom:8px}.submit{height:40px;gap:0;padding-bottom:4px}.submit>span+span{width:32px;display:flex;align-items:center;justify-content:center}.accordion [role=region] p{color:rgba(12,18,12,.7);padding-bottom:48px}
+@media(max-width:809px){.form{gap:32px}.accordion [role=region] p{padding-bottom:32px}}
+
+.accordion [role=region] p{padding:12px 0 36px}.faqIntro>a{margin-top:50px}
+@media(max-width:809px){.accordion [role=region] p{padding:8px 0 24px}.faqIntro>a{margin-top:30px}}
+
+.accordion>div:first-child{border-top:0}
+
+.entrance[data-reveal]{opacity:.001;transform:translateY(-60px);transition:opacity 1s cubic-bezier(.55,0,0,1),transform 1s cubic-bezier(.55,0,0,1);transition-delay:var(--reveal-delay,0s)}.entrance[data-reveal]:global(.is-visible){opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.entrance[data-reveal]{opacity:1;transform:none;transition:none}}
+
+/* Keep Swedish copy and the contact address readable across column widths. */
+.details a{overflow-wrap:anywhere}
+.formColumn,.faqIntro,.questions{min-width:0}
+.contactIntro{max-width:36em;margin-top:24px;font-size:20px;line-height:1.5;color:#666}
+.formNotice{font-size:16px;line-height:1.5;color:#666;max-width:40em}
+.formNotice a{color:inherit;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.trust>div>h2{max-width:16ch;text-wrap:balance}
+@media(max-width:809px){.contactIntro{font-size:18px;margin-top:20px}}
+
+.spamTrap{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.submit:disabled{opacity:.6;cursor:wait}

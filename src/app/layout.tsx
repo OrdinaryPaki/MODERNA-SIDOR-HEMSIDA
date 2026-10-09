@@ -1,51 +1,19 @@
-import type { Metadata, Viewport } from "next";
-import { Archivo, Inter, Inter_Tight } from "next/font/google";
-import SmoothScroll from "@/components/SmoothScroll";
+import type { Metadata } from "next";
+import { SiteHeader } from "@/components/shared/site-header";
+import { SiteFooter } from "@/components/shared/site-footer";
+import { MotionObserver } from "@/components/shared/motion-observer";
+import { noIndex, publicPages, site } from "@/lib/seo";
 import "./globals.css";
 
-const hemsidaInter = Inter({
-  subsets: ["latin"],
-  variable: "--hemsida-1-inter",
-  weight: ["400", "500", "600"],
-});
-
-const hemsidaInterTight = Inter_Tight({
-  subsets: ["latin"],
-  variable: "--hemsida-1-inter-tight",
-  weight: ["500", "600"],
-});
-
-const hemsidaArchivo = Archivo({
-  subsets: ["latin"],
-  variable: "--hemsida-1-archivo",
-  weight: ["500"],
-});
-
 export const metadata: Metadata = {
-  title: "Moderna Sidor – Skräddarsydda digitala system",
-  description:
-    "Moderna Sidor utvecklar skräddarsydda digitala system, AI-funktioner och plattformar för företag med specifika behov.",
+  metadataBase: new URL(site.url),
+  applicationName: site.name,
+  title: site.name,
+  description: publicPages.home.description,
+  // Only complete pages explicitly opt into indexing via createPageMetadata.
+  robots: noIndex,
 };
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html
-      lang="sv"
-      className={`${hemsidaInter.variable} ${hemsidaInterTight.variable} ${hemsidaArchivo.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <SmoothScroll />
-        {children}
-      </body>
-    </html>
-  );
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return <html lang="sv"><body><noscript><style>{`[data-reveal], .reveal-word { opacity: 1 !important; transform: none !important; filter: none !important; }`}</style></noscript><SiteHeader /><main>{children}</main><SiteFooter /><MotionObserver /></body></html>;
 }

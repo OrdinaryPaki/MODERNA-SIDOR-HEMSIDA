@@ -1,0 +1,2 @@
+.label{display:inline-flex;align-items:center;gap:12px;padding:8px 16px;border:1px solid #eee;border-radius:50px;font-size:14px;line-height:16.8px;letter-spacing:.28px;text-transform:uppercase;white-space:nowrap;height:33px}
+.label>span{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px #e2e6f5}

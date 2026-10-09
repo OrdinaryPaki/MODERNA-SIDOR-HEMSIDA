@@ -1,0 +1,125 @@
+.body {
+  min-height: 560px;
+  min-width: 0;
+  color: var(--hero-ink, #000);
+  font-family: var(--font-display);
+}
+
+.body .title,
+.body .statement {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+
+.body .title {
+  font-size: clamp(38px, 4.7vw, 66px);
+  line-height: 1.04;
+}
+
+.body .copy {
+  max-width: 440px;
+  font-size: clamp(15px, 1.45vw, 18px);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -.02em;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 26px;
+  min-width: 0;
+}
+
+.actions { margin-top: 3px; }
+
+.typography {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 66px 46px;
+}
+
+.body .statement {
+  max-width: 1160px;
+  font-size: clamp(54px, 7.5vw, 110px);
+  line-height: 1.02;
+  text-wrap: pretty;
+}
+
+.rule {
+  height: 1px;
+  width: 100%;
+  margin-top: 42px;
+  background: #a9a9a9;
+}
+
+.typographyFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding-top: 25px;
+}
+
+.typographyFooter .copy { max-width: 620px; }
+
+.darkSplit {
+  --hero-ink: #fff;
+  --hero-primary-bg: #003cff;
+  --hero-primary-ink: #fff;
+  --hero-secondary-border: #777;
+  display: grid;
+  grid-template-columns: minmax(0, 1.14fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+  padding-block: 22px 0;
+  background: #080808;
+}
+
+.darkSplit .text { padding-block: 48px; }
+.darkSplit .copy { color: #ddd; opacity: 1; }
+.darkSplit .title { max-width: 570px; }
+
+.accentLine {
+  width: 52px;
+  height: 3px;
+  margin-bottom: 8px;
+  background: #003cff;
+}
+
+.darkPhoto {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 538px;
+  overflow: hidden;
+}
+
+.darkPhoto img { width: 100%; height: 100%; object-fit: cover; object-position: 88% center; }
+
+@media (max-width: 809px) {
+  .body { min-height: 0; }
+  .body .title { font-size: clamp(38px, 6.5vw, 60px); }
+  .body .copy { font-size: 16px; }
+  .typography { padding-block: 54px 32px; }
+  .body .statement { font-size: clamp(48px, 8.5vw, 74px); }
+  .rule { margin-top: 32px; }
+  .darkSplit { grid-template-columns: minmax(0, 1fr); gap: 34px; padding-top: 36px; }
+  .darkSplit .text { padding-block: 0; }
+  .darkPhoto { min-height: 0; height: 400px; }
+}
+
+@media (max-width: 440px) {
+  .text { gap: 22px; }
+  .body .title { font-size: 37px; }
+  .body .statement { font-size: 46px; }
+  .typography { padding-block: 42px 20px; }
+  .typographyFooter { gap: 20px; }
+  .darkPhoto { height: 330px; }
+}

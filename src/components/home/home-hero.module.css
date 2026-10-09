@@ -1,0 +1,36 @@
+.hero {
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(680px, 82svh, 960px);
+  padding: 270px var(--gutter) 60px;
+  container-type: inline-size;
+}
+
+.title {
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7.8cqw, 132px);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -.055em;
+  overflow-wrap: break-word;
+}
+
+.line {
+  display: block;
+  text-wrap: balance;
+}
+
+@media (max-width: 809px) {
+  .hero {
+    min-height: 0;
+    padding: 160px var(--gutter) 40px;
+  }
+
+  .title {
+    font-size: clamp(44px, 10cqw, 64px);
+    line-height: 1.1;
+    letter-spacing: -.045em;
+  }
+}

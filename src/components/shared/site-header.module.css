@@ -1,0 +1,32 @@
+.header{position:absolute;inset:0 0 auto;z-index:50}
+.bar{position:relative;padding:20px var(--gutter);display:flex;align-items:center;justify-content:space-between;height:84px}
+.overlayBar{position:absolute;inset:0 0 auto}
+.logo{position:relative;display:block;flex-shrink:0;width:190px;aspect-ratio:1190/326;overflow:hidden;border-radius:3px}
+/* Show the logo's 1190 × 326 frame at (292, 268) within the unchanged 1774 × 887 source. */
+.logo img{position:absolute;width:149.075630%;max-width:none;height:auto;left:-24.537815%;top:-82.208589%;filter:url(#navigation-logo-ink)}
+.toggle{position:relative;z-index:2;border:0;border-radius:100px;background:var(--blue);color:#fff;padding:10px 16px;font-size:20px;line-height:24px;cursor:pointer;transition:background .3s,color .3s,transform .3s}
+.toggle:hover{background:#000;color:#fff}
+.overlay{position:fixed;z-index:1;inset:0;overflow-y:auto;background:var(--blue);color:#fff;clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .65s cubic-bezier(.76,0,.24,1),visibility .65s;pointer-events:none}
+.menuContainer{min-height:100svh;padding:110px var(--gutter);display:grid;grid-template-columns:2fr 1fr;align-content:center;gap:10px}
+.navigation{display:flex;flex-direction:column;align-items:flex-start}
+.linkMask{overflow:hidden;padding-bottom:6px}
+.navigation a{display:flex;align-items:center;gap:20px;font-family:var(--font-display);font-weight:500;font-size:108px;line-height:1;letter-spacing:-4.32px;transform:translateY(120%);transition:transform .65s cubic-bezier(.22,1,.36,1),opacity .25s;transition-delay:0s}
+.navigation a span{font-size:64px;opacity:0;transform:translate(-20px,10px);transition:opacity .25s,transform .3s}
+.navigation a:hover span{opacity:1;transform:translate(0,0)}
+.navigation a:hover{opacity:.7}
+.aside{align-self:start;display:flex;flex-direction:column;gap:60px;opacity:0;transform:translateY(25px);transition:opacity .4s,transform .5s}
+.aside p{color:#b3bffe;margin-bottom:20px;font-size:20px;line-height:1.4;letter-spacing:-.4px}
+.legal{display:flex;flex-direction:column;gap:8px}
+.aside a{font-family:var(--font-display);font-size:32px;font-weight:500;line-height:1.2;letter-spacing:-.64px;transition:opacity .25s}
+.aside a:hover{opacity:.65}
+.open .overlay{visibility:visible;clip-path:inset(0);pointer-events:auto}
+/* The light logo is clipped with the blue overlay; its color never switches on clicks. */
+.lightLogo img{filter:url(#navigation-logo-ink) brightness(0) invert(1)}
+.lightLogo:focus-visible{outline-color:#fff}
+.open .toggle{background:#fff;color:var(--blue)}
+.open .toggle:hover{background:#e1e6ff}
+.open .navigation a{transform:translateY(0);transition-delay:calc(.18s + var(--index) * .055s)}
+.open .aside{opacity:1;transform:translateY(0);transition-delay:.35s}
+@media(max-width:1199px){.navigation a{font-size:80px}.navigation a span{font-size:48px}}
+@media(max-width:809px){.bar{height:79px}.logo{width:170px}.toggle{font-size:16px;line-height:19px;padding:10px 16px}.menuContainer{padding:120px 20px 60px;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:40px}.navigation a{font-size:42px;line-height:46.2px;letter-spacing:-1.68px}.linkMask{padding-bottom:6px}.navigation a span{font-size:28px}.aside{gap:40px}.aside p{font-size:16px;margin-bottom:10px}.aside a{font-size:22px;line-height:26.4px;letter-spacing:-.44px}.legal{gap:4px}}
+@media(prefers-reduced-motion:reduce){.overlay,.navigation a,.aside{transition:none}}

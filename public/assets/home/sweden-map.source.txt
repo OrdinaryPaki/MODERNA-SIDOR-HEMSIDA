@@ -1,0 +1,7 @@
+Sveriges landgrans och kustlinje.
+Source: Natural Earth, 1:50m Admin 0 Countries
+Data: https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson
+License: Public domain
+https://www.naturalearthdata.com/about/terms-of-use/
+Projection: local equirectangular, longitude scaled at 62 degrees north.
+Presentation: rotated 75 degrees clockwise to fit the horizontal hero symbol; country proportions preserved.

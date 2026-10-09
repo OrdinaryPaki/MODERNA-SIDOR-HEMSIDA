@@ -1,0 +1,26 @@
+.footer{background:#000;color:#fff}
+.cta{position:relative;overflow:hidden;padding:120px var(--gutter) 60px;text-align:center}
+.video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45}
+.ctaContent{position:relative;z-index:1;max-width:900px;margin:0 auto}
+.cta h2{font-size:96px;line-height:1;letter-spacing:-5.76px}
+.cta p{font-family:var(--font-body);font-size:24px;line-height:1.4;letter-spacing:-.96px;max-width:500px;margin:32px auto 48px;color:#b3b3b3}
+.cta :global(.button){border:0}
+.details{padding:60px var(--gutter) 30px}
+.top{display:flex;justify-content:space-between;gap:60px}
+.description{width:32%}
+.brandLogo{position:relative;overflow:hidden;width:100%;max-width:420px;aspect-ratio:1190/326;margin-bottom:40px}
+/* Use the navigation's 1190 × 326 frame at (292, 268), with transparent negative space. */
+.brandLogo img{position:absolute;width:149.075630%;max-width:none;height:auto;left:-24.537815%;top:-82.208589%;filter:url(#footer-logo-ink)}
+.description p{font-size:20px;line-height:1.4;letter-spacing:-.4px;color:#b3b3b3}
+.email{width:53.333%;padding-left:0}
+.email p{color:#b3b3b3;font-size:18px;line-height:1.4;margin-bottom:8px;letter-spacing:-.36px}
+.email a{font-family:var(--font-display);font-size:48px;line-height:1.1;font-weight:500;letter-spacing:-1.92px;transition:color .25s}
+.email a:hover{color:#adbbff}
+.links{display:flex;justify-content:flex-end;gap:32px;margin-top:64px;font-size:18px;line-height:1.4;letter-spacing:-.36px}
+.links nav{display:flex;gap:32px}
+.links a,.bottom a{transition:opacity .25s}.links a:hover,.bottom a:hover{opacity:.6}
+.bottom{margin-top:200px;display:flex;justify-content:space-between;font-size:16px;line-height:1.4;letter-spacing:-.32px;color:#b3b3b3}
+.bottom div{display:flex;gap:20px}
+@media(max-width:809px){.ctaLine{display:block}}
+@media(max-width:1199px){.cta h2{font-size:72px}.email a{font-size:36px}.links{flex-wrap:wrap}.description{width:40%}}
+@media(max-width:809px){.cta{padding:96px 20px 20px}.cta h2{font-size:48px;line-height:1;letter-spacing:-2.88px}.cta p{font-family:var(--font-body);font-size:18px;letter-spacing:-.72px;margin:32px auto}.cta :global(.button){font-family:var(--font-body);padding:20px 48px;border-radius:12px}.details{padding:20px}.top{flex-direction:column;gap:64px}.description{width:100%;order:1}.brandLogo{margin-bottom:32px}.description p{font-size:16px;letter-spacing:-.32px}.email{width:100%;order:0;text-align:center}.email p{font-size:15px}.email a{font-size:32px;letter-spacing:-1.28px}.links{margin-top:64px;display:grid;grid-template-columns:1fr;align-items:start;gap:16px;font-size:15px}.links nav{flex-direction:column;gap:8px}.links nav{order:0}.bottom{margin-top:64px;flex-direction:column;gap:12px;font-size:14px}.bottom div{gap:20px;justify-content:space-between}}

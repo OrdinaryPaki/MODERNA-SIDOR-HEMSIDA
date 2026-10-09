@@ -1,19 +1,21 @@
 {
-  "name": "moderna-sidor-hemsida",
+  "name": "moderna-sidor",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --hostname 127.0.0.1 --port 3000",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "node --conditions=react-server --no-warnings --experimental-strip-types --test scripts/contact.test.mjs scripts/contact-mail.test.mjs"
   },
   "dependencies": {
-    "animejs": "^4.4.1",
     "lenis": "1.1.9",
-    "next": "16.2.7",
+    "next": "16.4.0",
     "react": "19.2.7",
-    "react-dom": "19.2.7"
+    "react-dom": "19.2.7",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -21,7 +23,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.7",
+    "eslint-config-next": "16.4.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
