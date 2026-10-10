@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import styles from "./counter.module.css";
 
 export function Counter({ value, prefix = "", suffix = "", duration = 1.5, className = "", fractionDigits = 0 }: { value: number; prefix?: string; suffix?: string; duration?: number; className?: string; fractionDigits?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -28,7 +29,8 @@ export function Counter({ value, prefix = "", suffix = "", duration = 1.5, class
     return () => { observer.disconnect(); cancelAnimationFrame(frame); };
   }, [value, duration]);
   return (
-    <span ref={ref} className={className} aria-label={`${prefix}${formatter.format(value)}${suffix}`}>
+    <span ref={ref} className={className}>
+      <span className={styles.accessibleValue}>{prefix}{formatter.format(value)}{suffix}</span>
       {prefix && <span aria-hidden="true">{prefix}</span>}
       <span aria-hidden="true">{formatter.format(current)}</span>
       {suffix && <span aria-hidden="true">{suffix}</span>}
