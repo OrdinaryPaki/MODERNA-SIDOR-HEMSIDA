@@ -1,0 +1,110 @@
+.processCards {
+  display: grid;
+  gap: 24px;
+  align-items: stretch;
+  transition: grid-template-columns 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.processCard {
+  min-width: 0;
+  min-height: 500px;
+  padding: 32px clamp(20px, 2vw, 36px);
+  border: 1px solid #454545;
+  border-radius: 12px;
+  background: #050505;
+  color: #666;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: color 0.4s, border-color 0.4s;
+}
+
+.processCard > span:first-child {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.processCard h3 {
+  width: 100%;
+  font-size: clamp(24px, 2.2vw, 40px);
+  line-height: 1.15;
+  hyphens: auto;
+  overflow-wrap: normal;
+}
+
+.processCard p {
+  display: none;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 40px;
+  font-size: clamp(18px, 1.65vw, 24px);
+  line-height: 1.4;
+}
+
+.processActive {
+  border-color: #fff;
+  color: #fff;
+}
+
+.processActive p {
+  display: block;
+}
+
+.processDot {
+  display: none;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  margin-top: 28px;
+  border: 1px solid #454545;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: inset 0 0 0 9px #050505;
+}
+
+.processActive .processDot {
+  display: block;
+}
+
+@media (max-width: 1199px) {
+  .processCards {
+    /* Below desktop width each title gets a full row, independent of selection. */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .processCard {
+    min-height: 160px;
+    padding: 24px;
+  }
+
+  .processActive {
+    min-height: 360px;
+  }
+
+  .processCard > span:first-child {
+    font-size: 15px;
+    line-height: 21px;
+    margin-bottom: 12px;
+  }
+
+  .processCard h3 {
+    font-size: clamp(26px, 4vw, 36px);
+  }
+
+  .processCard p {
+    max-width: 42ch;
+    font-size: 18px;
+    padding-top: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .processCards,
+  .processCard {
+    transition: none;
+  }
+}

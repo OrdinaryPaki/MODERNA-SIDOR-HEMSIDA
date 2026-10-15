@@ -4,6 +4,7 @@ import { services, processSteps, plans, testimonials } from "@/data/home";
 import { Button } from "@/components/shared/button";
 import { ReferenceParallax } from "./reference-parallax";
 import s from "./home.module.css";
+import processStyles from "./process-cards.module.css";
 export function ServicesList() {
   const [active, setActive] = useState<number | null>(null);
   return (
@@ -30,7 +31,7 @@ export function ProcessCards() {
   const [active, setActive] = useState(0);
   return (
     <div
-      className={s.processCards}
+      className={processStyles.processCards}
       style={{
         gridTemplateColumns: processSteps
           .map((_, i) => `minmax(0, ${active === i ? 2.1 : 1}fr)`)
@@ -49,12 +50,12 @@ export function ProcessCards() {
           }}
           onFocus={() => setActive(i)}
           aria-expanded={active === i}
-          className={`${s.processCard} ${active === i ? s.processActive : ""}`}
+          className={`${processStyles.processCard} ${active === i ? processStyles.processActive : ""}`}
         >
           <span>0{i + 1}</span>
           <h3>{step.title}</h3>
           <p>{step.description}</p>
-          <span className={s.processDot} aria-hidden />
+          <span className={processStyles.processDot} aria-hidden />
         </button>
       ))}
     </div>

@@ -275,93 +275,6 @@
   border-color: #666;
 }
 
-.processCards {
-  display: flex;
-  gap: 24px;
-  height: 500px;
-}
-
-.processCard {
-  flex: 1;
-  min-width: 0;
-  border: 1px solid #454545;
-  border-radius: 12px;
-  background: #050505;
-  color: #666;
-  text-align: left;
-  padding: 36px;
-  position: relative;
-  cursor: pointer;
-  transition:
-    flex 0.6s var(--ease),
-    color 0.4s,
-    border-color 0.4s;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.processCard > span:first-child {
-  font-size: 20px;
-  margin-bottom: 24px;
-}
-
-.processCard h3 {
-  font-size: 48px;
-  line-height: 1.1;
-  max-width: 185px;
-  overflow-wrap: anywhere;
-}
-
-.processCard p {
-  opacity: 0;
-  max-height: 0;
-  font-size: 24px;
-  line-height: 1.4;
-  transition:
-    opacity 0.35s,
-    transform 0.5s;
-  transform: translateY(15px);
-  margin-top: 32px;
-  position: absolute;
-  bottom: 96px;
-  left: 36px;
-  right: 36px;
-  max-width: none;
-}
-
-.processActive {
-  flex: 2.1;
-  border: 2px solid #fff;
-  color: #fff;
-  padding: 36px;
-  border-width: 1px;
-}
-
-.processActive h3 {
-  max-width: none;
-}
-
-.processActive p {
-  opacity: 1;
-  max-height: 250px;
-  transform: none;
-  max-width: 440px;
-}
-
-.processDot {
-  position: absolute;
-  bottom: 36px;
-  left: 36px;
-  border: 1px solid #454545;
-  border-radius: 50%;
-}
-
-.processActive .processDot {
-  background: var(--blue);
-}
-
 .sectionHeading {
   display: grid;
   grid-template-columns: 25% 75%;
@@ -998,7 +911,6 @@
     animation: none;
   }
 
-  .processCard,
   .quoteSlide {
     transition: none;
   }
@@ -1023,14 +935,6 @@
 
   .serviceActive h3 {
     font-size: 40px;
-  }
-
-  .processCard {
-    padding: 24px;
-  }
-
-  .processCard h3 {
-    font-size: 36px;
   }
 
   .sectionHeading h2 {
@@ -1281,52 +1185,6 @@
   .processHeading h2 {
     font-size: 32px;
     line-height: 1.1;
-  }
-
-  .processCards {
-    height: auto;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .processCard,
-  .processActive {
-    flex: auto;
-    min-height: 200px;
-    padding: 24px;
-    transition: min-height 0.5s var(--ease);
-  }
-
-  .processActive {
-    min-height: 412px;
-    padding: 24px;
-  }
-
-  .processCard > span:first-child {
-    font-size: 16px;
-    margin-bottom: 16px;
-  }
-
-  .processCard h3 {
-    font-size: 32px;
-    line-height: 1.1;
-    max-width: 260px;
-  }
-
-  .processCard p {
-    font-size: 18px;
-    margin-top: 32px;
-    left: 24px;
-    right: 24px;
-    bottom: 72px;
-    line-height: 1.4;
-  }
-
-  .processDot {
-    width: 20px;
-    height: 20px;
-    left: 24px;
-    bottom: 24px;
   }
 
   .sectionHeading {
@@ -1798,17 +1656,6 @@
     height: calc(100% + 180px) !important;
   }
 }
-@media (min-width: 810px) {
-  .processCards {
-    display: grid;
-    transition: grid-template-columns 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .processCard {
-    transition:
-      color 0.4s,
-      border-color 0.4s;
-  }
-}
 .servicePlus {
   font-size: 56px;
   line-height: 1;
@@ -1901,16 +1748,6 @@
 .counters > div > span {
   display: flex;
   gap: 4px;
-}
-.processDot {
-  width: 36px;
-  height: 36px;
-  opacity: 0;
-}
-.processActive .processDot {
-  opacity: 1;
-  border-color: #454545;
-  box-shadow: inset 0 0 0 9px #050505;
 }
 @media (max-width: 809px) {
   .counters > div > span {
@@ -2014,21 +1851,6 @@
     margin-bottom: 50px;
     gap: 20px;
   }
-  .processCard h3 {
-    max-width: none;
-  }
-  .processCard > span:first-child {
-    font-size: 15px;
-    line-height: 21px;
-    margin-bottom: 12px;
-  }
-  .processDot {
-    width: 36px;
-    height: 36px;
-  }
-  .processActive .processDot {
-    box-shadow: inset 0 0 0 9px #050505;
-  }
   .heroDescription :global(.button) {
     margin-top: 32px;
   }
@@ -2091,9 +1913,6 @@
 @media (max-width: 809px) {
   .visionTop {
     gap: 20px;
-  }
-  .processActive {
-    min-height: 416px;
   }
   .plan {
     padding: 24px 20px;
@@ -2212,12 +2031,6 @@
   }
 }
 @media (min-width: 810px) {
-  .processCard p,
-  .processActive p {
-    width: 493px;
-    max-width: none;
-    right: auto;
-  }
   .testimonialHeading p {
     max-width: 520px;
   }
